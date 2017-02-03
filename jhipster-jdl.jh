@@ -1,0 +1,102 @@
+entity UserExt {
+	avatar ImageBlob,
+    nick String,
+    idBattlenet String,
+    idSteam String,
+    idOrigin String,
+    idLol String,
+    pais String,
+    puntos Integer
+}
+
+entity Mensaje {
+    horaEnvio ZonedDateTime,
+	contenido String,  
+  	adjunto Blob
+}
+
+entity Sala {
+    nombre String,
+    imagen ImageBlob,
+    limiteUsuarios Integer
+}
+
+entity Juego {
+	titulo String,
+	portada ImageBlob,
+	descripcion String,
+    trailer String,
+    desarrollador String,
+    genero String,
+    edadRecomendada Integer,
+    fechaLanzamiento LocalDate,
+    capacidadJugadores Integer,
+    valoracionWeb Double,
+    valoracionUsers Double
+}
+
+entity Articulo {
+    titulo String,
+    texto String,
+    fecha LocalDate,
+    url String,
+    visitas Integer,
+    comentarios String
+}
+
+entity Foto{
+	nombre String,
+    fechaCreacion ZonedDateTime,
+    imagen ImageBlob,
+    descripcion String
+}
+
+entity Etiqueta {
+	nombre String
+}
+
+entity Logro{
+	nombre String,
+	descripcion Text
+}
+entity UserLogro {
+	fecha ZonedDateTime
+}
+
+entity Idioma {
+    nombre String
+}
+entity RelacionUsuarios{
+	fechaEmision ZonedDateTime,
+    fechaResolucion ZonedDateTime,
+    resultado Boolean
+}
+
+
+relationship ManyToOne {
+    Foto{articulo(titulo)} to Articulo{foto},
+    Mensaje{sala(nombre)} to Sala{mensaje},
+    Mensaje{emisor(login)} to User,
+    Mensaje{receptor(login)} to User,
+    Sala{juego(titulo)} to Juego{sala},
+    Idioma{juego(titulo)} to Juego{idioma},
+    Idioma{sala(nombre)} to Sala{idioma},
+    UserLogro{user(login)} to User,
+    UserLogro{logro(nombre)} to Logro{userLogro},
+    RelacionUsuarios{emisor(login)} to User,
+    RelacionUsuarios{receptor(login)} to User
+}
+
+relationship ManyToMany { 
+	Articulo{etiqueta(nombre)} to Etiqueta{articulo}
+
+}
+
+relationship OneToOne {
+	UserExt{user(login)} to User
+}
+
+
+
+// Set pagination options
+paginate all with infinite-scroll
