@@ -1,0 +1,66 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="mySalaLabel" data-translate="proyectoGlobalGamingApp.sala.home.createOrEditLabel">Create or edit a Sala</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.sala.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.sala.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.sala.nombre" for="field_nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="field_nombre"
+                    ng-model="vm.sala.nombre"
+                     />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setImagen($file, vm.sala)" ngf-pattern="'image/*'">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.sala.imagen" for="field_imagen">Imagen</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.sala.imagenContentType + ';base64,' + vm.sala.imagen}}" style="max-height: 100px;" ng-if="vm.sala.imagen" alt="sala image"/>
+                <div ng-if="vm.sala.imagen" class="help-block clearfix">
+                    <span class="pull-left">{{vm.sala.imagenContentType}}, {{vm.byteSize(vm.sala.imagen)}}</span>
+                    <button type="button" ng-click="vm.sala.imagen=null;vm.sala.imagenContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setImagen($file, vm.sala)" accept="image/*" data-translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="imagen" id="field_imagen"
+                    ng-model="vm.sala.imagen"
+                     />
+            <input type="hidden" class="form-control" name="imagenContentType" id="field_imagenContentType"
+                    ng-model="vm.sala.imagenContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.sala.limiteUsuarios" for="field_limiteUsuarios">Limite Usuarios</label>
+            <input type="number" class="form-control" name="limiteUsuarios" id="field_limiteUsuarios"
+                    ng-model="vm.sala.limiteUsuarios"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="proyectoGlobalGamingApp.sala.juego" for="field_juego">Juego</label>
+            <select class="form-control" id="field_juego" name="juego" ng-model="vm.sala.juego" ng-options="juego as juego.titulo for juego in vm.juegos track by juego.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

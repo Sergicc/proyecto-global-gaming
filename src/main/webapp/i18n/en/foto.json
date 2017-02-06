@@ -1,0 +1,26 @@
+{
+    "proyectoGlobalGamingApp": {
+        "foto" : {
+            "home": {
+                "title": "Fotos",
+                "createLabel": "Create a new Foto",
+                "createOrEditLabel": "Create or edit a Foto",
+                "search": "Search for Foto"
+            },
+            "created": "A new Foto is created with identifier {{ param }}",
+            "updated": "A Foto is updated with identifier {{ param }}",
+            "deleted": "A Foto is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Foto {{ id }}?"
+            },
+            "detail": {
+                "title": "Foto"
+            },
+            "nombre": "Nombre",
+            "fechaCreacion": "Fecha Creacion",
+            "imagen": "Imagen",
+            "descripcion": "Descripcion",
+            "articulo": "Articulo"
+        }
+    }
+}

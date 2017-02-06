@@ -1,0 +1,71 @@
+<div>
+    <h2 data-translate="proyectoGlobalGamingApp.foto.home.title">Fotos</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="foto.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="proyectoGlobalGamingApp.foto.home.createLabel">
+                        Create new Foto
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="nombre"><span data-translate="proyectoGlobalGamingApp.foto.nombre">Nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fechaCreacion"><span data-translate="proyectoGlobalGamingApp.foto.fechaCreacion">Fecha Creacion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="imagen"><span data-translate="proyectoGlobalGamingApp.foto.imagen">Imagen</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="descripcion"><span data-translate="proyectoGlobalGamingApp.foto.descripcion">Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="articulo.titulo"><span data-translate="proyectoGlobalGamingApp.foto.articulo">Articulo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="foto in vm.fotos track by foto.id">
+                    <td><a ui-sref="foto-detail({id:foto.id})">{{foto.id}}</a></td>
+                    <td>{{foto.nombre}}</td>
+                    <td>{{foto.fechaCreacion | date:'medium'}}</td>
+                    <td>
+                        <a ng-if="foto.imagen" ng-click="vm.openFile(foto.imagenContentType, foto.imagen)">
+                            <img data-ng-src="{{'data:' + foto.imagenContentType + ';base64,' + foto.imagen}}" style="max-height: 30px;" alt="foto image"/>
+                        </a>
+                        <span ng-if="foto.imagen">{{foto.imagenContentType}}, {{vm.byteSize(foto.imagen)}}</span>
+                    </td>
+                    <td>{{foto.descripcion}}</td>
+                    <td>
+                        <a ui-sref="articulo-detail({id:foto.articulo.id})">{{foto.articulo.titulo}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="foto-detail({id:foto.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="foto.edit({id:foto.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="foto.delete({id:foto.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

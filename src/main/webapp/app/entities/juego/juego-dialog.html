@@ -1,0 +1,112 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myJuegoLabel" data-translate="proyectoGlobalGamingApp.juego.home.createOrEditLabel">Create or edit a Juego</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.juego.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.juego.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.juego.titulo" for="field_titulo">Titulo</label>
+            <input type="text" class="form-control" name="titulo" id="field_titulo"
+                    ng-model="vm.juego.titulo"
+                     />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setPortada($file, vm.juego)" ngf-pattern="'image/*'">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.juego.portada" for="field_portada">Portada</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.juego.portadaContentType + ';base64,' + vm.juego.portada}}" style="max-height: 100px;" ng-if="vm.juego.portada" alt="juego image"/>
+                <div ng-if="vm.juego.portada" class="help-block clearfix">
+                    <span class="pull-left">{{vm.juego.portadaContentType}}, {{vm.byteSize(vm.juego.portada)}}</span>
+                    <button type="button" ng-click="vm.juego.portada=null;vm.juego.portadaContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setPortada($file, vm.juego)" accept="image/*" data-translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="portada" id="field_portada"
+                    ng-model="vm.juego.portada"
+                     />
+            <input type="hidden" class="form-control" name="portadaContentType" id="field_portadaContentType"
+                    ng-model="vm.juego.portadaContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.juego.descripcion" for="field_descripcion">Descripcion</label>
+            <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                    ng-model="vm.juego.descripcion"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.juego.trailer" for="field_trailer">Trailer</label>
+            <input type="text" class="form-control" name="trailer" id="field_trailer"
+                    ng-model="vm.juego.trailer"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.juego.desarrollador" for="field_desarrollador">Desarrollador</label>
+            <input type="text" class="form-control" name="desarrollador" id="field_desarrollador"
+                    ng-model="vm.juego.desarrollador"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.juego.genero" for="field_genero">Genero</label>
+            <input type="text" class="form-control" name="genero" id="field_genero"
+                    ng-model="vm.juego.genero"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.juego.edadRecomendada" for="field_edadRecomendada">Edad Recomendada</label>
+            <input type="number" class="form-control" name="edadRecomendada" id="field_edadRecomendada"
+                    ng-model="vm.juego.edadRecomendada"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.juego.fechaLanzamiento" for="field_fechaLanzamiento">Fecha Lanzamiento</label>
+                <div class="input-group">
+                    <input id="field_fechaLanzamiento" type="text" class="form-control" name="fechaLanzamiento" uib-datepicker-popup="{{dateformat}}" ng-model="vm.juego.fechaLanzamiento" is-open="vm.datePickerOpenStatus.fechaLanzamiento"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaLanzamiento')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.juego.capacidadJugadores" for="field_capacidadJugadores">Capacidad Jugadores</label>
+            <input type="number" class="form-control" name="capacidadJugadores" id="field_capacidadJugadores"
+                    ng-model="vm.juego.capacidadJugadores"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.juego.valoracionWeb" for="field_valoracionWeb">Valoracion Web</label>
+            <input type="number" class="form-control" name="valoracionWeb" id="field_valoracionWeb"
+                    ng-model="vm.juego.valoracionWeb"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.juego.valoracionUsers" for="field_valoracionUsers">Valoracion Users</label>
+            <input type="number" class="form-control" name="valoracionUsers" id="field_valoracionUsers"
+                    ng-model="vm.juego.valoracionUsers"
+                     />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

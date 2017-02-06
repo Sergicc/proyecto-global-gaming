@@ -1,0 +1,79 @@
+<div>
+    <h2 data-translate="proyectoGlobalGamingApp.userExt.home.title">User Exts</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="user-ext.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="proyectoGlobalGamingApp.userExt.home.createLabel">
+                        Create new User Ext
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="avatar"><span data-translate="proyectoGlobalGamingApp.userExt.avatar">Avatar</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="nick"><span data-translate="proyectoGlobalGamingApp.userExt.nick">Nick</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="idBattlenet"><span data-translate="proyectoGlobalGamingApp.userExt.idBattlenet">Id Battlenet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="idSteam"><span data-translate="proyectoGlobalGamingApp.userExt.idSteam">Id Steam</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="idOrigin"><span data-translate="proyectoGlobalGamingApp.userExt.idOrigin">Id Origin</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="idLol"><span data-translate="proyectoGlobalGamingApp.userExt.idLol">Id Lol</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pais"><span data-translate="proyectoGlobalGamingApp.userExt.pais">Pais</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="puntos"><span data-translate="proyectoGlobalGamingApp.userExt.puntos">Puntos</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.login"><span data-translate="proyectoGlobalGamingApp.userExt.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="userExt in vm.userExts track by userExt.id">
+                    <td><a ui-sref="user-ext-detail({id:userExt.id})">{{userExt.id}}</a></td>
+                    <td>
+                        <a ng-if="userExt.avatar" ng-click="vm.openFile(userExt.avatarContentType, userExt.avatar)">
+                            <img data-ng-src="{{'data:' + userExt.avatarContentType + ';base64,' + userExt.avatar}}" style="max-height: 30px;" alt="userExt image"/>
+                        </a>
+                        <span ng-if="userExt.avatar">{{userExt.avatarContentType}}, {{vm.byteSize(userExt.avatar)}}</span>
+                    </td>
+                    <td>{{userExt.nick}}</td>
+                    <td>{{userExt.idBattlenet}}</td>
+                    <td>{{userExt.idSteam}}</td>
+                    <td>{{userExt.idOrigin}}</td>
+                    <td>{{userExt.idLol}}</td>
+                    <td>{{userExt.pais}}</td>
+                    <td>{{userExt.puntos}}</td>
+                    <td>
+                        {{userExt.user.login}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="user-ext-detail({id:userExt.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="user-ext.edit({id:userExt.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="user-ext.delete({id:userExt.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

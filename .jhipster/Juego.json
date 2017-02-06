@@ -1,0 +1,69 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "sala",
+            "otherEntityName": "sala",
+            "otherEntityRelationshipName": "juego"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "idioma",
+            "otherEntityName": "idioma",
+            "otherEntityRelationshipName": "juego"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "portada",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "trailer",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "desarrollador",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "genero",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "edadRecomendada",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "fechaLanzamiento",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "capacidadJugadores",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "valoracionWeb",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "valoracionUsers",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20170204002236",
+    "entityTableName": "juego",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no"
+}

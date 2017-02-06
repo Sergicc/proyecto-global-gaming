@@ -1,0 +1,24 @@
+{
+    "proyectoGlobalGamingApp": {
+        "idioma" : {
+            "home": {
+                "title": "Idiomas",
+                "createLabel": "Crear nuevo Idioma",
+                "createOrEditLabel": "Crear o editar Idioma",
+                "search": "Search for Idioma"
+            },
+            "created": "Un nuevo Idioma ha sido creado con el identificador {{ param }}",
+            "updated": "Un Idioma ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Idioma ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Idioma {{ id }}?"
+            },
+            "detail": {
+                "title": "Idioma"
+            },
+            "nombre": "Nombre",
+            "juego": "Juego",
+            "sala": "Sala"
+        }
+    }
+}

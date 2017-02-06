@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "userLogro",
+            "otherEntityName": "userLogro",
+            "otherEntityRelationshipName": "logro"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170204002240",
+    "entityTableName": "logro",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no"
+}

@@ -1,0 +1,53 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userExt"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "avatar",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "nick",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idBattlenet",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idSteam",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idOrigin",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idLol",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pais",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "puntos",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170204002233",
+    "entityTableName": "user_ext",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no"
+}

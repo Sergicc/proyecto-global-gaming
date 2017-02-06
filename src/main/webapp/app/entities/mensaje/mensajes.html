@@ -1,0 +1,75 @@
+<div>
+    <h2 data-translate="proyectoGlobalGamingApp.mensaje.home.title">Mensajes</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="mensaje.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="proyectoGlobalGamingApp.mensaje.home.createLabel">
+                        Create new Mensaje
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="horaEnvio"><span data-translate="proyectoGlobalGamingApp.mensaje.horaEnvio">Hora Envio</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="contenido"><span data-translate="proyectoGlobalGamingApp.mensaje.contenido">Contenido</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="adjunto"><span data-translate="proyectoGlobalGamingApp.mensaje.adjunto">Adjunto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sala.nombre"><span data-translate="proyectoGlobalGamingApp.mensaje.sala">Sala</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="emisor.login"><span data-translate="proyectoGlobalGamingApp.mensaje.emisor">Emisor</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="receptor.login"><span data-translate="proyectoGlobalGamingApp.mensaje.receptor">Receptor</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="mensaje in vm.mensajes track by mensaje.id">
+                    <td><a ui-sref="mensaje-detail({id:mensaje.id})">{{mensaje.id}}</a></td>
+                    <td>{{mensaje.horaEnvio | date:'medium'}}</td>
+                    <td>{{mensaje.contenido}}</td>
+                    <td>
+                        <a ng-if="mensaje.adjunto" ng-click="vm.openFile(mensaje.adjuntoContentType, mensaje.adjunto)" data-translate="entity.action.open">open</a>
+                        <span ng-if="mensaje.adjunto">{{mensaje.adjuntoContentType}}, {{vm.byteSize(mensaje.adjunto)}}</span>
+                    </td>
+                    <td>
+                        <a ui-sref="sala-detail({id:mensaje.sala.id})">{{mensaje.sala.nombre}}</a>
+                    </td>
+                    <td>
+                        {{mensaje.emisor.login}}
+                    </td>
+                    <td>
+                        {{mensaje.receptor.login}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="mensaje-detail({id:mensaje.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="mensaje.edit({id:mensaje.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="mensaje.delete({id:mensaje.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

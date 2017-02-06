@@ -1,0 +1,26 @@
+{
+    "proyectoGlobalGamingApp": {
+        "relacionUsuarios" : {
+            "home": {
+                "title": "Relacion Usuarios",
+                "createLabel": "Create a new Relacion Usuarios",
+                "createOrEditLabel": "Create or edit a Relacion Usuarios",
+                "search": "Search for Relacion Usuarios"
+            },
+            "created": "A new Relacion Usuarios is created with identifier {{ param }}",
+            "updated": "A Relacion Usuarios is updated with identifier {{ param }}",
+            "deleted": "A Relacion Usuarios is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Relacion Usuarios {{ id }}?"
+            },
+            "detail": {
+                "title": "Relacion Usuarios"
+            },
+            "fechaEmision": "Fecha Emision",
+            "fechaResolucion": "Fecha Resolucion",
+            "resultado": "Resultado",
+            "emisor": "Emisor",
+            "receptor": "Receptor"
+        }
+    }
+}

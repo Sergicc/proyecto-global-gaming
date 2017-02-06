@@ -1,0 +1,44 @@
+
+<div>
+    <h2><span data-translate="proyectoGlobalGamingApp.foto.detail.title">Foto</span> {{vm.foto.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="proyectoGlobalGamingApp.foto.nombre">Nombre</span></dt>
+        <dd>
+            <span>{{vm.foto.nombre}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.foto.fechaCreacion">Fecha Creacion</span></dt>
+        <dd>
+            <span>{{vm.foto.fechaCreacion | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.foto.imagen">Imagen</span></dt>
+        <dd>
+            <div ng-if="vm.foto.imagen">
+                <a ng-click="vm.openFile(vm.foto.imagenContentType, vm.foto.imagen)">
+                    <img data-ng-src="{{'data:' + vm.foto.imagenContentType + ';base64,' + vm.foto.imagen}}" style="max-width: 100%;" alt="foto image"/>
+                </a>
+                {{vm.foto.imagenContentType}}, {{vm.byteSize(vm.foto.imagen)}}
+            </div>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.foto.descripcion">Descripcion</span></dt>
+        <dd>
+            <span>{{vm.foto.descripcion}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.foto.articulo">Articulo</span></dt>
+        <dd>
+            <a ui-sref="articulo-detail({id:vm.foto.articulo.id})">{{vm.foto.articulo.titulo}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="foto-detail.edit({id:vm.foto.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

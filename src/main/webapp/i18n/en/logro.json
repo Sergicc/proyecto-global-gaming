@@ -1,0 +1,24 @@
+{
+    "proyectoGlobalGamingApp": {
+        "logro" : {
+            "home": {
+                "title": "Logroes",
+                "createLabel": "Create a new Logro",
+                "createOrEditLabel": "Create or edit a Logro",
+                "search": "Search for Logro"
+            },
+            "created": "A new Logro is created with identifier {{ param }}",
+            "updated": "A Logro is updated with identifier {{ param }}",
+            "deleted": "A Logro is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Logro {{ id }}?"
+            },
+            "detail": {
+                "title": "Logro"
+            },
+            "nombre": "Nombre",
+            "descripcion": "Descripcion",
+            "userLogro": "User Logro"
+        }
+    }
+}

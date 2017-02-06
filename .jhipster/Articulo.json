@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "articulo",
+            "relationshipName": "etiqueta",
+            "otherEntityName": "etiqueta",
+            "otherEntityField": "nombre",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "foto",
+            "otherEntityName": "foto",
+            "otherEntityRelationshipName": "articulo"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "titulo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "texto",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fecha",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "visitas",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "comentarios",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170204002237",
+    "entityTableName": "articulo",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no"
+}

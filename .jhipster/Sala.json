@@ -1,0 +1,43 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "juego",
+            "otherEntityName": "juego",
+            "otherEntityField": "titulo"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "mensaje",
+            "otherEntityName": "mensaje",
+            "otherEntityRelationshipName": "sala"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "idioma",
+            "otherEntityName": "idioma",
+            "otherEntityRelationshipName": "sala"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "imagen",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "limiteUsuarios",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170204002235",
+    "entityTableName": "sala",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no"
+}

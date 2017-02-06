@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="proyectoGlobalGamingApp.relacionUsuarios.detail.title">Relacion Usuarios</span> {{vm.relacionUsuarios.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="proyectoGlobalGamingApp.relacionUsuarios.fechaEmision">Fecha Emision</span></dt>
+        <dd>
+            <span>{{vm.relacionUsuarios.fechaEmision | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.relacionUsuarios.fechaResolucion">Fecha Resolucion</span></dt>
+        <dd>
+            <span>{{vm.relacionUsuarios.fechaResolucion | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.relacionUsuarios.resultado">Resultado</span></dt>
+        <dd>
+            <span>{{vm.relacionUsuarios.resultado}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.relacionUsuarios.emisor">Emisor</span></dt>
+        <dd>
+            {{vm.relacionUsuarios.emisor.login}}
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.relacionUsuarios.receptor">Receptor</span></dt>
+        <dd>
+            {{vm.relacionUsuarios.receptor.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="relacion-usuarios-detail.edit({id:vm.relacionUsuarios.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

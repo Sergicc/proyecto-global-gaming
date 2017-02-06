@@ -1,0 +1,68 @@
+
+<div>
+    <h2><span data-translate="proyectoGlobalGamingApp.juego.detail.title">Juego</span> {{vm.juego.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.titulo">Titulo</span></dt>
+        <dd>
+            <span>{{vm.juego.titulo}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.portada">Portada</span></dt>
+        <dd>
+            <div ng-if="vm.juego.portada">
+                <a ng-click="vm.openFile(vm.juego.portadaContentType, vm.juego.portada)">
+                    <img data-ng-src="{{'data:' + vm.juego.portadaContentType + ';base64,' + vm.juego.portada}}" style="max-width: 100%;" alt="juego image"/>
+                </a>
+                {{vm.juego.portadaContentType}}, {{vm.byteSize(vm.juego.portada)}}
+            </div>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.descripcion">Descripcion</span></dt>
+        <dd>
+            <span>{{vm.juego.descripcion}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.trailer">Trailer</span></dt>
+        <dd>
+            <span>{{vm.juego.trailer}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.desarrollador">Desarrollador</span></dt>
+        <dd>
+            <span>{{vm.juego.desarrollador}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.genero">Genero</span></dt>
+        <dd>
+            <span>{{vm.juego.genero}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.edadRecomendada">Edad Recomendada</span></dt>
+        <dd>
+            <span>{{vm.juego.edadRecomendada}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.fechaLanzamiento">Fecha Lanzamiento</span></dt>
+        <dd>
+            <span>{{vm.juego.fechaLanzamiento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.capacidadJugadores">Capacidad Jugadores</span></dt>
+        <dd>
+            <span>{{vm.juego.capacidadJugadores}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.valoracionWeb">Valoracion Web</span></dt>
+        <dd>
+            <span>{{vm.juego.valoracionWeb}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.valoracionUsers">Valoracion Users</span></dt>
+        <dd>
+            <span>{{vm.juego.valoracionUsers}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="juego-detail.edit({id:vm.juego.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

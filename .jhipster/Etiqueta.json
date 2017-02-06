@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "articulo",
+            "otherEntityName": "articulo",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "etiqueta"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170204002239",
+    "entityTableName": "etiqueta",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no"
+}

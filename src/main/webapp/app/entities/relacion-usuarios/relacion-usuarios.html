@@ -1,0 +1,68 @@
+<div>
+    <h2 data-translate="proyectoGlobalGamingApp.relacionUsuarios.home.title">Relacion Usuarios</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="relacion-usuarios.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="proyectoGlobalGamingApp.relacionUsuarios.home.createLabel">
+                        Create new Relacion Usuarios
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fechaEmision"><span data-translate="proyectoGlobalGamingApp.relacionUsuarios.fechaEmision">Fecha Emision</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fechaResolucion"><span data-translate="proyectoGlobalGamingApp.relacionUsuarios.fechaResolucion">Fecha Resolucion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="resultado"><span data-translate="proyectoGlobalGamingApp.relacionUsuarios.resultado">Resultado</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="emisor.login"><span data-translate="proyectoGlobalGamingApp.relacionUsuarios.emisor">Emisor</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="receptor.login"><span data-translate="proyectoGlobalGamingApp.relacionUsuarios.receptor">Receptor</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="relacionUsuarios in vm.relacionUsuarios track by relacionUsuarios.id">
+                    <td><a ui-sref="relacion-usuarios-detail({id:relacionUsuarios.id})">{{relacionUsuarios.id}}</a></td>
+                    <td>{{relacionUsuarios.fechaEmision | date:'medium'}}</td>
+                    <td>{{relacionUsuarios.fechaResolucion | date:'medium'}}</td>
+                    <td>{{relacionUsuarios.resultado}}</td>
+                    <td>
+                        {{relacionUsuarios.emisor.login}}
+                    </td>
+                    <td>
+                        {{relacionUsuarios.receptor.login}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="relacion-usuarios-detail({id:relacionUsuarios.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="relacion-usuarios.edit({id:relacionUsuarios.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="relacion-usuarios.delete({id:relacionUsuarios.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

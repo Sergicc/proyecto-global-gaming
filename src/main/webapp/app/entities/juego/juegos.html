@@ -1,0 +1,81 @@
+<div>
+    <h2 data-translate="proyectoGlobalGamingApp.juego.home.title">Juegos</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="juego.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="proyectoGlobalGamingApp.juego.home.createLabel">
+                        Create new Juego
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="titulo"><span data-translate="proyectoGlobalGamingApp.juego.titulo">Titulo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="portada"><span data-translate="proyectoGlobalGamingApp.juego.portada">Portada</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="descripcion"><span data-translate="proyectoGlobalGamingApp.juego.descripcion">Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trailer"><span data-translate="proyectoGlobalGamingApp.juego.trailer">Trailer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="desarrollador"><span data-translate="proyectoGlobalGamingApp.juego.desarrollador">Desarrollador</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="genero"><span data-translate="proyectoGlobalGamingApp.juego.genero">Genero</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="edadRecomendada"><span data-translate="proyectoGlobalGamingApp.juego.edadRecomendada">Edad Recomendada</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fechaLanzamiento"><span data-translate="proyectoGlobalGamingApp.juego.fechaLanzamiento">Fecha Lanzamiento</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="capacidadJugadores"><span data-translate="proyectoGlobalGamingApp.juego.capacidadJugadores">Capacidad Jugadores</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="valoracionWeb"><span data-translate="proyectoGlobalGamingApp.juego.valoracionWeb">Valoracion Web</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="valoracionUsers"><span data-translate="proyectoGlobalGamingApp.juego.valoracionUsers">Valoracion Users</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="juego in vm.juegos track by juego.id">
+                    <td><a ui-sref="juego-detail({id:juego.id})">{{juego.id}}</a></td>
+                    <td>{{juego.titulo}}</td>
+                    <td>
+                        <a ng-if="juego.portada" ng-click="vm.openFile(juego.portadaContentType, juego.portada)">
+                            <img data-ng-src="{{'data:' + juego.portadaContentType + ';base64,' + juego.portada}}" style="max-height: 30px;" alt="juego image"/>
+                        </a>
+                        <span ng-if="juego.portada">{{juego.portadaContentType}}, {{vm.byteSize(juego.portada)}}</span>
+                    </td>
+                    <td>{{juego.descripcion}}</td>
+                    <td>{{juego.trailer}}</td>
+                    <td>{{juego.desarrollador}}</td>
+                    <td>{{juego.genero}}</td>
+                    <td>{{juego.edadRecomendada}}</td>
+                        <td>{{juego.fechaLanzamiento | date:'mediumDate'}}</td>
+                    <td>{{juego.capacidadJugadores}}</td>
+                    <td>{{juego.valoracionWeb}}</td>
+                    <td>{{juego.valoracionUsers}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="juego-detail({id:juego.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="juego.edit({id:juego.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="juego.delete({id:juego.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

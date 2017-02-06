@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "emisor",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "receptor",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "fechaEmision",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "fechaResolucion",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "resultado",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170204002243",
+    "entityTableName": "relacion_usuarios",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no"
+}

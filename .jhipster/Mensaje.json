@@ -1,0 +1,43 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "sala",
+            "otherEntityName": "sala",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "emisor",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "receptor",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "horaEnvio",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "contenido",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adjunto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "changelogDate": "20170204002234",
+    "entityTableName": "mensaje",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no"
+}

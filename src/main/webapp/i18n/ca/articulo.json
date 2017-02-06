@@ -1,0 +1,29 @@
+{
+    "proyectoGlobalGamingApp": {
+        "articulo" : {
+            "home": {
+                "title": "Articulos",
+                "createLabel": "Create a new Articulo",
+                "createOrEditLabel": "Create or edit a Articulo",
+                "search": "Search for Articulo"
+            },
+            "created": "A new Articulo is created with identifier {{ param }}",
+            "updated": "A Articulo is updated with identifier {{ param }}",
+            "deleted": "A Articulo is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Articulo {{ id }}?"
+            },
+            "detail": {
+                "title": "Articulo"
+            },
+            "titulo": "Titulo",
+            "texto": "Texto",
+            "fecha": "Fecha",
+            "url": "Url",
+            "visitas": "Visitas",
+            "comentarios": "Comentarios",
+            "etiqueta": "Etiqueta",
+            "foto": "Foto"
+        }
+    }
+}

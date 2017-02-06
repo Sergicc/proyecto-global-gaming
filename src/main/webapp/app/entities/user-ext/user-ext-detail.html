@@ -1,0 +1,60 @@
+
+<div>
+    <h2><span data-translate="proyectoGlobalGamingApp.userExt.detail.title">User Ext</span> {{vm.userExt.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="proyectoGlobalGamingApp.userExt.avatar">Avatar</span></dt>
+        <dd>
+            <div ng-if="vm.userExt.avatar">
+                <a ng-click="vm.openFile(vm.userExt.avatarContentType, vm.userExt.avatar)">
+                    <img data-ng-src="{{'data:' + vm.userExt.avatarContentType + ';base64,' + vm.userExt.avatar}}" style="max-width: 100%;" alt="userExt image"/>
+                </a>
+                {{vm.userExt.avatarContentType}}, {{vm.byteSize(vm.userExt.avatar)}}
+            </div>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.userExt.nick">Nick</span></dt>
+        <dd>
+            <span>{{vm.userExt.nick}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.userExt.idBattlenet">Id Battlenet</span></dt>
+        <dd>
+            <span>{{vm.userExt.idBattlenet}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.userExt.idSteam">Id Steam</span></dt>
+        <dd>
+            <span>{{vm.userExt.idSteam}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.userExt.idOrigin">Id Origin</span></dt>
+        <dd>
+            <span>{{vm.userExt.idOrigin}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.userExt.idLol">Id Lol</span></dt>
+        <dd>
+            <span>{{vm.userExt.idLol}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.userExt.pais">Pais</span></dt>
+        <dd>
+            <span>{{vm.userExt.pais}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.userExt.puntos">Puntos</span></dt>
+        <dd>
+            <span>{{vm.userExt.puntos}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.userExt.user">User</span></dt>
+        <dd>
+            {{vm.userExt.user.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="proyectoGlobalGamingApp.idioma.detail.title">Idioma</span> {{vm.idioma.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="proyectoGlobalGamingApp.idioma.nombre">Nombre</span></dt>
+        <dd>
+            <span>{{vm.idioma.nombre}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.idioma.juego">Juego</span></dt>
+        <dd>
+            <a ui-sref="juego-detail({id:vm.idioma.juego.id})">{{vm.idioma.juego.titulo}}</a>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.idioma.sala">Sala</span></dt>
+        <dd>
+            <a ui-sref="sala-detail({id:vm.idioma.sala.id})">{{vm.idioma.sala.nombre}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="idioma-detail.edit({id:vm.idioma.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

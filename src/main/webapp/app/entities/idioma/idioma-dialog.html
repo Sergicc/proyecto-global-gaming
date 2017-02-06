@@ -1,0 +1,44 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myIdiomaLabel" data-translate="proyectoGlobalGamingApp.idioma.home.createOrEditLabel">Create or edit a Idioma</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.idioma.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.idioma.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.idioma.nombre" for="field_nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="field_nombre"
+                    ng-model="vm.idioma.nombre"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="proyectoGlobalGamingApp.idioma.juego" for="field_juego">Juego</label>
+            <select class="form-control" id="field_juego" name="juego" ng-model="vm.idioma.juego" ng-options="juego as juego.titulo for juego in vm.juegos track by juego.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="proyectoGlobalGamingApp.idioma.sala" for="field_sala">Sala</label>
+            <select class="form-control" id="field_sala" name="sala" ng-model="vm.idioma.sala" ng-options="sala as sala.nombre for sala in vm.salas track by sala.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

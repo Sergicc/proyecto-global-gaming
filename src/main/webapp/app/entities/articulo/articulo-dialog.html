@@ -1,0 +1,70 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myArticuloLabel" data-translate="proyectoGlobalGamingApp.articulo.home.createOrEditLabel">Create or edit a Articulo</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.articulo.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.articulo.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.articulo.titulo" for="field_titulo">Titulo</label>
+            <input type="text" class="form-control" name="titulo" id="field_titulo"
+                    ng-model="vm.articulo.titulo"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.articulo.texto" for="field_texto">Texto</label>
+            <input type="text" class="form-control" name="texto" id="field_texto"
+                    ng-model="vm.articulo.texto"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.articulo.fecha" for="field_fecha">Fecha</label>
+                <div class="input-group">
+                    <input id="field_fecha" type="text" class="form-control" name="fecha" uib-datepicker-popup="{{dateformat}}" ng-model="vm.articulo.fecha" is-open="vm.datePickerOpenStatus.fecha"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fecha')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.articulo.url" for="field_url">Url</label>
+            <input type="text" class="form-control" name="url" id="field_url"
+                    ng-model="vm.articulo.url"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.articulo.visitas" for="field_visitas">Visitas</label>
+            <input type="number" class="form-control" name="visitas" id="field_visitas"
+                    ng-model="vm.articulo.visitas"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.articulo.comentarios" for="field_comentarios">Comentarios</label>
+            <input type="text" class="form-control" name="comentarios" id="field_comentarios"
+                    ng-model="vm.articulo.comentarios"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="proyectoGlobalGamingApp.articulo.etiqueta" for="field_etiqueta">Etiqueta</label>
+            <select class="form-control" id="field_etiqueta" multiple name="etiqueta" ng-model="vm.articulo.etiquetas" ng-options="etiqueta as etiqueta.nombre for etiqueta in vm.etiquetas track by etiqueta.id"></select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

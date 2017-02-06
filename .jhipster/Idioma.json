@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "juego",
+            "otherEntityName": "juego",
+            "otherEntityField": "titulo"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "sala",
+            "otherEntityName": "sala",
+            "otherEntityField": "nombre"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170204002242",
+    "entityTableName": "idioma",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no"
+}

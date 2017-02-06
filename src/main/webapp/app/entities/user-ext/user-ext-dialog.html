@@ -1,0 +1,96 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUserExtLabel" data-translate="proyectoGlobalGamingApp.userExt.home.createOrEditLabel">Create or edit a User Ext</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.userExt.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.userExt.id" readonly />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setAvatar($file, vm.userExt)" ngf-pattern="'image/*'">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.userExt.avatar" for="field_avatar">Avatar</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.userExt.avatarContentType + ';base64,' + vm.userExt.avatar}}" style="max-height: 100px;" ng-if="vm.userExt.avatar" alt="userExt image"/>
+                <div ng-if="vm.userExt.avatar" class="help-block clearfix">
+                    <span class="pull-left">{{vm.userExt.avatarContentType}}, {{vm.byteSize(vm.userExt.avatar)}}</span>
+                    <button type="button" ng-click="vm.userExt.avatar=null;vm.userExt.avatarContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setAvatar($file, vm.userExt)" accept="image/*" data-translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="avatar" id="field_avatar"
+                    ng-model="vm.userExt.avatar"
+                     />
+            <input type="hidden" class="form-control" name="avatarContentType" id="field_avatarContentType"
+                    ng-model="vm.userExt.avatarContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.userExt.nick" for="field_nick">Nick</label>
+            <input type="text" class="form-control" name="nick" id="field_nick"
+                    ng-model="vm.userExt.nick"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.userExt.idBattlenet" for="field_idBattlenet">Id Battlenet</label>
+            <input type="text" class="form-control" name="idBattlenet" id="field_idBattlenet"
+                    ng-model="vm.userExt.idBattlenet"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.userExt.idSteam" for="field_idSteam">Id Steam</label>
+            <input type="text" class="form-control" name="idSteam" id="field_idSteam"
+                    ng-model="vm.userExt.idSteam"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.userExt.idOrigin" for="field_idOrigin">Id Origin</label>
+            <input type="text" class="form-control" name="idOrigin" id="field_idOrigin"
+                    ng-model="vm.userExt.idOrigin"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.userExt.idLol" for="field_idLol">Id Lol</label>
+            <input type="text" class="form-control" name="idLol" id="field_idLol"
+                    ng-model="vm.userExt.idLol"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.userExt.pais" for="field_pais">Pais</label>
+            <input type="text" class="form-control" name="pais" id="field_pais"
+                    ng-model="vm.userExt.pais"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.userExt.puntos" for="field_puntos">Puntos</label>
+            <input type="number" class="form-control" name="puntos" id="field_puntos"
+                    ng-model="vm.userExt.puntos"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="proyectoGlobalGamingApp.userExt.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.userExt.user" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

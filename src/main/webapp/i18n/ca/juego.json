@@ -1,0 +1,34 @@
+{
+    "proyectoGlobalGamingApp": {
+        "juego" : {
+            "home": {
+                "title": "Juegos",
+                "createLabel": "Create a new Juego",
+                "createOrEditLabel": "Create or edit a Juego",
+                "search": "Search for Juego"
+            },
+            "created": "A new Juego is created with identifier {{ param }}",
+            "updated": "A Juego is updated with identifier {{ param }}",
+            "deleted": "A Juego is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Juego {{ id }}?"
+            },
+            "detail": {
+                "title": "Juego"
+            },
+            "titulo": "Titulo",
+            "portada": "Portada",
+            "descripcion": "Descripcion",
+            "trailer": "Trailer",
+            "desarrollador": "Desarrollador",
+            "genero": "Genero",
+            "edadRecomendada": "Edad Recomendada",
+            "fechaLanzamiento": "Fecha Lanzamiento",
+            "capacidadJugadores": "Capacidad Jugadores",
+            "valoracionWeb": "Valoracion Web",
+            "valoracionUsers": "Valoracion Users",
+            "sala": "Sala",
+            "idioma": "Idioma"
+        }
+    }
+}

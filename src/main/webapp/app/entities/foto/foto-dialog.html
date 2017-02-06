@@ -1,0 +1,76 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myFotoLabel" data-translate="proyectoGlobalGamingApp.foto.home.createOrEditLabel">Create or edit a Foto</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.foto.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.foto.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.foto.nombre" for="field_nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="field_nombre"
+                    ng-model="vm.foto.nombre"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.foto.fechaCreacion" for="field_fechaCreacion">Fecha Creacion</label>
+                <div class="input-group">
+                    <input id="field_fechaCreacion" type="text" class="form-control" name="fechaCreacion" datetime-picker="{{dateformat}}" ng-model="vm.foto.fechaCreacion" is-open="vm.datePickerOpenStatus.fechaCreacion"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaCreacion')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setImagen($file, vm.foto)" ngf-pattern="'image/*'">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.foto.imagen" for="field_imagen">Imagen</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.foto.imagenContentType + ';base64,' + vm.foto.imagen}}" style="max-height: 100px;" ng-if="vm.foto.imagen" alt="foto image"/>
+                <div ng-if="vm.foto.imagen" class="help-block clearfix">
+                    <span class="pull-left">{{vm.foto.imagenContentType}}, {{vm.byteSize(vm.foto.imagen)}}</span>
+                    <button type="button" ng-click="vm.foto.imagen=null;vm.foto.imagenContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setImagen($file, vm.foto)" accept="image/*" data-translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="imagen" id="field_imagen"
+                    ng-model="vm.foto.imagen"
+                     />
+            <input type="hidden" class="form-control" name="imagenContentType" id="field_imagenContentType"
+                    ng-model="vm.foto.imagenContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.foto.descripcion" for="field_descripcion">Descripcion</label>
+            <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                    ng-model="vm.foto.descripcion"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="proyectoGlobalGamingApp.foto.articulo" for="field_articulo">Articulo</label>
+            <select class="form-control" id="field_articulo" name="articulo" ng-model="vm.foto.articulo" ng-options="articulo as articulo.titulo for articulo in vm.articulos track by articulo.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

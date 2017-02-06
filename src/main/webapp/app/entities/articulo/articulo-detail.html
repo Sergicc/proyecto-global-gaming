@@ -1,0 +1,49 @@
+
+<div>
+    <h2><span data-translate="proyectoGlobalGamingApp.articulo.detail.title">Articulo</span> {{vm.articulo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="proyectoGlobalGamingApp.articulo.titulo">Titulo</span></dt>
+        <dd>
+            <span>{{vm.articulo.titulo}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.articulo.texto">Texto</span></dt>
+        <dd>
+            <span>{{vm.articulo.texto}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.articulo.fecha">Fecha</span></dt>
+        <dd>
+            <span>{{vm.articulo.fecha | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.articulo.url">Url</span></dt>
+        <dd>
+            <span>{{vm.articulo.url}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.articulo.visitas">Visitas</span></dt>
+        <dd>
+            <span>{{vm.articulo.visitas}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.articulo.comentarios">Comentarios</span></dt>
+        <dd>
+            <span>{{vm.articulo.comentarios}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.articulo.etiqueta">Etiqueta</span></dt>
+        <dd>
+            <span ng-repeat="etiqueta in vm.articulo.etiquetas">
+                <a ui-sref="etiqueta-detail({id: etiqueta.id})">{{etiqueta.nombre}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="articulo-detail.edit({id:vm.articulo.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

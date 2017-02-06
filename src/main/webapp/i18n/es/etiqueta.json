@@ -1,0 +1,23 @@
+{
+    "proyectoGlobalGamingApp": {
+        "etiqueta" : {
+            "home": {
+                "title": "Etiquetas",
+                "createLabel": "Crear nuevo Etiqueta",
+                "createOrEditLabel": "Crear o editar Etiqueta",
+                "search": "Search for Etiqueta"
+            },
+            "created": "Un nuevo Etiqueta ha sido creado con el identificador {{ param }}",
+            "updated": "Un Etiqueta ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Etiqueta ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Etiqueta {{ id }}?"
+            },
+            "detail": {
+                "title": "Etiqueta"
+            },
+            "nombre": "Nombre",
+            "articulo": "Articulo"
+        }
+    }
+}

@@ -11,7 +11,7 @@ entity UserExt {
 
 entity Mensaje {
     horaEnvio ZonedDateTime,
-	contenido String,  
+	contenido String,
   	adjunto Blob
 }
 
@@ -57,7 +57,7 @@ entity Etiqueta {
 
 entity Logro{
 	nombre String,
-	descripcion Text
+	descripcion String
 }
 entity UserLogro {
 	fecha ZonedDateTime
@@ -87,7 +87,7 @@ relationship ManyToOne {
     RelacionUsuarios{receptor(login)} to User
 }
 
-relationship ManyToMany { 
+relationship ManyToMany {
 	Articulo{etiqueta(nombre)} to Etiqueta{articulo}
 
 }

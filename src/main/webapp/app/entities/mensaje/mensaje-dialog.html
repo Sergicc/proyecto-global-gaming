@@ -1,0 +1,82 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myMensajeLabel" data-translate="proyectoGlobalGamingApp.mensaje.home.createOrEditLabel">Create or edit a Mensaje</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.mensaje.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.mensaje.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.mensaje.horaEnvio" for="field_horaEnvio">Hora Envio</label>
+                <div class="input-group">
+                    <input id="field_horaEnvio" type="text" class="form-control" name="horaEnvio" datetime-picker="{{dateformat}}" ng-model="vm.mensaje.horaEnvio" is-open="vm.datePickerOpenStatus.horaEnvio"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('horaEnvio')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.mensaje.contenido" for="field_contenido">Contenido</label>
+            <input type="text" class="form-control" name="contenido" id="field_contenido"
+                    ng-model="vm.mensaje.contenido"
+                     />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setAdjunto($file, vm.mensaje)">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.mensaje.adjunto" for="field_adjunto">Adjunto</label>
+            <div>
+                <div ng-if="vm.mensaje.adjunto" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.mensaje.adjuntoContentType, vm.mensaje.adjunto)" data-translate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{vm.mensaje.adjuntoContentType}}, {{vm.byteSize(vm.mensaje.adjunto)}}</span>
+                    <button type="button" ng-click="vm.mensaje.adjunto=null;vm.mensaje.adjuntoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setAdjunto($file, vm.mensaje)" data-translate="entity.action.addblob">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="adjunto" id="field_adjunto"
+                    ng-model="vm.mensaje.adjunto"
+                     />
+            <input type="hidden" class="form-control" name="adjuntoContentType" id="field_adjuntoContentType"
+                    ng-model="vm.mensaje.adjuntoContentType" />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="proyectoGlobalGamingApp.mensaje.sala" for="field_sala">Sala</label>
+            <select class="form-control" id="field_sala" name="sala" ng-model="vm.mensaje.sala" ng-options="sala as sala.nombre for sala in vm.salas track by sala.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="proyectoGlobalGamingApp.mensaje.emisor" for="field_emisor">Emisor</label>
+            <select class="form-control" id="field_emisor" name="emisor" ng-model="vm.mensaje.emisor" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="proyectoGlobalGamingApp.mensaje.receptor" for="field_receptor">Receptor</label>
+            <select class="form-control" id="field_receptor" name="receptor" ng-model="vm.mensaje.receptor" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,64 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myRelacionUsuariosLabel" data-translate="proyectoGlobalGamingApp.relacionUsuarios.home.createOrEditLabel">Create or edit a Relacion Usuarios</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.relacionUsuarios.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.relacionUsuarios.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.relacionUsuarios.fechaEmision" for="field_fechaEmision">Fecha Emision</label>
+                <div class="input-group">
+                    <input id="field_fechaEmision" type="text" class="form-control" name="fechaEmision" datetime-picker="{{dateformat}}" ng-model="vm.relacionUsuarios.fechaEmision" is-open="vm.datePickerOpenStatus.fechaEmision"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaEmision')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.relacionUsuarios.fechaResolucion" for="field_fechaResolucion">Fecha Resolucion</label>
+                <div class="input-group">
+                    <input id="field_fechaResolucion" type="text" class="form-control" name="fechaResolucion" datetime-picker="{{dateformat}}" ng-model="vm.relacionUsuarios.fechaResolucion" is-open="vm.datePickerOpenStatus.fechaResolucion"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaResolucion')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.relacionUsuarios.resultado" for="field_resultado">Resultado</label>
+            <input type="checkbox" class="form-control" name="resultado" id="field_resultado"
+                    ng-model="vm.relacionUsuarios.resultado"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="proyectoGlobalGamingApp.relacionUsuarios.emisor" for="field_emisor">Emisor</label>
+            <select class="form-control" id="field_emisor" name="emisor" ng-model="vm.relacionUsuarios.emisor" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="proyectoGlobalGamingApp.relacionUsuarios.receptor" for="field_receptor">Receptor</label>
+            <select class="form-control" id="field_receptor" name="receptor" ng-model="vm.relacionUsuarios.receptor" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

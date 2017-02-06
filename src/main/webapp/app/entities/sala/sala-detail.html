@@ -1,0 +1,40 @@
+
+<div>
+    <h2><span data-translate="proyectoGlobalGamingApp.sala.detail.title">Sala</span> {{vm.sala.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="proyectoGlobalGamingApp.sala.nombre">Nombre</span></dt>
+        <dd>
+            <span>{{vm.sala.nombre}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.sala.imagen">Imagen</span></dt>
+        <dd>
+            <div ng-if="vm.sala.imagen">
+                <a ng-click="vm.openFile(vm.sala.imagenContentType, vm.sala.imagen)">
+                    <img data-ng-src="{{'data:' + vm.sala.imagenContentType + ';base64,' + vm.sala.imagen}}" style="max-width: 100%;" alt="sala image"/>
+                </a>
+                {{vm.sala.imagenContentType}}, {{vm.byteSize(vm.sala.imagen)}}
+            </div>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.sala.limiteUsuarios">Limite Usuarios</span></dt>
+        <dd>
+            <span>{{vm.sala.limiteUsuarios}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.sala.juego">Juego</span></dt>
+        <dd>
+            <a ui-sref="juego-detail({id:vm.sala.juego.id})">{{vm.sala.juego.titulo}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="sala-detail.edit({id:vm.sala.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

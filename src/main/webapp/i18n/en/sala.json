@@ -1,0 +1,27 @@
+{
+    "proyectoGlobalGamingApp": {
+        "sala" : {
+            "home": {
+                "title": "Salas",
+                "createLabel": "Create a new Sala",
+                "createOrEditLabel": "Create or edit a Sala",
+                "search": "Search for Sala"
+            },
+            "created": "A new Sala is created with identifier {{ param }}",
+            "updated": "A Sala is updated with identifier {{ param }}",
+            "deleted": "A Sala is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Sala {{ id }}?"
+            },
+            "detail": {
+                "title": "Sala"
+            },
+            "nombre": "Nombre",
+            "imagen": "Imagen",
+            "limiteUsuarios": "Limite Usuarios",
+            "juego": "Juego",
+            "mensaje": "Mensaje",
+            "idioma": "Idioma"
+        }
+    }
+}

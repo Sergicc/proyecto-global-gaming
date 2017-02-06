@@ -1,0 +1,66 @@
+<div>
+    <h2 data-translate="proyectoGlobalGamingApp.articulo.home.title">Articulos</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="articulo.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="proyectoGlobalGamingApp.articulo.home.createLabel">
+                        Create new Articulo
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="titulo"><span data-translate="proyectoGlobalGamingApp.articulo.titulo">Titulo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="texto"><span data-translate="proyectoGlobalGamingApp.articulo.texto">Texto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fecha"><span data-translate="proyectoGlobalGamingApp.articulo.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="url"><span data-translate="proyectoGlobalGamingApp.articulo.url">Url</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="visitas"><span data-translate="proyectoGlobalGamingApp.articulo.visitas">Visitas</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="comentarios"><span data-translate="proyectoGlobalGamingApp.articulo.comentarios">Comentarios</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="articulo in vm.articulos track by articulo.id">
+                    <td><a ui-sref="articulo-detail({id:articulo.id})">{{articulo.id}}</a></td>
+                    <td>{{articulo.titulo}}</td>
+                    <td>{{articulo.texto}}</td>
+                        <td>{{articulo.fecha | date:'mediumDate'}}</td>
+                    <td>{{articulo.url}}</td>
+                    <td>{{articulo.visitas}}</td>
+                    <td>{{articulo.comentarios}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="articulo-detail({id:articulo.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="articulo.edit({id:articulo.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="articulo.delete({id:articulo.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
