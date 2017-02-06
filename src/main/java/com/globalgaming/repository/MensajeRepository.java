@@ -19,7 +19,7 @@ public interface MensajeRepository extends JpaRepository<Mensaje,Long> {
     List<Mensaje> findByReceptorIsCurrentUser();
 
     /**
-     * Nos quedara un proyecto genial ;)
+     * Nos quedara un proyecto genial ;) jaja no
      */
 
 }
