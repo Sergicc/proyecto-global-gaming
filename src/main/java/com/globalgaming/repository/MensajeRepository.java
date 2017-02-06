@@ -18,4 +18,8 @@ public interface MensajeRepository extends JpaRepository<Mensaje,Long> {
     @Query("select mensaje from Mensaje mensaje where mensaje.receptor.login = ?#{principal.username}")
     List<Mensaje> findByReceptorIsCurrentUser();
 
+    /**
+     * Nos quedara un proyecto genial ;)
+     */
+
 }
