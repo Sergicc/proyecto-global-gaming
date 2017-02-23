@@ -19,4 +19,5 @@ public interface ArticuloRepository extends JpaRepository<Articulo,Long> {
     @Query("select articulo from Articulo articulo left join fetch articulo.etiquetas where articulo.id =:id")
     Articulo findOneWithEagerRelationships(@Param("id") Long id);
 
+    //Articulo Repository prueba push carlos paús
 }
