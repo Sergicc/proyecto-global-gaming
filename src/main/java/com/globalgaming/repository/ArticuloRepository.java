@@ -20,4 +20,6 @@ public interface ArticuloRepository extends JpaRepository<Articulo,Long> {
     Articulo findOneWithEagerRelationships(@Param("id") Long id);
 
     //Articulo Repository prueba push carlos paús
+    //prueba joan bosch
+
 }
