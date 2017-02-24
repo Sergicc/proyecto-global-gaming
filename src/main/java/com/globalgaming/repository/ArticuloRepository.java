@@ -21,5 +21,6 @@ public interface ArticuloRepository extends JpaRepository<Articulo,Long> {
 
     //Articulo Repository prueba push carlos paús
     //prueba joan bosch
+    //Pau Galcia
 
 }
