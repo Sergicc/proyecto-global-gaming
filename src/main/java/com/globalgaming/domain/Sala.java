@@ -40,6 +40,7 @@ public class Sala implements Serializable {
 //añadido el nuevo atributo descripcion como CLOB
     @ManyToOne
     private Juego juego;
+    //Comentario
 
     @OneToMany(mappedBy = "sala")
     @JsonIgnore
