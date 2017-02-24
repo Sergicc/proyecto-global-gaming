@@ -21,6 +21,10 @@
             "fieldName": "icono",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "valorpuntos",
+            "fieldType": "Integer"
         }
     ],
     "changelogDate": "20170204002240",

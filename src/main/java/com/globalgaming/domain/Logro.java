@@ -34,6 +34,9 @@ public class Logro implements Serializable {
     @Column(name = "icono_content_type")
     private String iconoContentType;
 
+    @Column(name = "valorpuntos")
+    private Integer valorpuntos;
+
     @OneToMany(mappedBy = "logro")
     @JsonIgnore
     private Set<UserLogro> userLogroes = new HashSet<>();
@@ -98,6 +101,19 @@ public class Logro implements Serializable {
         this.iconoContentType = iconoContentType;
     }
 
+    public Integer getValorpuntos() {
+        return valorpuntos;
+    }
+
+    public Logro valorpuntos(Integer valorpuntos) {
+        this.valorpuntos = valorpuntos;
+        return this;
+    }
+
+    public void setValorpuntos(Integer valorpuntos) {
+        this.valorpuntos = valorpuntos;
+    }
+
     public Set<UserLogro> getUserLogroes() {
         return userLogroes;
     }
@@ -151,6 +167,7 @@ public class Logro implements Serializable {
             ", descripcion='" + descripcion + "'" +
             ", icono='" + icono + "'" +
             ", iconoContentType='" + iconoContentType + "'" +
+            ", valorpuntos='" + valorpuntos + "'" +
             '}';
     }
 }

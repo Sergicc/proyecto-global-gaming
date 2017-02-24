@@ -108,6 +108,7 @@
                                 descripcion: null,
                                 icono: null,
                                 iconoContentType: null,
+                                valorpuntos: null,
                                 id: null
                             };
                         }

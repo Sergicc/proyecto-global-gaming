@@ -49,6 +49,9 @@ public class LogroResourceIntTest {
     private static final String DEFAULT_ICONO_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_ICONO_CONTENT_TYPE = "image/png";
 
+    private static final Integer DEFAULT_VALORPUNTOS = 1;
+    private static final Integer UPDATED_VALORPUNTOS = 2;
+
     @Inject
     private LogroRepository logroRepository;
 
@@ -86,7 +89,8 @@ public class LogroResourceIntTest {
                 .nombre(DEFAULT_NOMBRE)
                 .descripcion(DEFAULT_DESCRIPCION)
                 .icono(DEFAULT_ICONO)
-                .iconoContentType(DEFAULT_ICONO_CONTENT_TYPE);
+                .iconoContentType(DEFAULT_ICONO_CONTENT_TYPE)
+                .valorpuntos(DEFAULT_VALORPUNTOS);
         return logro;
     }
 
@@ -115,6 +119,7 @@ public class LogroResourceIntTest {
         assertThat(testLogro.getDescripcion()).isEqualTo(DEFAULT_DESCRIPCION);
         assertThat(testLogro.getIcono()).isEqualTo(DEFAULT_ICONO);
         assertThat(testLogro.getIconoContentType()).isEqualTo(DEFAULT_ICONO_CONTENT_TYPE);
+        assertThat(testLogro.getValorpuntos()).isEqualTo(DEFAULT_VALORPUNTOS);
     }
 
     @Test
@@ -151,7 +156,8 @@ public class LogroResourceIntTest {
             .andExpect(jsonPath("$.[*].nombre").value(hasItem(DEFAULT_NOMBRE.toString())))
             .andExpect(jsonPath("$.[*].descripcion").value(hasItem(DEFAULT_DESCRIPCION.toString())))
             .andExpect(jsonPath("$.[*].iconoContentType").value(hasItem(DEFAULT_ICONO_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].icono").value(hasItem(Base64Utils.encodeToString(DEFAULT_ICONO))));
+            .andExpect(jsonPath("$.[*].icono").value(hasItem(Base64Utils.encodeToString(DEFAULT_ICONO))))
+            .andExpect(jsonPath("$.[*].valorpuntos").value(hasItem(DEFAULT_VALORPUNTOS)));
     }
 
     @Test
@@ -168,7 +174,8 @@ public class LogroResourceIntTest {
             .andExpect(jsonPath("$.nombre").value(DEFAULT_NOMBRE.toString()))
             .andExpect(jsonPath("$.descripcion").value(DEFAULT_DESCRIPCION.toString()))
             .andExpect(jsonPath("$.iconoContentType").value(DEFAULT_ICONO_CONTENT_TYPE))
-            .andExpect(jsonPath("$.icono").value(Base64Utils.encodeToString(DEFAULT_ICONO)));
+            .andExpect(jsonPath("$.icono").value(Base64Utils.encodeToString(DEFAULT_ICONO)))
+            .andExpect(jsonPath("$.valorpuntos").value(DEFAULT_VALORPUNTOS));
     }
 
     @Test
@@ -192,7 +199,8 @@ public class LogroResourceIntTest {
                 .nombre(UPDATED_NOMBRE)
                 .descripcion(UPDATED_DESCRIPCION)
                 .icono(UPDATED_ICONO)
-                .iconoContentType(UPDATED_ICONO_CONTENT_TYPE);
+                .iconoContentType(UPDATED_ICONO_CONTENT_TYPE)
+                .valorpuntos(UPDATED_VALORPUNTOS);
 
         restLogroMockMvc.perform(put("/api/logroes")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -207,6 +215,7 @@ public class LogroResourceIntTest {
         assertThat(testLogro.getDescripcion()).isEqualTo(UPDATED_DESCRIPCION);
         assertThat(testLogro.getIcono()).isEqualTo(UPDATED_ICONO);
         assertThat(testLogro.getIconoContentType()).isEqualTo(UPDATED_ICONO_CONTENT_TYPE);
+        assertThat(testLogro.getValorpuntos()).isEqualTo(UPDATED_VALORPUNTOS);
     }
 
     @Test

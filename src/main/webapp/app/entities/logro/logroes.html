@@ -22,6 +22,7 @@
                     <th jh-sort-by="nombre"><span data-translate="proyectoGlobalGamingApp.logro.nombre">Nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="descripcion"><span data-translate="proyectoGlobalGamingApp.logro.descripcion">Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="icono"><span data-translate="proyectoGlobalGamingApp.logro.icono">Icono</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="valorpuntos"><span data-translate="proyectoGlobalGamingApp.logro.valorpuntos">Valorpuntos</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -36,6 +37,7 @@
                         </a>
                         <span ng-if="logro.icono">{{logro.iconoContentType}}, {{vm.byteSize(logro.icono)}}</span>
                     </td>
+                    <td>{{logro.valorpuntos}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
