@@ -67,10 +67,20 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="proyectoGlobalGamingApp.userExt.pais" for="field_pais">Pais</label>
-            <input type="text" class="form-control" name="pais" id="field_pais"
+            <select class="form-control" id="field_pais" name="pais">
+                <option value=""></option>
+                <option value="1">Spain</option>
+            </select>
+            <!--<input type="text" class="form-control" name="pais" id="field_pais"
                     ng-model="vm.userExt.pais"
-                     />
+                     />-->
         </div>
+       <!-- <div class="form-group">
+            <label data-translate="proyectoGlobalGamingApp.sala.juego" for="field_juego">Juego</label>
+            <select class="form-control" id="field_juego" name="juego" ng-model="vm.sala.juego" ng-options="juego as juego.titulo for juego in vm.juegos track by juego.id">
+                <option value=""></option>
+            </select>
+        </div>-->
         <div class="form-group">
             <label class="control-label" data-translate="proyectoGlobalGamingApp.userExt.puntos" for="field_puntos">Puntos</label>
             <input type="number" class="form-control" name="puntos" id="field_puntos"
