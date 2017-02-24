@@ -37,7 +37,7 @@ public class Sala implements Serializable {
     @Lob
     @Column(name = "descripcion")
     private String descripcion;
-
+//añadido el nuevo atributo descripcion como CLOB
     @ManyToOne
     private Juego juego;
 
