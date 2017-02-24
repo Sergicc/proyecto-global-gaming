@@ -34,6 +34,10 @@ public class Sala implements Serializable {
     @Column(name = "limite_usuarios")
     private Integer limiteUsuarios;
 
+    @Lob
+    @Column(name = "descripcion")
+    private String descripcion;
+
     @ManyToOne
     private Juego juego;
 
@@ -103,6 +107,19 @@ public class Sala implements Serializable {
 
     public void setLimiteUsuarios(Integer limiteUsuarios) {
         this.limiteUsuarios = limiteUsuarios;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public Sala descripcion(String descripcion) {
+        this.descripcion = descripcion;
+        return this;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Juego getJuego() {
@@ -196,6 +213,7 @@ public class Sala implements Serializable {
             ", imagen='" + imagen + "'" +
             ", imagenContentType='" + imagenContentType + "'" +
             ", limiteUsuarios='" + limiteUsuarios + "'" +
+            ", descripcion='" + descripcion + "'" +
             '}';
     }
 }

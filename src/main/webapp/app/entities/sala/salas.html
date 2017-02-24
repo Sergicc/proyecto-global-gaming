@@ -22,6 +22,7 @@
                     <th jh-sort-by="nombre"><span data-translate="proyectoGlobalGamingApp.sala.nombre">Nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="imagen"><span data-translate="proyectoGlobalGamingApp.sala.imagen">Imagen</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="limiteUsuarios"><span data-translate="proyectoGlobalGamingApp.sala.limiteUsuarios">Limite Usuarios</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="descripcion"><span data-translate="proyectoGlobalGamingApp.sala.descripcion">Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="juego.titulo"><span data-translate="proyectoGlobalGamingApp.sala.juego">Juego</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
@@ -37,6 +38,7 @@
                         <span ng-if="sala.imagen">{{sala.imagenContentType}}, {{vm.byteSize(sala.imagen)}}</span>
                     </td>
                     <td>{{sala.limiteUsuarios}}</td>
+                    <td>{{sala.descripcion}}</td>
                     <td>
                         <a ui-sref="juego-detail({id:sala.juego.id})">{{sala.juego.titulo}}</a>
                     </td>

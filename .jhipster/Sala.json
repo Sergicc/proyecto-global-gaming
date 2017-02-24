@@ -33,11 +33,16 @@
         {
             "fieldName": "limiteUsuarios",
             "fieldType": "Integer"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
         }
     ],
     "changelogDate": "20170204002235",
-    "entityTableName": "sala",
     "dto": "no",
-    "pagination": "infinite-scroll",
-    "service": "no"
+    "service": "no",
+    "entityTableName": "sala",
+    "pagination": "infinite-scroll"
 }

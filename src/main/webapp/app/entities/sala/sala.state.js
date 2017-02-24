@@ -108,6 +108,7 @@
                                 imagen: null,
                                 imagenContentType: null,
                                 limiteUsuarios: null,
+                                descripcion: null,
                                 id: null
                             };
                         }
