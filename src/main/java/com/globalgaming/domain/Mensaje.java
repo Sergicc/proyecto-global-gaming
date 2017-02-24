@@ -1,6 +1,8 @@
 package com.globalgaming.domain;
 
 
+import org.springframework.beans.factory.annotation.Required;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
@@ -34,6 +36,7 @@ public class Mensaje implements Serializable {
 
     @ManyToOne
     private Sala sala;
+
 
     @ManyToOne
     private User emisor;

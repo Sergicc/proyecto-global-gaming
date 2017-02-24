@@ -22,10 +22,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "texto",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "fecha",
             "fieldType": "LocalDate"
         },
@@ -40,11 +36,16 @@
         {
             "fieldName": "comentarios",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "texto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
         }
     ],
     "changelogDate": "20170204002237",
-    "entityTableName": "articulo",
     "dto": "no",
-    "pagination": "infinite-scroll",
-    "service": "no"
+    "service": "no",
+    "entityTableName": "articulo",
+    "pagination": "infinite-scroll"
 }

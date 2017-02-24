@@ -39,6 +39,10 @@
                 <constraints nullable="true" />
             </column>
             
+            <column name="descripcion" type="clob">
+                <constraints nullable="true" />
+            </column>
+            
             <column name="juego_id" type="bigint">
                 <constraints nullable="true" />
             </column>

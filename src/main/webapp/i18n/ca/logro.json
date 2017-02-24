@@ -18,6 +18,8 @@
             },
             "nombre": "Nombre",
             "descripcion": "Descripcion",
+            "icono": "Icono",
+            "valorpuntos": "Valorpuntos",
             "userLogro": "User Logro"
         }
     }

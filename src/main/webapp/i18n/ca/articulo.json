@@ -17,11 +17,11 @@
                 "title": "Articulo"
             },
             "titulo": "Titulo",
-            "texto": "Texto",
             "fecha": "Fecha",
             "url": "Url",
             "visitas": "Visitas",
             "comentarios": "Comentarios",
+            "texto": "Texto",
             "etiqueta": "Etiqueta",
             "foto": "Foto"
         }

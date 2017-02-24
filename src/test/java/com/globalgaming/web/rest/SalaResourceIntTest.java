@@ -49,6 +49,9 @@ public class SalaResourceIntTest {
     private static final Integer DEFAULT_LIMITE_USUARIOS = 1;
     private static final Integer UPDATED_LIMITE_USUARIOS = 2;
 
+    private static final String DEFAULT_DESCRIPCION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPCION = "BBBBBBBBBB";
+
     @Inject
     private SalaRepository salaRepository;
 
@@ -86,7 +89,8 @@ public class SalaResourceIntTest {
                 .nombre(DEFAULT_NOMBRE)
                 .imagen(DEFAULT_IMAGEN)
                 .imagenContentType(DEFAULT_IMAGEN_CONTENT_TYPE)
-                .limiteUsuarios(DEFAULT_LIMITE_USUARIOS);
+                .limiteUsuarios(DEFAULT_LIMITE_USUARIOS)
+                .descripcion(DEFAULT_DESCRIPCION);
         return sala;
     }
 
@@ -115,6 +119,7 @@ public class SalaResourceIntTest {
         assertThat(testSala.getImagen()).isEqualTo(DEFAULT_IMAGEN);
         assertThat(testSala.getImagenContentType()).isEqualTo(DEFAULT_IMAGEN_CONTENT_TYPE);
         assertThat(testSala.getLimiteUsuarios()).isEqualTo(DEFAULT_LIMITE_USUARIOS);
+        assertThat(testSala.getDescripcion()).isEqualTo(DEFAULT_DESCRIPCION);
     }
 
     @Test
@@ -151,7 +156,8 @@ public class SalaResourceIntTest {
             .andExpect(jsonPath("$.[*].nombre").value(hasItem(DEFAULT_NOMBRE.toString())))
             .andExpect(jsonPath("$.[*].imagenContentType").value(hasItem(DEFAULT_IMAGEN_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].imagen").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGEN))))
-            .andExpect(jsonPath("$.[*].limiteUsuarios").value(hasItem(DEFAULT_LIMITE_USUARIOS)));
+            .andExpect(jsonPath("$.[*].limiteUsuarios").value(hasItem(DEFAULT_LIMITE_USUARIOS)))
+            .andExpect(jsonPath("$.[*].descripcion").value(hasItem(DEFAULT_DESCRIPCION.toString())));
     }
 
     @Test
@@ -168,7 +174,8 @@ public class SalaResourceIntTest {
             .andExpect(jsonPath("$.nombre").value(DEFAULT_NOMBRE.toString()))
             .andExpect(jsonPath("$.imagenContentType").value(DEFAULT_IMAGEN_CONTENT_TYPE))
             .andExpect(jsonPath("$.imagen").value(Base64Utils.encodeToString(DEFAULT_IMAGEN)))
-            .andExpect(jsonPath("$.limiteUsuarios").value(DEFAULT_LIMITE_USUARIOS));
+            .andExpect(jsonPath("$.limiteUsuarios").value(DEFAULT_LIMITE_USUARIOS))
+            .andExpect(jsonPath("$.descripcion").value(DEFAULT_DESCRIPCION.toString()));
     }
 
     @Test
@@ -192,7 +199,8 @@ public class SalaResourceIntTest {
                 .nombre(UPDATED_NOMBRE)
                 .imagen(UPDATED_IMAGEN)
                 .imagenContentType(UPDATED_IMAGEN_CONTENT_TYPE)
-                .limiteUsuarios(UPDATED_LIMITE_USUARIOS);
+                .limiteUsuarios(UPDATED_LIMITE_USUARIOS)
+                .descripcion(UPDATED_DESCRIPCION);
 
         restSalaMockMvc.perform(put("/api/salas")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -207,6 +215,7 @@ public class SalaResourceIntTest {
         assertThat(testSala.getImagen()).isEqualTo(UPDATED_IMAGEN);
         assertThat(testSala.getImagenContentType()).isEqualTo(UPDATED_IMAGEN_CONTENT_TYPE);
         assertThat(testSala.getLimiteUsuarios()).isEqualTo(UPDATED_LIMITE_USUARIOS);
+        assertThat(testSala.getDescripcion()).isEqualTo(UPDATED_DESCRIPCION);
     }
 
     @Test

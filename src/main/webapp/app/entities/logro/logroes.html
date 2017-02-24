@@ -21,6 +21,8 @@
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="nombre"><span data-translate="proyectoGlobalGamingApp.logro.nombre">Nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="descripcion"><span data-translate="proyectoGlobalGamingApp.logro.descripcion">Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="icono"><span data-translate="proyectoGlobalGamingApp.logro.icono">Icono</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="valorpuntos"><span data-translate="proyectoGlobalGamingApp.logro.valorpuntos">Valorpuntos</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -29,6 +31,13 @@
                     <td><a ui-sref="logro-detail({id:logro.id})">{{logro.id}}</a></td>
                     <td>{{logro.nombre}}</td>
                     <td>{{logro.descripcion}}</td>
+                    <td>
+                        <a ng-if="logro.icono" ng-click="vm.openFile(logro.iconoContentType, logro.icono)">
+                            <img data-ng-src="{{'data:' + logro.iconoContentType + ';base64,' + logro.icono}}" style="max-height: 30px;" alt="logro image"/>
+                        </a>
+                        <span ng-if="logro.icono">{{logro.iconoContentType}}, {{vm.byteSize(logro.icono)}}</span>
+                    </td>
+                    <td>{{logro.valorpuntos}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

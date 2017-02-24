@@ -27,6 +27,16 @@ public class Logro implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
 
+    @Lob
+    @Column(name = "icono")
+    private byte[] icono;
+
+    @Column(name = "icono_content_type")
+    private String iconoContentType;
+
+    @Column(name = "valorpuntos")
+    private Integer valorpuntos;
+
     @OneToMany(mappedBy = "logro")
     @JsonIgnore
     private Set<UserLogro> userLogroes = new HashSet<>();
@@ -63,6 +73,45 @@ public class Logro implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public byte[] getIcono() {
+        return icono;
+    }
+
+    public Logro icono(byte[] icono) {
+        this.icono = icono;
+        return this;
+    }
+
+    public void setIcono(byte[] icono) {
+        this.icono = icono;
+    }
+
+    public String getIconoContentType() {
+        return iconoContentType;
+    }
+
+    public Logro iconoContentType(String iconoContentType) {
+        this.iconoContentType = iconoContentType;
+        return this;
+    }
+
+    public void setIconoContentType(String iconoContentType) {
+        this.iconoContentType = iconoContentType;
+    }
+
+    public Integer getValorpuntos() {
+        return valorpuntos;
+    }
+
+    public Logro valorpuntos(Integer valorpuntos) {
+        this.valorpuntos = valorpuntos;
+        return this;
+    }
+
+    public void setValorpuntos(Integer valorpuntos) {
+        this.valorpuntos = valorpuntos;
     }
 
     public Set<UserLogro> getUserLogroes() {
@@ -116,6 +165,9 @@ public class Logro implements Serializable {
             "id=" + id +
             ", nombre='" + nombre + "'" +
             ", descripcion='" + descripcion + "'" +
+            ", icono='" + icono + "'" +
+            ", iconoContentType='" + iconoContentType + "'" +
+            ", valorpuntos='" + valorpuntos + "'" +
             '}';
     }
 }

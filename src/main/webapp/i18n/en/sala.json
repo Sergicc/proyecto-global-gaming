@@ -19,6 +19,7 @@
             "nombre": "Nombre",
             "imagen": "Imagen",
             "limiteUsuarios": "Limite Usuarios",
+            "descripcion": "Descripcion",
             "juego": "Juego",
             "mensaje": "Mensaje",
             "idioma": "Idioma"

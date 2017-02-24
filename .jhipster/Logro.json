@@ -16,11 +16,20 @@
         {
             "fieldName": "descripcion",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "icono",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "valorpuntos",
+            "fieldType": "Integer"
         }
     ],
     "changelogDate": "20170204002240",
-    "entityTableName": "logro",
     "dto": "no",
-    "pagination": "infinite-scroll",
-    "service": "no"
+    "service": "no",
+    "entityTableName": "logro",
+    "pagination": "infinite-scroll"
 }
