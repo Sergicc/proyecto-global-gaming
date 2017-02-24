@@ -5,9 +5,9 @@
         .module('proyectoGlobalGamingApp')
         .controller('LogroController', LogroController);
 
-    LogroController.$inject = ['$scope', '$state', 'Logro', 'ParseLinks', 'AlertService', 'paginationConstants'];
+    LogroController.$inject = ['$scope', '$state', 'DataUtils', 'Logro', 'ParseLinks', 'AlertService', 'paginationConstants'];
 
-    function LogroController ($scope, $state, Logro, ParseLinks, AlertService, paginationConstants) {
+    function LogroController ($scope, $state, DataUtils, Logro, ParseLinks, AlertService, paginationConstants) {
         var vm = this;
 
         vm.logroes = [];
@@ -20,6 +20,8 @@
         vm.predicate = 'id';
         vm.reset = reset;
         vm.reverse = true;
+        vm.openFile = DataUtils.openFile;
+        vm.byteSize = DataUtils.byteSize;
 
         loadAll();
 

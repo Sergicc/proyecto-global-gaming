@@ -5,13 +5,15 @@
         .module('proyectoGlobalGamingApp')
         .controller('LogroDialogController', LogroDialogController);
 
-    LogroDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Logro', 'UserLogro'];
+    LogroDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Logro', 'UserLogro'];
 
-    function LogroDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Logro, UserLogro) {
+    function LogroDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Logro, UserLogro) {
         var vm = this;
 
         vm.logro = entity;
         vm.clear = clear;
+        vm.byteSize = DataUtils.byteSize;
+        vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.userlogroes = UserLogro.query();
 
@@ -42,6 +44,20 @@
             vm.isSaving = false;
         }
 
+
+        vm.setIcono = function ($file, logro) {
+            if ($file && $file.$error === 'pattern') {
+                return;
+            }
+            if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                        logro.icono = base64Data;
+                        logro.iconoContentType = $file.type;
+                    });
+                });
+            }
+        };
 
     }
 })();

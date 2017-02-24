@@ -27,6 +27,13 @@ public class Logro implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
 
+    @Lob
+    @Column(name = "icono")
+    private byte[] icono;
+
+    @Column(name = "icono_content_type")
+    private String iconoContentType;
+
     @OneToMany(mappedBy = "logro")
     @JsonIgnore
     private Set<UserLogro> userLogroes = new HashSet<>();
@@ -63,6 +70,32 @@ public class Logro implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public byte[] getIcono() {
+        return icono;
+    }
+
+    public Logro icono(byte[] icono) {
+        this.icono = icono;
+        return this;
+    }
+
+    public void setIcono(byte[] icono) {
+        this.icono = icono;
+    }
+
+    public String getIconoContentType() {
+        return iconoContentType;
+    }
+
+    public Logro iconoContentType(String iconoContentType) {
+        this.iconoContentType = iconoContentType;
+        return this;
+    }
+
+    public void setIconoContentType(String iconoContentType) {
+        this.iconoContentType = iconoContentType;
     }
 
     public Set<UserLogro> getUserLogroes() {
@@ -116,6 +149,8 @@ public class Logro implements Serializable {
             "id=" + id +
             ", nombre='" + nombre + "'" +
             ", descripcion='" + descripcion + "'" +
+            ", icono='" + icono + "'" +
+            ", iconoContentType='" + iconoContentType + "'" +
             '}';
     }
 }

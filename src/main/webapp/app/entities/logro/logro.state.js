@@ -106,6 +106,8 @@
                             return {
                                 nombre: null,
                                 descripcion: null,
+                                icono: null,
+                                iconoContentType: null,
                                 id: null
                             };
                         }

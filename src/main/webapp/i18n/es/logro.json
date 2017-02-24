@@ -18,6 +18,7 @@
             },
             "nombre": "Nombre",
             "descripcion": "Descripcion",
+            "icono": "Icono",
             "userLogro": "User Logro"
         }
     }

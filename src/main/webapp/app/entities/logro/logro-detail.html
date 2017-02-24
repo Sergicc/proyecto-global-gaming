@@ -12,6 +12,15 @@
         <dd>
             <span>{{vm.logro.descripcion}}</span>
         </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.logro.icono">Icono</span></dt>
+        <dd>
+            <div ng-if="vm.logro.icono">
+                <a ng-click="vm.openFile(vm.logro.iconoContentType, vm.logro.icono)">
+                    <img data-ng-src="{{'data:' + vm.logro.iconoContentType + ';base64,' + vm.logro.icono}}" style="max-width: 100%;" alt="logro image"/>
+                </a>
+                {{vm.logro.iconoContentType}}, {{vm.byteSize(vm.logro.icono)}}
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"
