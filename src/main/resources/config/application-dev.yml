@@ -45,8 +45,8 @@ spring:
     mail:
         host: smtp.gmail.com
         port: 587
-        username: proyectoglobalgaming@gmail.com  #Replace this field with your Gmail username.
-        password: Stucom.2016           #Replace this field with your Gmail password.
+        username: proyectoglobalgaming@gmail.com #EMAIL UTILIZADO PARA ENVIAR LAS CONFIRMACIONES
+        password: Stucom.2016
         protocol: smtp
         tls: true
         properties.mail.smtp:
