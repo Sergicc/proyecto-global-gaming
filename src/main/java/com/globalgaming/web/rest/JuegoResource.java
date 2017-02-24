@@ -128,7 +128,8 @@ public class JuegoResource {
 
 /*
 FILTRO DINÁMICO
-*//*
+*/
+/*
     @RequestMapping(value = "/motto-definitions/byfilters",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
