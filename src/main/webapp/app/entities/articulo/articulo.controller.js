@@ -5,9 +5,9 @@
         .module('proyectoGlobalGamingApp')
         .controller('ArticuloController', ArticuloController);
 
-    ArticuloController.$inject = ['$scope', '$state', 'Articulo', 'ParseLinks', 'AlertService', 'paginationConstants'];
+    ArticuloController.$inject = ['$scope', '$state', 'DataUtils', 'Articulo', 'ParseLinks', 'AlertService', 'paginationConstants'];
 
-    function ArticuloController ($scope, $state, Articulo, ParseLinks, AlertService, paginationConstants) {
+    function ArticuloController ($scope, $state, DataUtils, Articulo, ParseLinks, AlertService, paginationConstants) {
         var vm = this;
 
         vm.articulos = [];
@@ -20,6 +20,8 @@
         vm.predicate = 'id';
         vm.reset = reset;
         vm.reverse = true;
+        vm.openFile = DataUtils.openFile;
+        vm.byteSize = DataUtils.byteSize;
 
         loadAll();
 

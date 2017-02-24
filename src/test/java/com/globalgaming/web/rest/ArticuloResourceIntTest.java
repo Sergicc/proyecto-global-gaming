@@ -18,6 +18,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -42,9 +43,6 @@ public class ArticuloResourceIntTest {
     private static final String DEFAULT_TITULO = "AAAAAAAAAA";
     private static final String UPDATED_TITULO = "BBBBBBBBBB";
 
-    private static final String DEFAULT_TEXTO = "AAAAAAAAAA";
-    private static final String UPDATED_TEXTO = "BBBBBBBBBB";
-
     private static final LocalDate DEFAULT_FECHA = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_FECHA = LocalDate.now(ZoneId.systemDefault());
 
@@ -56,6 +54,9 @@ public class ArticuloResourceIntTest {
 
     private static final String DEFAULT_COMENTARIOS = "AAAAAAAAAA";
     private static final String UPDATED_COMENTARIOS = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TEXTO = "AAAAAAAAAA";
+    private static final String UPDATED_TEXTO = "BBBBBBBBBB";
 
     @Inject
     private ArticuloRepository articuloRepository;
@@ -92,11 +93,11 @@ public class ArticuloResourceIntTest {
     public static Articulo createEntity(EntityManager em) {
         Articulo articulo = new Articulo()
                 .titulo(DEFAULT_TITULO)
-                .texto(DEFAULT_TEXTO)
                 .fecha(DEFAULT_FECHA)
                 .url(DEFAULT_URL)
                 .visitas(DEFAULT_VISITAS)
-                .comentarios(DEFAULT_COMENTARIOS);
+                .comentarios(DEFAULT_COMENTARIOS)
+                .texto(DEFAULT_TEXTO);
         return articulo;
     }
 
@@ -122,11 +123,11 @@ public class ArticuloResourceIntTest {
         assertThat(articuloList).hasSize(databaseSizeBeforeCreate + 1);
         Articulo testArticulo = articuloList.get(articuloList.size() - 1);
         assertThat(testArticulo.getTitulo()).isEqualTo(DEFAULT_TITULO);
-        assertThat(testArticulo.getTexto()).isEqualTo(DEFAULT_TEXTO);
         assertThat(testArticulo.getFecha()).isEqualTo(DEFAULT_FECHA);
         assertThat(testArticulo.getUrl()).isEqualTo(DEFAULT_URL);
         assertThat(testArticulo.getVisitas()).isEqualTo(DEFAULT_VISITAS);
         assertThat(testArticulo.getComentarios()).isEqualTo(DEFAULT_COMENTARIOS);
+        assertThat(testArticulo.getTexto()).isEqualTo(DEFAULT_TEXTO);
     }
 
     @Test
@@ -161,11 +162,11 @@ public class ArticuloResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(articulo.getId().intValue())))
             .andExpect(jsonPath("$.[*].titulo").value(hasItem(DEFAULT_TITULO.toString())))
-            .andExpect(jsonPath("$.[*].texto").value(hasItem(DEFAULT_TEXTO.toString())))
             .andExpect(jsonPath("$.[*].fecha").value(hasItem(DEFAULT_FECHA.toString())))
             .andExpect(jsonPath("$.[*].url").value(hasItem(DEFAULT_URL.toString())))
             .andExpect(jsonPath("$.[*].visitas").value(hasItem(DEFAULT_VISITAS)))
-            .andExpect(jsonPath("$.[*].comentarios").value(hasItem(DEFAULT_COMENTARIOS.toString())));
+            .andExpect(jsonPath("$.[*].comentarios").value(hasItem(DEFAULT_COMENTARIOS.toString())))
+            .andExpect(jsonPath("$.[*].texto").value(hasItem(DEFAULT_TEXTO.toString())));
     }
 
     @Test
@@ -180,11 +181,11 @@ public class ArticuloResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(articulo.getId().intValue()))
             .andExpect(jsonPath("$.titulo").value(DEFAULT_TITULO.toString()))
-            .andExpect(jsonPath("$.texto").value(DEFAULT_TEXTO.toString()))
             .andExpect(jsonPath("$.fecha").value(DEFAULT_FECHA.toString()))
             .andExpect(jsonPath("$.url").value(DEFAULT_URL.toString()))
             .andExpect(jsonPath("$.visitas").value(DEFAULT_VISITAS))
-            .andExpect(jsonPath("$.comentarios").value(DEFAULT_COMENTARIOS.toString()));
+            .andExpect(jsonPath("$.comentarios").value(DEFAULT_COMENTARIOS.toString()))
+            .andExpect(jsonPath("$.texto").value(DEFAULT_TEXTO.toString()));
     }
 
     @Test
@@ -206,11 +207,11 @@ public class ArticuloResourceIntTest {
         Articulo updatedArticulo = articuloRepository.findOne(articulo.getId());
         updatedArticulo
                 .titulo(UPDATED_TITULO)
-                .texto(UPDATED_TEXTO)
                 .fecha(UPDATED_FECHA)
                 .url(UPDATED_URL)
                 .visitas(UPDATED_VISITAS)
-                .comentarios(UPDATED_COMENTARIOS);
+                .comentarios(UPDATED_COMENTARIOS)
+                .texto(UPDATED_TEXTO);
 
         restArticuloMockMvc.perform(put("/api/articulos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -222,11 +223,11 @@ public class ArticuloResourceIntTest {
         assertThat(articuloList).hasSize(databaseSizeBeforeUpdate);
         Articulo testArticulo = articuloList.get(articuloList.size() - 1);
         assertThat(testArticulo.getTitulo()).isEqualTo(UPDATED_TITULO);
-        assertThat(testArticulo.getTexto()).isEqualTo(UPDATED_TEXTO);
         assertThat(testArticulo.getFecha()).isEqualTo(UPDATED_FECHA);
         assertThat(testArticulo.getUrl()).isEqualTo(UPDATED_URL);
         assertThat(testArticulo.getVisitas()).isEqualTo(UPDATED_VISITAS);
         assertThat(testArticulo.getComentarios()).isEqualTo(UPDATED_COMENTARIOS);
+        assertThat(testArticulo.getTexto()).isEqualTo(UPDATED_TEXTO);
     }
 
     @Test

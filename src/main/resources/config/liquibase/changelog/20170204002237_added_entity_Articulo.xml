@@ -28,10 +28,6 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="texto" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            
             <column name="fecha" type="date">
                 <constraints nullable="true" />
             </column>
@@ -45,6 +41,10 @@
             </column>
             
             <column name="comentarios" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="texto" type="clob">
                 <constraints nullable="true" />
             </column>
             

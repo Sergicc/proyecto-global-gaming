@@ -5,15 +5,17 @@
         .module('proyectoGlobalGamingApp')
         .controller('ArticuloDialogController', ArticuloDialogController);
 
-    ArticuloDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Articulo', 'Etiqueta', 'Foto'];
+    ArticuloDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Articulo', 'Etiqueta', 'Foto'];
 
-    function ArticuloDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Articulo, Etiqueta, Foto) {
+    function ArticuloDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Articulo, Etiqueta, Foto) {
         var vm = this;
 
         vm.articulo = entity;
         vm.clear = clear;
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
+        vm.byteSize = DataUtils.byteSize;
+        vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.etiquetas = Etiqueta.query();
         vm.fotos = Foto.query();

@@ -25,9 +25,6 @@ public class Articulo implements Serializable {
     @Column(name = "titulo")
     private String titulo;
 
-    @Column(name = "texto")
-    private String texto;
-
     @Column(name = "fecha")
     private LocalDate fecha;
 
@@ -39,6 +36,10 @@ public class Articulo implements Serializable {
 
     @Column(name = "comentarios")
     private String comentarios;
+
+    @Lob
+    @Column(name = "texto")
+    private String texto;
 
     @ManyToMany
     @JoinTable(name = "articulo_etiqueta",
@@ -69,19 +70,6 @@ public class Articulo implements Serializable {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public String getTexto() {
-        return texto;
-    }
-
-    public Articulo texto(String texto) {
-        this.texto = texto;
-        return this;
-    }
-
-    public void setTexto(String texto) {
-        this.texto = texto;
     }
 
     public LocalDate getFecha() {
@@ -134,6 +122,19 @@ public class Articulo implements Serializable {
 
     public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public Articulo texto(String texto) {
+        this.texto = texto;
+        return this;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
     }
 
     public Set<Etiqueta> getEtiquetas() {
@@ -211,11 +212,11 @@ public class Articulo implements Serializable {
         return "Articulo{" +
             "id=" + id +
             ", titulo='" + titulo + "'" +
-            ", texto='" + texto + "'" +
             ", fecha='" + fecha + "'" +
             ", url='" + url + "'" +
             ", visitas='" + visitas + "'" +
             ", comentarios='" + comentarios + "'" +
+            ", texto='" + texto + "'" +
             '}';
     }
 }

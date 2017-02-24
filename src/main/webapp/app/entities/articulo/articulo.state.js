@@ -105,11 +105,11 @@
                         entity: function () {
                             return {
                                 titulo: null,
-                                texto: null,
                                 fecha: null,
                                 url: null,
                                 visitas: null,
                                 comentarios: null,
+                                texto: null,
                                 id: null
                             };
                         }
