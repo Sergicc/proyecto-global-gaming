@@ -17,6 +17,7 @@
     <include file="classpath:config/liquibase/changelog/20170204002242_added_entity_Idioma.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170204002243_added_entity_RelacionUsuarios.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170225073138_added_entity_ValoracionJuego.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170225075508_added_entity_Pais.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170204002233_added_entity_constraints_UserExt.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170204002234_added_entity_constraints_Mensaje.xml" relativeToChangelogFile="false"/>

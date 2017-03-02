@@ -19,6 +19,7 @@
                 "idioma": "Idioma",
                 "relacionUsuarios": "Relacion Usuarios",
                 "valoracionJuego": "Valoracion Juego",
+                "pais": "Pais",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

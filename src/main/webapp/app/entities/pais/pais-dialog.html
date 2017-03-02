@@ -1,0 +1,60 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPaisLabel" data-translate="proyectoGlobalGamingApp.pais.home.createOrEditLabel">Create or edit a Pais</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.pais.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.pais.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.pais.nombre" for="field_nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="field_nombre"
+                    ng-model="vm.pais.nombre"
+                    required />
+            <div ng-show="editForm.nombre.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nombre.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setBandera($file, vm.pais)" ngf-pattern="'image/*'">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.pais.bandera" for="field_bandera">Bandera</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.pais.banderaContentType + ';base64,' + vm.pais.bandera}}" style="max-height: 100px;" ng-if="vm.pais.bandera" alt="pais image"/>
+                <div ng-if="vm.pais.bandera" class="help-block clearfix">
+                    <span class="pull-left">{{vm.pais.banderaContentType}}, {{vm.byteSize(vm.pais.bandera)}}</span>
+                    <button type="button" ng-click="vm.pais.bandera=null;vm.pais.banderaContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setBandera($file, vm.pais)" accept="image/*" data-translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="bandera" id="field_bandera"
+                    ng-model="vm.pais.bandera"
+                     />
+            <input type="hidden" class="form-control" name="banderaContentType" id="field_banderaContentType"
+                    ng-model="vm.pais.banderaContentType" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
