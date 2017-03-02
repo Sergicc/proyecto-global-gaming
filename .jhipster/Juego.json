@@ -62,8 +62,8 @@
         }
     ],
     "changelogDate": "20170204002236",
-    "entityTableName": "juego",
     "dto": "no",
-    "pagination": "infinite-scroll",
-    "service": "no"
+    "service": "no",
+    "entityTableName": "juego",
+    "pagination": "infinite-scroll"
 }

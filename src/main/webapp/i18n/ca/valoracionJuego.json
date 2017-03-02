@@ -1,0 +1,25 @@
+{
+    "proyectoGlobalGamingApp": {
+        "valoracionJuego" : {
+            "home": {
+                "title": "Valoracion Juegos",
+                "createLabel": "Create a new Valoracion Juego",
+                "createOrEditLabel": "Create or edit a Valoracion Juego",
+                "search": "Search for Valoracion Juego"
+            },
+            "created": "A new Valoracion Juego is created with identifier {{ param }}",
+            "updated": "A Valoracion Juego is updated with identifier {{ param }}",
+            "deleted": "A Valoracion Juego is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Valoracion Juego {{ id }}?"
+            },
+            "detail": {
+                "title": "Valoracion Juego"
+            },
+            "valoracion": "Valoracion",
+            "timeStamp": "Time Stamp",
+            "user": "User",
+            "juego": "Juego"
+        }
+    }
+}

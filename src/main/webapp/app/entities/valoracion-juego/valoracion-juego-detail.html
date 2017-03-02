@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="proyectoGlobalGamingApp.valoracionJuego.detail.title">Valoracion Juego</span> {{vm.valoracionJuego.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="proyectoGlobalGamingApp.valoracionJuego.valoracion">Valoracion</span></dt>
+        <dd>
+            <span>{{vm.valoracionJuego.valoracion}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.valoracionJuego.timeStamp">Time Stamp</span></dt>
+        <dd>
+            <span>{{vm.valoracionJuego.timeStamp | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.valoracionJuego.user">User</span></dt>
+        <dd>
+            {{vm.valoracionJuego.user.login}}
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.valoracionJuego.juego">Juego</span></dt>
+        <dd>
+            <a ui-sref="juego-detail({id:vm.valoracionJuego.juego.id})">{{vm.valoracionJuego.juego.titulo}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="valoracion-juego-detail.edit({id:vm.valoracionJuego.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "juego",
+            "otherEntityName": "juego",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "titulo"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "valoracion",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "0.0",
+            "fieldValidateRulesMax": "5.0"
+        },
+        {
+            "fieldName": "timeStamp",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170225073138",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "valoracion_juego",
+    "pagination": "pagination"
+}

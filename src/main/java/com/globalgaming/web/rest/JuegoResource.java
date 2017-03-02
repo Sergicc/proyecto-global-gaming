@@ -31,7 +31,7 @@ import java.util.Optional;
 public class JuegoResource {
 
     private final Logger log = LoggerFactory.getLogger(JuegoResource.class);
-
+        
     @Inject
     private JuegoRepository juegoRepository;
 
@@ -125,59 +125,5 @@ public class JuegoResource {
         juegoRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("juego", id.toString())).build();
     }
-
-/*
-FILTRO DINÁMICO
-*/
-/*
-    @RequestMapping(value = "/motto-definitions/byfilters",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    @Transactional
-    public ResponseEntity<List<MottoDefinition>> getMottoDefinitionByParams(
-        @RequestParam(value = "searchTerm", required = false) String searchTerm,
-        @RequestParam(value = "searchBy", required = false) Integer searchBy,
-        @RequestParam(value = "categorias", required = false) String categorias,
-        @RequestParam(value = "materias", required = false) String materias,
-        @RequestParam(value = "regiones", required = false) String regiones,
-        @RequestParam(value = "registros", required = false) String registros
-    ) {
-        Map<String, Object> params = new HashMap<>();
-
-        params.put("searchTerm", searchTerm);
-
-        if (searchBy != null) {
-            params.put("searchBy", searchBy);
-        }
-
-        if (categorias != null && !categorias.isEmpty() && ! categorias.equals("empty")){
-            String[] categoriasSplit = categorias.split("-");
-            params.put("categorias", categoriasSplit);
-        }
-
-        if (materias != null && !materias.isEmpty() && ! materias.equals("empty")) {
-            String[] materiasSplit = materias.split("-");
-            params.put("materias", materiasSplit);
-        }
-
-        if (regiones != null && !regiones.isEmpty() && ! regiones.equals("empty")) {
-            String[] regionesSplit = regiones.split("-");
-            params.put("regiones", regionesSplit);
-        }
-
-        if (registros != null && !registros.isEmpty() && ! registros.equals("empty")) {
-            String[] registrosSplit = registros.split("-");
-            params.put("registros", registrosSplit);
-        }
-
-        List<MottoDefinition> result = mottoDefinitionCriteriaRepository.filterMottoDefinitions(params);
-
-        return new ResponseEntity<>(
-            result,
-            HttpStatus.OK);
-    }
-*/
-
 
 }

@@ -12,5 +12,4 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface JuegoRepository extends JpaRepository<Juego,Long> {
 
-
 }
