@@ -1,9 +1,12 @@
 package com.globalgaming.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.globalgaming.domain.User;
 import com.globalgaming.domain.ValoracionJuego;
 
+import com.globalgaming.repository.UserRepository;
 import com.globalgaming.repository.ValoracionJuegoRepository;
+import com.globalgaming.security.SecurityUtils;
 import com.globalgaming.web.rest.util.HeaderUtil;
 import com.globalgaming.web.rest.util.PaginationUtil;
 
@@ -21,6 +24,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,9 +36,12 @@ import java.util.Optional;
 public class ValoracionJuegoResource {
 
     private final Logger log = LoggerFactory.getLogger(ValoracionJuegoResource.class);
-        
+
     @Inject
     private ValoracionJuegoRepository valoracionJuegoRepository;
+
+    @Inject
+    private UserRepository userRepository;
 
     /**
      * POST  /valoracion-juegos : Create a new valoracionJuego.
@@ -50,11 +57,19 @@ public class ValoracionJuegoResource {
         if (valoracionJuego.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("valoracionJuego", "idexists", "A new valoracionJuego cannot already have an ID")).body(null);
         }
+
+        User user= userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+
+        valoracionJuego.setTimeStamp(ZonedDateTime.now());
+        valoracionJuego.setUser(user);
+
         ValoracionJuego result = valoracionJuegoRepository.save(valoracionJuego);
         return ResponseEntity.created(new URI("/api/valoracion-juegos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("valoracionJuego", result.getId().toString()))
             .body(result);
     }
+
+
 
     /**
      * PUT  /valoracion-juegos : Updates an existing valoracionJuego.

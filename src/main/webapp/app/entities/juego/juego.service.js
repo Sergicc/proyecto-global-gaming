@@ -8,9 +8,13 @@
 
     function Juego ($resource, DateUtils) {
         var resourceUrl =  'api/juegos/:id';
-
+        ///juegos/{idJuego}/valoracion/{valoracion}
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
+            'addValoracion': {
+                method: 'POST',
+                isArray: false,
+                url: 'api/juegos/:idJuego/valoracion/:valoracion'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {

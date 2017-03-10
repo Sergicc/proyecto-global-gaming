@@ -6,7 +6,7 @@
     <dl class="dl-horizontal jh-entity-details">
         <dt><span data-translate="proyectoGlobalGamingApp.juego.titulo">Titulo</span></dt>
         <dd>
-            <span>{{vm.juego.titulo}}</span>
+            <span>{{vm.juego.id}} - {{vm.juego.titulo}}</span>
         </dd>
         <dt><span data-translate="proyectoGlobalGamingApp.juego.portada">Portada</span></dt>
         <dd>
@@ -53,6 +53,17 @@
         <dd>
             <span>{{vm.juego.valoracionUsers}}</span>
         </dd>
+        <div class="form-group">
+            <label class="control-label"
+                   data-translate="proyectoGlobalGamingApp.juego.valoracion"
+                   for="field_valoracion">Valoracion</label>
+            <input type="text" class="form-control" name="valoracion" id="field_valoracion"
+                   ng-model="vm.juego.valoracion"/>
+
+            <button ng-click="vm.addValoracion()">
+                Valorar
+            </button>
+        </div>
     </dl>
 
     <button type="submit"
