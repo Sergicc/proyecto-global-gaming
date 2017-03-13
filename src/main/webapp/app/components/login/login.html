@@ -1,9 +1,9 @@
-<div class="modal-header">
+<div class="modal-header" id="loginTop">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-            ng-click="vm.cancel()">&times;</button>
+            ng-click="vm.cancel()">x</button>
     <h4 class="modal-title" data-translate="login.title">Sign in</h4>
 </div>
-<div class="modal-body">
+<div class="modal-body"><div align="center">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <h1 data-translate="login.title">Sign in</h1>
@@ -13,15 +13,16 @@
                 <strong>Failed to sign in!</strong> Please check your credentials and try again.
             </div>
         </div>
-        <div class="col-md-6">
+
+        <div class="col-md-12">
             <form class="form" role="form" ng-submit="vm.login($event)">
                 <div class="form-group">
                     <label for="username" data-translate="global.form.username">Login</label>
-                    <input type="text" class="form-control" id="username" placeholder="{{'global.form.username.placeholder' | translate}}" ng-model="vm.username">
+                    <input type="text" class="inputForm" id="username" placeholder="{{'global.form.username.placeholder' | translate}}" ng-model="vm.username">
                 </div>
                 <div class="form-group">
                     <label for="password" data-translate="login.form.password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="{{'login.form.password.placeholder' | translate}}"
+                    <input type="password" class="inputForm" id="password" placeholder="{{'login.form.password.placeholder' | translate}}"
                            ng-model="vm.password">
                 </div>
                 <div class="form-group">
@@ -30,7 +31,7 @@
                         <span data-translate="login.form.rememberme">Remember me</span>
                     </label>
                 </div>
-                <button type="submit" class="btn btn-primary" data-translate="login.form.button">Sign in</button>
+                <button type="submit" class="myButton" data-translate="login.form.button">Sign in</button>
             </form>
             <p></p>
             <div class="alert alert-warning">
@@ -40,12 +41,14 @@
                 You don't have an account yet? <a class="alert-link" href="" ng-click="vm.register()">Register a new account</a>
             </div>
         </div>
-        <div class="col-md-6">
+
+        <div class="col-md-12">
             <br/>
             <jh-social ng-provider="google"></jh-social>
             <jh-social ng-provider="facebook"></jh-social>
             <jh-social ng-provider="twitter"></jh-social>
             <!-- jhipster-needle-add-social-button -->
+        </div>
         </div>
     </div>
 </div>
