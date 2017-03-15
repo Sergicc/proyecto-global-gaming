@@ -1,9 +1,9 @@
 {
     "home": {
-        "title": "¡Bienvenido, a Global Gaming!",
-        "subtitle": "La red social de videojuegos más grande del mundo",
+        "title": "¡Bienvenido a Global Gaming!",
+        "subtitle": "La mejor red social sobre videojuegos, de jugadores para jugadores",
         "logged": {
-            "message": "Está conectado como \"{{username}}\"."
+            "message": "Usted está conectado como \"{{username}}\"."
         },
         "question": "Si tiene preguntas sobre JHipster:",
         "link": {
