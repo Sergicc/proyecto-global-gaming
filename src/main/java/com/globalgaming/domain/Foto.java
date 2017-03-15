@@ -155,4 +155,6 @@ public class Foto implements Serializable {
             ", descripcion='" + descripcion + "'" +
             '}';
     }
+
+
 }

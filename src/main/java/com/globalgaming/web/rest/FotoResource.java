@@ -3,7 +3,10 @@ package com.globalgaming.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.globalgaming.domain.Foto;
 
+import com.globalgaming.domain.User;
 import com.globalgaming.repository.FotoRepository;
+import com.globalgaming.repository.UserRepository;
+import com.globalgaming.security.SecurityUtils;
 import com.globalgaming.web.rest.util.HeaderUtil;
 import com.globalgaming.web.rest.util.PaginationUtil;
 
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,9 +35,12 @@ import java.util.Optional;
 public class FotoResource {
 
     private final Logger log = LoggerFactory.getLogger(FotoResource.class);
-        
+
     @Inject
     private FotoRepository fotoRepository;
+
+    @Inject
+    private UserRepository userRepository;
 
     /**
      * POST  /fotos : Create a new foto.
@@ -49,6 +56,11 @@ public class FotoResource {
         if (foto.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("foto", "idexists", "A new foto cannot already have an ID")).body(null);
         }
+
+        User user= userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+
+        foto.setFechaCreacion(ZonedDateTime.now());
+
         Foto result = fotoRepository.save(foto);
         return ResponseEntity.created(new URI("/api/fotos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("foto", result.getId().toString()))
