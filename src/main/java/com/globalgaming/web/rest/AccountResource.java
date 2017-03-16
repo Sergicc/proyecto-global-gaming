@@ -66,14 +66,13 @@ public class AccountResource {
                     User user = userService
                         .createUser(managedUserVM.getLogin(), managedUserVM.getPassword(),
                             managedUserVM.getFirstName(), managedUserVM.getLastName(),
-                            managedUserVM.getEmail().toLowerCase(), managedUserVM.getLangKey());
-
+                            managedUserVM.getEmail().toLowerCase(), managedUserVM.getLangKey(),
+                            managedUserVM.getBattle(),managedUserVM.getSteam(),managedUserVM.getOrigin(),managedUserVM.getLol());
                     mailService.sendActivationEmail(user);
                     return new ResponseEntity<>(HttpStatus.CREATED);
                 })
         );
     }
-
     /**
      * GET  /activate : activate the registered user.
      *

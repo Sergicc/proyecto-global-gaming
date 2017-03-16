@@ -54,8 +54,17 @@
             "confirmpassword": "Confirmación de la nueva contraseña",
             "confirmpassword.placeholder": "Confirmación de la nueva contraseña",
             "email": "Correo electrónico",
-            "email.placeholder": "Su correo electrónico"
+            "email.placeholder": "Su correo electrónico",
+            "battle": "Id de battle.net",
+            "battle.placeholder": "Su battle.net id",
+            "steam":"Id de Steam",
+            "steam.placeholder": "Su Steam id",
+            "origin":"Id de Origin",
+            "origin.placeholder": "Su origin id",
+            "lol":"Id de League of Legends",
+            "lol.placeholder": "Su League of Legends id"
         },
+
         "messages": {
             "info": {
                 "authenticated": "Si desea <a class=\"alert-link\" href=\"\" ng-click=\"vm.login()\">iniciar una sesión</a>, puede intentar con las cuentas predeterminadas:<br/>- Administrator (usuario=\"admin\" y contraseña=\"admin\") <br/>- Usuario (usuario=\"user\" y contraseña=\"user\").",

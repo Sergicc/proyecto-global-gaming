@@ -23,9 +23,8 @@
                 The password and its confirmation do not match!
             </div>
         </div>
-        <div class="col-md-4 col-md-offset-2">
+        <div class="col-md-3 col-md-offset-2">
             <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
-
                 <div class="form-group">
                     <label class="control-label" for="login" data-translate="global.form.username">Username</label>
                     <input type="text" class="form-control" id="login" name="login" placeholder="{{'global.form.username.placeholder' | translate}}"
@@ -90,7 +89,7 @@
                             Your password cannot be longer than 50 characters.
                         </p>
                     </div>
-                    <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>
+                   <!-- <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar> -->
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="confirmPassword" data-translate="global.form.confirmpassword">New password confirmation</label>
@@ -115,9 +114,111 @@
                 <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="register.form.button">Register</button>
             </form>
             <p></p>
-            <div class="alert alert-warning" data-translate="global.messages.info.authenticated" translate-compile>
+            <!--<div class="alert alert-warning" data-translate="global.messages.info.authenticated" translate-compile>
                 If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-            </div>
+            </div>-->
+        </div>
+
+        <!-- NUEVA COLUMNA -->
+        <div class="col-md-3 col-md-offset-2">
+            <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
+                <div class="form-group">
+                    <label class="control-label" for="login" data-translate="global.form.battle">Id de battle.net</label>
+                    <input type="text" class="form-control" id="battle" name="login" placeholder="{{'global.form.battle.placeholder' | translate}}"
+                           ng-model="vm.registerAccount.battle" ng-minlength=1 ng-maxlength=50  required>
+                    <div ng-show="form.login.$dirty && form.login.$invalid">
+                        <p class="help-block"
+                           ng-show="form.login.$error.required" data-translate="register.messages.validate.login.required">
+                            Your username is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.minlength" data-translate="register.messages.validate.login.minlength">
+                            Your username is required to be at least 1 character.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.maxlength" data-translate="register.messages.validate.login.maxlength">
+                            Your username cannot be longer than 50 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.pattern" data-translate="register.messages.validate.login.pattern">
+                            Your username can only contain lower-case letters and digits.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="login" data-translate="global.form.steam">Id de Steam</label>
+                    <input type="text" class="form-control" id="steam" name="login" placeholder="{{'global.form.steam.placeholder' | translate}}"
+                           ng-model="vm.registerAccount.steam" ng-minlength=1 ng-maxlength=50  required>
+                    <div ng-show="form.login.$dirty && form.login.$invalid">
+                        <p class="help-block"
+                           ng-show="form.login.$error.required" data-translate="register.messages.validate.login.required">
+                            Your username is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.minlength" data-translate="register.messages.validate.login.minlength">
+                            Your username is required to be at least 1 character.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.maxlength" data-translate="register.messages.validate.login.maxlength">
+                            Your username cannot be longer than 50 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.pattern" data-translate="register.messages.validate.login.pattern">
+                            Your username can only contain lower-case letters and digits.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="login" data-translate="global.form.origin">Id de Origin</label>
+                    <input type="text" class="form-control" id="origin" name="login" placeholder="{{'global.form.origin.placeholder' | translate}}"
+                           ng-model="vm.registerAccount.origin" ng-minlength=1 ng-maxlength=50  required>
+                    <div ng-show="form.login.$dirty && form.login.$invalid">
+                        <p class="help-block"
+                           ng-show="form.login.$error.required" data-translate="register.messages.validate.login.required">
+                            Your username is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.minlength" data-translate="register.messages.validate.login.minlength">
+                            Your username is required to be at least 1 character.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.maxlength" data-translate="register.messages.validate.login.maxlength">
+                            Your username cannot be longer than 50 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.pattern" data-translate="register.messages.validate.login.pattern">
+                            Your username can only contain lower-case letters and digits.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="login" data-translate="global.form.lol">Id de League of Legends</label>
+                    <input type="text" class="form-control" id="lol" name="login" placeholder="{{'global.form.lol.placeholder' | translate}}"
+                           ng-model="vm.registerAccount.lol" ng-minlength=1 ng-maxlength=50  required>
+                    <div ng-show="form.login.$dirty && form.login.$invalid">
+                        <p class="help-block"
+                           ng-show="form.login.$error.required" data-translate="register.messages.validate.login.required">
+                            Your username is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.minlength" data-translate="register.messages.validate.login.minlength">
+                            Your username is required to be at least 1 character.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.maxlength" data-translate="register.messages.validate.login.maxlength">
+                            Your username cannot be longer than 50 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.pattern" data-translate="register.messages.validate.login.pattern">
+                            Your username can only contain lower-case letters and digits.
+                        </p>
+                    </div>
+                </div>
+            </form>
+            <p></p>
+            <!--<div class="alert alert-warning" data-translate="global.messages.info.authenticated" translate-compile>
+                If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
+            </div>-->
         </div>
         <div class="col-md-4">
             <br/>
