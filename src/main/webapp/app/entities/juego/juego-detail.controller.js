@@ -19,5 +19,16 @@
             vm.juego = result;
         });
         $scope.$on('$destroy', unsubscribe);
+
+
+        vm.addValoracion = function(){
+
+            Juego.addValoracion({idJuego: vm.juego.id, valoracion: vm.juego.valoracion},{},successLike);
+
+        };
+
+        var successLike = function(result){
+            console.log(result);
+        }
     }
 })();
