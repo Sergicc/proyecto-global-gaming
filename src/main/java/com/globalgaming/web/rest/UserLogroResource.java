@@ -1,9 +1,12 @@
 package com.globalgaming.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.globalgaming.domain.User;
 import com.globalgaming.domain.UserLogro;
 
 import com.globalgaming.repository.UserLogroRepository;
+import com.globalgaming.repository.UserRepository;
+import com.globalgaming.security.SecurityUtils;
 import com.globalgaming.web.rest.util.HeaderUtil;
 import com.globalgaming.web.rest.util.PaginationUtil;
 
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,9 +35,12 @@ import java.util.Optional;
 public class UserLogroResource {
 
     private final Logger log = LoggerFactory.getLogger(UserLogroResource.class);
-        
+
     @Inject
     private UserLogroRepository userLogroRepository;
+
+    @Inject
+    private UserRepository userRepository;
 
     /**
      * POST  /user-logroes : Create a new userLogro.
@@ -49,6 +56,8 @@ public class UserLogroResource {
         if (userLogro.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("userLogro", "idexists", "A new userLogro cannot already have an ID")).body(null);
         }
+        User user= userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        userLogro.setFecha(ZonedDateTime.now());
         UserLogro result = userLogroRepository.save(userLogro);
         return ResponseEntity.created(new URI("/api/user-logroes/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("userLogro", result.getId().toString()))
