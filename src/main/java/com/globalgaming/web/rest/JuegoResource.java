@@ -249,7 +249,7 @@ public class JuegoResource {
         if (result.isEmpty()) {
             return new ResponseEntity<>(
 
-                null, HeaderUtil.createAlert("No match for the criteria entered!", "property"), HttpStatus.NOT_FOUND);
+                null, HeaderUtil.createAlert("No match for the criteria entered!", "property"), HttpStatus.OK);
         } else {
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.add("X-Total-Count", String.valueOf(result.size()));

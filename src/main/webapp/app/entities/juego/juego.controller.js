@@ -11,6 +11,7 @@
         var vm = this;
 
         vm.juegos = [];
+        vm.juegosByFilters = [];
         vm.loadPage = loadPage;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.page = 0;
@@ -31,6 +32,13 @@
                 size: vm.itemsPerPage,
                 sort: sort()
             }, onSuccess, onError);
+
+            Juego.byFilters({
+                desarrollador: "Blizzard",
+                minCapacidadJugadores: "8",
+                maxCapacidadJugadores: "12"
+            }, onSuccessByFilters, onError );
+
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
                 if (vm.predicate !== 'id') {
@@ -44,6 +52,13 @@
                 vm.totalItems = headers('X-Total-Count');
                 for (var i = 0; i < data.length; i++) {
                     vm.juegos.push(data[i]);
+                }
+            }
+
+            function onSuccessByFilters(data, headers) {
+
+                for (var i = 0; i < data.length; i++) {
+                    vm.juegosByFilters.push(data[i]);
                 }
             }
 
