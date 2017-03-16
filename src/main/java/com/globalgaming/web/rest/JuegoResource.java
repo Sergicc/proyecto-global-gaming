@@ -5,6 +5,7 @@ import com.globalgaming.domain.Juego;
 
 import com.globalgaming.domain.User;
 import com.globalgaming.domain.ValoracionJuego;
+import com.globalgaming.repository.JuegoCriteriaRepository;
 import com.globalgaming.repository.JuegoRepository;
 import com.globalgaming.repository.UserRepository;
 import com.globalgaming.repository.ValoracionJuegoRepository;
@@ -19,14 +20,18 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.ZonedDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -46,6 +51,9 @@ public class JuegoResource {
 
     @Inject
     private UserRepository userRepository;
+
+    @Inject
+    private JuegoCriteriaRepository juegoCriteriaRepository;
 
     /**
      * POST  /juegos : Create a new juego.
@@ -138,8 +146,122 @@ public class JuegoResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("juego", id.toString())).build();
     }
 
+    @RequestMapping(value = "/juego/byfilters",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    @Transactional
+    public ResponseEntity<List<Juego>> getPropertyByCriteria(
+        @RequestParam(value = "titulo", required = false) String titulo,
+        @RequestParam(value = "descripcion", required = false) String descripcion,
+        @RequestParam(value = "desarrollador", required = false) String desarrollador,
+        @RequestParam(value = "genero", required = false) String genero,
+        @RequestParam(value = "edadRecomendada", required = false) Integer edadRecomendada,
+        @RequestParam(value = "minCapacidadJugadores", required = false) String minCapacidadJugadores,
+        @RequestParam(value = "maxCapacidadJugadores", required = false) String maxCapacidadJugadores,
+        @RequestParam(value = "minValoracionWeb", required = false) String minValoracionWeb,
+        @RequestParam(value = "minValoracionUsers", required = false) String minValoracionUsers,
+        @RequestParam(value = "maxValoracionWeb", required = false) String maxValoracionWeb,
+        @RequestParam(value = "maxValoracionUsers", required = false) String maxValoracionUsers,
+        @RequestParam(value = "idioma", required = false) String idioma
+        ) {
+        Map<String, Object> params = new HashMap<>();
 
-    @PostMapping("/juegos/{idJuego}/valoracion/{valoracion}")
+        if (titulo != null) {
+            params.put("titulo", titulo);
+        }
+        if (descripcion != null) {
+            params.put("descripcion", descripcion);
+        }
+        if (desarrollador != null) {
+            params.put("desarrollador", desarrollador);
+        }
+        if (genero != null) {
+            params.put("genero", genero);
+        }
+        if (edadRecomendada != null) {
+            params.put("edadRecomendada", edadRecomendada);
+        }
+        if (minCapacidadJugadores != null) {
+            try {
+                Integer minCapacidadJugadoresInt = Integer.parseInt(minCapacidadJugadores);
+                params.put("minCapacidadJugadores", minCapacidadJugadoresInt);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("juego",
+                    "number format exception on param",
+                    "A numeric param cannot have non numeric characters")).body(null);
+            }
+        }
+        if (maxCapacidadJugadores != null) {
+            try {
+                Integer maxCapacidadJugadoresInt = Integer.parseInt(maxCapacidadJugadores);
+                params.put("maxCapacidadJugadores", maxCapacidadJugadoresInt);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("juego",
+                    "number format exception on param",
+                    "A numeric param cannot have non numeric characters")).body(null);
+            }
+        }
+        if (minValoracionWeb != null) {
+            try {
+                Integer minValoracionWebDouble = Integer.parseInt(minValoracionWeb);
+                params.put("minValoracionWeb", minValoracionWebDouble);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("juego",
+                    "number format exception on param",
+                    "A numeric param cannot have non numeric characters")).body(null);
+            }
+        }
+        if (minValoracionUsers != null) {
+            try {
+                Integer minValoracionUsersDouble = Integer.parseInt(minValoracionUsers);
+                params.put("minValoracionUsers", minValoracionUsersDouble);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("juego",
+                    "number format exception on param",
+                    "A numeric param cannot have non numeric characters")).body(null);
+            }
+        }
+        if (maxValoracionWeb != null) {
+            try {
+                Integer maxValoracionWebDouble = Integer.parseInt(maxValoracionWeb);
+                params.put("maxValoracionWeb", maxValoracionWebDouble);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("juego",
+                    "number format exception on param",
+                    "A numeric param cannot have non numeric characters")).body(null);
+            }
+        }
+        if (maxValoracionUsers != null) {
+            try {
+                Integer maxValoracionUsersDouble = Integer.parseInt(maxValoracionUsers);
+                params.put("maxValoracionUsers", maxValoracionUsersDouble);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("juego",
+                    "number format exception on param",
+                    "A numeric param cannot have non numeric characters")).body(null);
+            }
+        }
+        if (idioma != null) {
+            params.put("idioma", idioma);
+        }
+        List<Juego> result = juegoCriteriaRepository.filterJuegoByCriteria(params);
+        if (result.isEmpty()) {
+            return new ResponseEntity<>(
+
+                null, HeaderUtil.createAlert("No match for the criteria entered!", "property"), HttpStatus.NOT_FOUND);
+        } else {
+            HttpHeaders httpHeaders = new HttpHeaders();
+            httpHeaders.add("X-Total-Count", String.valueOf(result.size()));
+            return new ResponseEntity<>(
+                result,
+                httpHeaders,
+                HttpStatus.OK
+            );
+        }
+    }
+
+        @PostMapping("/juegos/{idJuego}/valoracion/{valoracion}")
     @Timed
     public ResponseEntity<ValoracionJuego> valorarJuego(@PathVariable Long idJuego,
                                                         @PathVariable Double valoracion)

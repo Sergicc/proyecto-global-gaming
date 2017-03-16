@@ -11,6 +11,7 @@
         ///juegos/{idJuego}/valoracion/{valoracion}
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
+            'byFilters': { method: 'GET', isArray: true, url: 'api/juego/byfilters'},
             'addValoracion': {
                 method: 'POST',
                 isArray: false,
