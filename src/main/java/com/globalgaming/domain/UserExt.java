@@ -15,7 +15,8 @@ public class UserExt implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //Comentamos la id automática
+   // @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Lob
@@ -48,6 +49,8 @@ public class UserExt implements Serializable {
 
     @OneToOne
     @JoinColumn(unique = true)
+    //este tag permite copiar la id de user
+    @MapsId
     private User user;
 
     public Long getId() {
@@ -118,7 +121,6 @@ public class UserExt implements Serializable {
         this.idSteam = idSteam;
         return this;
     }
-
     public void setIdSteam(String idSteam) {
         this.idSteam = idSteam;
     }

@@ -2,7 +2,9 @@ package com.globalgaming.service;
 
 import com.globalgaming.domain.Authority;
 import com.globalgaming.domain.User;
+import com.globalgaming.domain.UserExt;
 import com.globalgaming.repository.AuthorityRepository;
+import com.globalgaming.repository.UserExtRepository;
 import com.globalgaming.repository.UserRepository;
 import com.globalgaming.security.AuthoritiesConstants;
 import com.globalgaming.security.SecurityUtils;
@@ -36,6 +38,9 @@ public class UserService {
 
     @Inject
     private UserRepository userRepository;
+
+    @Inject
+    private UserExtRepository userExtraRepository;
 
     @Inject
     private AuthorityRepository authorityRepository;
@@ -79,7 +84,7 @@ public class UserService {
     }
 
     public User createUser(String login, String password, String firstName, String lastName, String email,
-        String langKey) {
+        String langKey,String battle,String steam , String origin, String lol) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
@@ -92,12 +97,27 @@ public class UserService {
         newUser.setLastName(lastName);
         newUser.setEmail(email);
         newUser.setLangKey(langKey);
+
+        // Create and save the UserExtra entity
+        UserExt newUserExt = new UserExt();
+        newUserExt.setUser(newUser);
+        newUserExt.setIdBattlenet(battle);
+        newUserExt.setIdSteam(steam);
+        newUserExt.setIdOrigin(origin);
+        newUserExt.setIdLol(lol);
+        userExtraRepository.save(newUserExt);
+        log.debug("Created Information for UserExt: {}", newUserExt);
+
+
+
         // new user is not active
         newUser.setActivated(false);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
+
+
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;

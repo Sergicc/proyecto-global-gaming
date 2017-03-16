@@ -26,6 +26,16 @@ public class ManagedUserVM extends UserDTO {
 
     private ZonedDateTime lastModifiedDate;
 
+    private String battle;
+
+    private String origin;
+
+    private String steam;
+
+    private String lol;
+
+
+
     @Size(min = PASSWORD_MIN_LENGTH, max = PASSWORD_MAX_LENGTH)
     private String password;
 
@@ -52,6 +62,22 @@ public class ManagedUserVM extends UserDTO {
         this.lastModifiedBy = lastModifiedBy;
         this.lastModifiedDate = lastModifiedDate;
         this.password = password;
+    }
+
+    public String getBattle() {
+        return battle;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public String getSteam() {
+        return steam;
+    }
+
+    public String getLol() {
+        return lol;
     }
 
     public Long getId() {
