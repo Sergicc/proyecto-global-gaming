@@ -62,7 +62,7 @@
             "origin":"Id de Origin",
             "origin.placeholder": "El teu origin id",
             "lol":"Id de League of Legends",
-            "lol.placeholder": "El teu League of Legends id"
+            "lol.placeholder": "El teu League of Legends ID"
         },
         "messages": {
             "info": {
