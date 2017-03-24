@@ -32,7 +32,7 @@ public class SalaCriteriaRepository {
 
         Criteria salaCriteria = currentSession().createCriteria(Sala.class);
         salaCriteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-
+        //idiomas mismo error que con juegos
         //Criteria idiomaCriteria = salaCriteria.createCriteria("idiomas");
 
         if(parameters.get("nombre")!= null) {
@@ -54,7 +54,7 @@ public class SalaCriteriaRepository {
 //            String idioma = (String) parameters.get("idioma");
 //            salaCriteria.add(Restrictions.ilike("idioma", idioma, MatchMode.ANYWHERE));
 //        }
-
+        //no filtra por limite de usuarios
         // filtro por Límite de usuarios
         if ((parameters.get("minLimiteUsuarios") != null && parameters.get("minLimiteUsuarios") instanceof Integer)
             && (parameters.get("maxLimiteUsuarios") != null && parameters.get("maxLimiteUsuarios") instanceof Integer)

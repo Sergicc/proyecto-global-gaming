@@ -179,6 +179,7 @@ public class JuegoResource {
         if (genero != null) {
             params.put("genero", genero);
         }
+        //filtro por edad recomendada ya funciona
         if (edadRecomendada != null) {
             params.put("edadRecomendada", edadRecomendada);
         }

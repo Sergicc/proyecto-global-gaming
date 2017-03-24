@@ -36,7 +36,7 @@ import java.util.Map;
 
             Criteria juegoCriteria = currentSession().createCriteria(Juego.class);
             juegoCriteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-
+            //error con idiomas encontrado, el atributo es plural y todos los juegos deben tener idiomas asignados
           //  Criteria idiomaCriteria = juegoCriteria.createCriteria("idiomas");
 
             if(parameters.get("titulo")!= null) {
@@ -58,7 +58,7 @@ import java.util.Map;
                 String genero = (String) parameters.get("genero");
                 juegoCriteria.add(Restrictions.ilike("genero", genero, MatchMode.ANYWHERE));
             }
-
+            //filtro por edad recomendada ya funciona
             if(parameters.get("edadRecomendada")!= null) {
                 String edadRecomendada = (String) parameters.get("edadRecomendada");
                 juegoCriteria.add(Restrictions.eq("edadRecomendada", Integer.parseInt(edadRecomendada)));
@@ -109,6 +109,7 @@ import java.util.Map;
 
                 filterByValoracionUsersBetween(parameters, juegoCriteria);
             }
+
 
             if (parameters.get("maxValoracionUsers") != null && parameters.get("minValoracionUsers") == null && parameters.get("maxValoracionUsers") instanceof Double) {
 

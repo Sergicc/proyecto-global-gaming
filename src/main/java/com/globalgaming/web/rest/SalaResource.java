@@ -156,6 +156,7 @@ public class SalaResource {
         if (juego != null) {
             params.put("juego", juego);
         }
+        //no filtra por limite de usuarios
         if (minLimiteUsuarios != null) {
             try {
                 Integer minLimiteUsuariosInt = Integer.parseInt(minLimiteUsuarios);
