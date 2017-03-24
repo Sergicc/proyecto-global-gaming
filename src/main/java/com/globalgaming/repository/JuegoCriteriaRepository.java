@@ -37,9 +37,36 @@ import java.util.Map;
             Criteria juegoCriteria = currentSession().createCriteria(Juego.class);
             juegoCriteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
+          //  Criteria idiomaCriteria = juegoCriteria.createCriteria("idiomas");
+
+            if(parameters.get("titulo")!= null) {
+                String titulo = (String) parameters.get("titulo");
+                juegoCriteria.add(Restrictions.ilike("titulo", titulo, MatchMode.ANYWHERE));
+            }
+
+            if(parameters.get("descripcion")!= null) {
+                String descripcion = (String) parameters.get("descripcion");
+                juegoCriteria.add(Restrictions.ilike("descripcion", descripcion, MatchMode.ANYWHERE));
+            }
+
             if(parameters.get("desarrollador")!= null) {
                 String desarrollador = (String) parameters.get("desarrollador");
                 juegoCriteria.add(Restrictions.ilike("desarrollador", desarrollador, MatchMode.ANYWHERE));
+            }
+
+            if(parameters.get("genero")!= null) {
+                String genero = (String) parameters.get("genero");
+                juegoCriteria.add(Restrictions.ilike("genero", genero, MatchMode.ANYWHERE));
+            }
+
+            if(parameters.get("edadRecomendada")!= null) {
+                String edadRecomendada = (String) parameters.get("edadRecomendada");
+                juegoCriteria.add(Restrictions.eq("edadRecomendada", Integer.parseInt(edadRecomendada)));
+            }
+
+            if(parameters.get("idioma")!= null) {
+                String idioma = (String) parameters.get("idioma");
+                juegoCriteria.add(Restrictions.ilike("idioma", idioma, MatchMode.ANYWHERE));
             }
 
             // filtro por Capacidad de jugadores
@@ -105,17 +132,18 @@ import java.util.Map;
             juegoCriteria.add(Restrictions.between("capacidadJugadores",minCapacidadJugadores,maxCapacidadJugadores));
         }
 
+
         private void filterByMaxCapacidadJugadores(Map<String, Object> parameters, Criteria juegoCriteria) {
             Integer maxCapacidadJugadores = (Integer) parameters.get("maxCapacidadJugadores");
 
             juegoCriteria.add(Restrictions.le("capacidadJugadores", maxCapacidadJugadores));
         }
-
         private void filterByMinCapacidadJugadores(Map<String, Object> parameters, Criteria juegoCriteria) {
             Integer minCapacidadJugadores = (Integer) parameters.get("minCapacidadJugadores");
 
             juegoCriteria.add(Restrictions.ge("capacidadJugadores", minCapacidadJugadores));
         }
+
 
         private void filterByValoracionWebBetween(Map<String, Object> parameters, Criteria juegoCriteria) {
             Double minValoracionWeb = (Double) parameters.get("minValoracionWeb");
@@ -123,18 +151,17 @@ import java.util.Map;
 
             juegoCriteria.add(Restrictions.between("valoracionWeb",minValoracionWeb,maxValoracionWeb));
         }
-
         private void filterByMinValoracionWeb(Map<String, Object> parameters, Criteria juegoCriteria) {
             Double maxValoracionWeb = (Double) parameters.get("maxValoracionWeb");
 
             juegoCriteria.add(Restrictions.le("valoracionWeb", maxValoracionWeb));
         }
-
         private void filterByMaxValoracionWeb(Map<String, Object> parameters, Criteria juegoCriteria) {
             Double minValoracionWeb = (Double) parameters.get("minValoracionWeb");
 
             juegoCriteria.add(Restrictions.ge("valoracionWeb", minValoracionWeb));
         }
+
 
         private void filterByValoracionUsersBetween(Map<String, Object> parameters, Criteria juegoCriteria) {
             Double minValoracionUsers = (Double) parameters.get("minValoracionUsers");
@@ -142,18 +169,18 @@ import java.util.Map;
 
             juegoCriteria.add(Restrictions.between("valoracionUsers",minValoracionUsers,maxValoracionUsers));
         }
+        private void filterByMinValoracionUsers(Map<String, Object> parameters, Criteria juegoCriteria) {
+            Double minValoracionUsers = (Double) parameters.get("minValoracionUsers");
 
+            juegoCriteria.add(Restrictions.ge("valoracionUsers", minValoracionUsers));
+        }
         private void filterByMaxValoracionUsers(Map<String, Object> parameters, Criteria juegoCriteria) {
             Double maxValoracionUsers = (Double) parameters.get("maxValoracionUsers");
 
             juegoCriteria.add(Restrictions.le("valoracionUsers", maxValoracionUsers));
         }
 
-        private void filterByMinValoracionUsers(Map<String, Object> parameters, Criteria juegoCriteria) {
-            Double minValoracionUsers = (Double) parameters.get("minValoracionUsers");
 
-            juegoCriteria.add(Restrictions.ge("valoracionUsers", minValoracionUsers));
-        }
 
 
 

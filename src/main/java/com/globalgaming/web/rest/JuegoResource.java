@@ -156,12 +156,12 @@ public class JuegoResource {
         @RequestParam(value = "descripcion", required = false) String descripcion,
         @RequestParam(value = "desarrollador", required = false) String desarrollador,
         @RequestParam(value = "genero", required = false) String genero,
-        @RequestParam(value = "edadRecomendada", required = false) Integer edadRecomendada,
+        @RequestParam(value = "edadRecomendada", required = false) String edadRecomendada,
         @RequestParam(value = "minCapacidadJugadores", required = false) String minCapacidadJugadores,
         @RequestParam(value = "maxCapacidadJugadores", required = false) String maxCapacidadJugadores,
         @RequestParam(value = "minValoracionWeb", required = false) String minValoracionWeb,
-        @RequestParam(value = "minValoracionUsers", required = false) String minValoracionUsers,
         @RequestParam(value = "maxValoracionWeb", required = false) String maxValoracionWeb,
+        @RequestParam(value = "minValoracionUsers", required = false) String minValoracionUsers,
         @RequestParam(value = "maxValoracionUsers", required = false) String maxValoracionUsers,
         @RequestParam(value = "idioma", required = false) String idioma
         ) {
@@ -212,20 +212,20 @@ public class JuegoResource {
                     "A numeric param cannot have non numeric characters")).body(null);
             }
         }
-        if (minValoracionUsers != null) {
+        if (maxValoracionWeb != null) {
             try {
-                Integer minValoracionUsersDouble = Integer.parseInt(minValoracionUsers);
-                params.put("minValoracionUsers", minValoracionUsersDouble);
+                Integer maxValoracionWebDouble = Integer.parseInt(maxValoracionWeb);
+                params.put("maxValoracionWeb", maxValoracionWebDouble);
             } catch (NumberFormatException e) {
                 return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("juego",
                     "number format exception on param",
                     "A numeric param cannot have non numeric characters")).body(null);
             }
         }
-        if (maxValoracionWeb != null) {
+        if (minValoracionUsers != null) {
             try {
-                Integer maxValoracionWebDouble = Integer.parseInt(maxValoracionWeb);
-                params.put("maxValoracionWeb", maxValoracionWebDouble);
+                Integer minValoracionUsersDouble = Integer.parseInt(minValoracionUsers);
+                params.put("minValoracionUsers", minValoracionUsersDouble);
             } catch (NumberFormatException e) {
                 return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("juego",
                     "number format exception on param",
@@ -249,7 +249,7 @@ public class JuegoResource {
         if (result.isEmpty()) {
             return new ResponseEntity<>(
 
-                null, HeaderUtil.createAlert("No match for the criteria entered!", "property"), HttpStatus.OK);
+                null, HeaderUtil.createAlert("No match for the criteria entered!", "juego"), HttpStatus.OK);
         } else {
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.add("X-Total-Count", String.valueOf(result.size()));

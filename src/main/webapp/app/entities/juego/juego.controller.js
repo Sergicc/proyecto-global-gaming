@@ -34,9 +34,18 @@
             }, onSuccess, onError);
 
             Juego.byFilters({
-                desarrollador: "Blizzard",
-                minCapacidadJugadores: "8",
-                maxCapacidadJugadores: "12"
+                titulo: vm.juegosByFilters.titulo
+                // descripcion: vm.juegosByFilters.descripcion,
+                // desarrollador: vm.juegosByFilters.desarrollador,
+                // genero: vm.juegosByFilters.genero,
+                // edadRecomendada: vm.juegosByFilters.edadRecomendada,
+                // minCapacidadJugadores: vm.juegosByFilters.minCapacidadJugadores,
+                // maxCapacidadJugadores: vm.juegosByFilters.maxCapacidadJugadores,
+                // minValoracionWeb: vm.juegosByFilters.minValoracionWeb,
+                // maxValoracionWeb: vm.juegosByFilters.maxValoracionWeb,
+                // minValoracionUsers: vm.juegosByFilters.minValoracionUsers,
+                // maxValoracionUsers: vm.juegosByFilters.maxValoracionUsers,
+                // idioma: vm.juegosByFilters.idioma
             }, onSuccessByFilters, onError );
 
             function sort() {
@@ -76,6 +85,34 @@
         function loadPage(page) {
             vm.page = page;
             loadAll();
+        }
+
+        vm.loadByFilters = function(){
+            Juego.byFilters({
+                titulo: vm.juegosByFilters.titulo
+                // descripcion: vm.juegosByFilters.descripcion,
+                // desarrollador: vm.juegosByFilters.desarrollador,
+                // genero: vm.juegosByFilters.genero,
+                // edadRecomendada: vm.juegosByFilters.edadRecomendada,
+                // minCapacidadJugadores: vm.juegosByFilters.minCapacidadJugadores,
+                // maxCapacidadJugadores: vm.juegosByFilters.maxCapacidadJugadores,
+                // minValoracionWeb: vm.juegosByFilters.minValoracionWeb,
+                // maxValoracionWeb: vm.juegosByFilters.maxValoracionWeb,
+                // minValoracionUsers: vm.juegosByFilters.minValoracionUsers,
+                // maxValoracionUsers: vm.juegosByFilters.maxValoracionUsers,
+                // idioma: vm.juegosByFilters.idioma
+            }, onSuccessByFilters, onError );
+
+            function onSuccessByFilters(data, headers) {
+
+                for (var i = 0; i < data.length; i++) {
+                    vm.juegosByFilters.push(data[i]);
+                }
+            }
+
+            function onError(error) {
+                AlertService.error(error.data.message);
+            }
         }
     }
 })();

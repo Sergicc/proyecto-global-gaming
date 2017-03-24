@@ -3,6 +3,7 @@ package com.globalgaming.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.globalgaming.domain.Sala;
 
+import com.globalgaming.repository.SalaCriteriaRepository;
 import com.globalgaming.repository.SalaRepository;
 import com.globalgaming.web.rest.util.HeaderUtil;
 import com.globalgaming.web.rest.util.PaginationUtil;
@@ -14,13 +15,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -31,10 +36,12 @@ import java.util.Optional;
 public class SalaResource {
 
     private final Logger log = LoggerFactory.getLogger(SalaResource.class);
-        
+
     @Inject
     private SalaRepository salaRepository;
 
+    @Inject
+    private SalaCriteriaRepository salaCriteriaRepository;
     /**
      * POST  /salas : Create a new sala.
      *
@@ -126,4 +133,62 @@ public class SalaResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("sala", id.toString())).build();
     }
 
+    @RequestMapping(value = "/sala/byfilters",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    @Transactional
+    public ResponseEntity<List<Sala>> getPropertyByCriteria(
+        @RequestParam(value = "nombre", required = false) String nombre,
+        @RequestParam(value = "minLimiteUsuarios", required = false) String minLimiteUsuarios,
+        @RequestParam(value = "maxLimiteUsuarios", required = false) String maxLimiteUsuarios,
+        @RequestParam(value = "descripcion", required = false) String descripcion,
+        @RequestParam(value = "juego", required = false) String juego
+    ) {
+        Map<String, Object> params = new HashMap<>();
+        if (nombre != null) {
+            params.put("nombre", nombre);
+        }
+
+        if (descripcion != null) {
+            params.put("descripcion", descripcion);
+        }
+        if (juego != null) {
+            params.put("juego", juego);
+        }
+        if (minLimiteUsuarios != null) {
+            try {
+                Integer minLimiteUsuariosInt = Integer.parseInt(minLimiteUsuarios);
+                params.put("minLimiteUsuarios", minLimiteUsuariosInt);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("sala",
+                    "number format exception on param",
+                    "A numeric param cannot have non numeric characters")).body(null);
+            }
+        }
+        if (maxLimiteUsuarios != null) {
+            try {
+                Integer maxLimiteUsuariosInt = Integer.parseInt(maxLimiteUsuarios);
+                params.put("maxLimiteUsuarios", maxLimiteUsuariosInt);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("sala",
+                    "number format exception on param",
+                    "A numeric param cannot have non numeric characters")).body(null);
+            }
+        }
+        List<Sala> result = salaCriteriaRepository.filterSalaByCriteria(params);
+        if (result.isEmpty()) {
+            return new ResponseEntity<>(
+
+                null, HeaderUtil.createAlert("No match for the criteria entered!", "sala"), HttpStatus.OK);
+        } else {
+            HttpHeaders httpHeaders = new HttpHeaders();
+            httpHeaders.add("X-Total-Count", String.valueOf(result.size()));
+            return new ResponseEntity<>(
+                result,
+                httpHeaders,
+                HttpStatus.OK
+            );
+        }
+    }
 }
