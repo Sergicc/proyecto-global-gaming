@@ -54,7 +54,15 @@
             "confirmpassword": "Confirmació de la nova contrasenya",
             "confirmpassword.placeholder": "Confirmació de la nova contrasenya",
             "email": "Correu electrònic",
-            "email.placeholder": "Correu electrònic"
+            "email.placeholder": "Correu electrònic",
+            "battle": "Id de battle.net",
+            "battle.placeholder": "El teu battle.net id",
+            "steam":"Id de Steam",
+            "steam.placeholder": "El teu Steam id",
+            "origin":"Id de Origin",
+            "origin.placeholder": "El teu origin id",
+            "lol":"Id de League of Legends",
+            "lol.placeholder": "El teu League of Legends ID"
         },
         "messages": {
             "info": {

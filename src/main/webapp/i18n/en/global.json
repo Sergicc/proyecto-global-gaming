@@ -54,7 +54,15 @@
             "confirmpassword": "New password confirmation",
             "confirmpassword.placeholder": "Confirm the new password",
             "email": "E-mail",
-            "email.placeholder": "Your e-mail"
+            "email.placeholder": "Your e-mail",
+            "battle": "Battle.net ID",
+            "battle.placeholder": "Your Battle.net ID",
+            "steam":"Steam ID",
+            "steam.placeholder": "Your Steam ID",
+            "origin":"Origin ID",
+            "origin.placeholder": "Your Origin ID",
+            "lol":"League of Legends ID",
+            "lol.placeholder": "Your League of Legends ID"
         },
         "messages": {
             "info": {
