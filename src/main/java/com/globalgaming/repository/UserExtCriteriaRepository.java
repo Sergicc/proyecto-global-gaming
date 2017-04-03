@@ -81,8 +81,12 @@ public class UserExtCriteriaRepository {
 
     private void filterByExists(Map<String,Object> parameters, Criteria userExtCriteria,String key) {
         Boolean hasItem = (Boolean) parameters.get(key);
-
-        userExtCriteria.add(Restrictions.eq(key, hasItem));
+        if(hasItem){
+            userExtCriteria.add(Restrictions.isNotNull(key));
+        }else{
+            userExtCriteria.add(Restrictions.isNull(key));
+        }
+ //       userExtCriteria.add(Restrictions.eq(key, hasItem));
     }
 }
 

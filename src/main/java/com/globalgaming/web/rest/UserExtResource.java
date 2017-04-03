@@ -151,10 +151,10 @@ public class UserExtResource {
     @Transactional
     public ResponseEntity<List<UserExt>> getUserExtByCriteria(
         @RequestParam(value = "nick", required = false) String nick,
-        @RequestParam(value = "idBattlenet", required = false) String idBattlenet,
-        @RequestParam(value = "idSteam", required = false) String idSteam,
-        @RequestParam(value = "idOrigin", required = false) String idOrigin,
-        @RequestParam(value = "idLol", required = false) String idLol,
+        @RequestParam(value = "idBattlenet", required = false) Boolean idBattlenet,
+        @RequestParam(value = "idSteam", required = false) Boolean idSteam,
+        @RequestParam(value = "idOrigin", required = false) Boolean idOrigin,
+        @RequestParam(value = "idLol", required = false) Boolean idLol,
         @RequestParam(value = "pais", required = false) String pais
     ) {
         Map<String, Object> params = new HashMap<>();
