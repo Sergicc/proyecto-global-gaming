@@ -63,11 +63,11 @@ public class SalaCriteriaRepository {
             filterByLimiteUsuariosBetween(parameters, salaCriteria);
         }
 
-        if (parameters.get("maxLimiteUsuarios") != null && parameters.get("minLimiteUsuarios") == null && parameters.get("maxCapacidadJugadores") instanceof Integer) {
+        if (parameters.get("maxLimiteUsuarios") != null && parameters.get("minLimiteUsuarios") == null && parameters.get("maxLimiteUsuarios") instanceof Integer) {
 
             filterByMaxLimiteUsuarios(parameters, salaCriteria);
         }
-        if (parameters.get("minLimiteUsuarios") != null && parameters.get("maxLimiteUsuarios") == null && parameters.get("minCapacidadJugadores") instanceof Integer) {
+        if (parameters.get("minLimiteUsuarios") != null && parameters.get("maxLimiteUsuarios") == null && parameters.get("minLimiteUsuarios") instanceof Integer) {
 
             filterByMinLimiteUsuarios(parameters, salaCriteria);
         }
@@ -82,7 +82,7 @@ public class SalaCriteriaRepository {
         Integer minLimiteUsuarios = (Integer) parameters.get("minLimiteUsuarios");
         Integer maxLimiteUsuarios = (Integer) parameters.get("maxLimiteUsuarios");
 
-        salaCriteria.add(Restrictions.between("capacidadJugadores",minLimiteUsuarios,maxLimiteUsuarios));
+        salaCriteria.add(Restrictions.between("limiteUsuarios",minLimiteUsuarios,maxLimiteUsuarios));
     }
 
 

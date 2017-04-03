@@ -138,7 +138,7 @@ public class SalaResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional
-    public ResponseEntity<List<Sala>> getPropertyByCriteria(
+    public ResponseEntity<List<Sala>> getSalaByCriteria(
         @RequestParam(value = "nombre", required = false) String nombre,
         @RequestParam(value = "minLimiteUsuarios", required = false) String minLimiteUsuarios,
         @RequestParam(value = "maxLimiteUsuarios", required = false) String maxLimiteUsuarios,

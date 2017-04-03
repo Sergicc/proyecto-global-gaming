@@ -1,9 +1,12 @@
 package com.globalgaming.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.globalgaming.domain.User;
 import com.globalgaming.domain.UserExt;
 
+import com.globalgaming.repository.UserExtCriteriaRepository;
 import com.globalgaming.repository.UserExtRepository;
+import com.globalgaming.repository.UserRepository;
 import com.globalgaming.web.rest.util.HeaderUtil;
 import com.globalgaming.web.rest.util.PaginationUtil;
 
@@ -14,13 +17,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -31,9 +38,15 @@ import java.util.Optional;
 public class UserExtResource {
 
     private final Logger log = LoggerFactory.getLogger(UserExtResource.class);
-        
+
     @Inject
     private UserExtRepository userExtRepository;
+
+    @Inject
+    private UserExtCriteriaRepository userExtCriteriaRepository;
+
+    @Inject
+    private UserRepository userRepository;
 
     /**
      * POST  /user-exts : Create a new userExt.
@@ -49,13 +62,18 @@ public class UserExtResource {
         if (userExt.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("userExt", "idexists", "A new userExt cannot already have an ID")).body(null);
         }
+
+        User user = userRepository.findOneByLogin(userExt.getUser().getLogin()).get();
+
+        userExt.setUser(user);
+
         UserExt result = userExtRepository.save(userExt);
         return ResponseEntity.created(new URI("/api/user-exts/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("userExt", result.getId().toString()))
             .body(result);
     }
 
-    /**
+    /*
      * PUT  /user-exts : Updates an existing userExt.
      *
      * @param userExt the userExt to update
@@ -126,4 +144,52 @@ public class UserExtResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("userExt", id.toString())).build();
     }
 
+    @RequestMapping(value = "/userext/byfilters",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    @Transactional
+    public ResponseEntity<List<UserExt>> getUserExtByCriteria(
+        @RequestParam(value = "nick", required = false) String nick,
+        @RequestParam(value = "idBattlenet", required = false) String idBattlenet,
+        @RequestParam(value = "idSteam", required = false) String idSteam,
+        @RequestParam(value = "idOrigin", required = false) String idOrigin,
+        @RequestParam(value = "idLol", required = false) String idLol,
+        @RequestParam(value = "pais", required = false) String pais
+    ) {
+        Map<String, Object> params = new HashMap<>();
+
+        if (nick != null) {
+            params.put("nick", nick);
+        }
+        if (idBattlenet != null) {
+            params.put("idBattlenet", idBattlenet);
+        }
+        if (idSteam != null) {
+            params.put("idSteam", idSteam);
+        }
+        if (idOrigin != null) {
+            params.put("idOrigin", idOrigin);
+        }
+        if (idLol != null) {
+            params.put("idLol", idLol);
+        }
+        if (pais != null) {
+            params.put("pais", pais);
+        }
+        List<UserExt> result = userExtCriteriaRepository.filterUserExtByCriteria(params);
+        if (result.isEmpty()) {
+            return new ResponseEntity<>(
+
+                null, HeaderUtil.createAlert("No match for the criteria entered!", "userExt"), HttpStatus.OK);
+        } else {
+            HttpHeaders httpHeaders = new HttpHeaders();
+            httpHeaders.add("X-Total-Count", String.valueOf(result.size()));
+            return new ResponseEntity<>(
+                result,
+                httpHeaders,
+                HttpStatus.OK
+            );
+        }
+    }
 }

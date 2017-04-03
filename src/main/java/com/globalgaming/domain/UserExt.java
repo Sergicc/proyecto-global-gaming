@@ -15,8 +15,8 @@ public class UserExt implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    //Comentamos la id automática
-   // @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Lob
@@ -49,8 +49,7 @@ public class UserExt implements Serializable {
 
     @OneToOne
     @JoinColumn(unique = true)
-    //este tag permite copiar la id de user
-    @MapsId
+
     private User user;
 
     public Long getId() {
@@ -213,7 +212,7 @@ public class UserExt implements Serializable {
     @Override
     public String toString() {
         return "UserExt{" +
-            "id=" + id +
+            "id=" + id + "'"+
             ", avatar='" + avatar + "'" +
             ", avatarContentType='" + avatarContentType + "'" +
             ", nick='" + nick + "'" +

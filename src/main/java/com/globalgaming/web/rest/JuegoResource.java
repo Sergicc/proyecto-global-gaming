@@ -151,7 +151,7 @@ public class JuegoResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional
-    public ResponseEntity<List<Juego>> getPropertyByCriteria(
+    public ResponseEntity<List<Juego>> getJuegoByCriteria(
         @RequestParam(value = "titulo", required = false) String titulo,
         @RequestParam(value = "descripcion", required = false) String descripcion,
         @RequestParam(value = "desarrollador", required = false) String desarrollador,
@@ -183,20 +183,20 @@ public class JuegoResource {
         if (edadRecomendada != null) {
             params.put("edadRecomendada", edadRecomendada);
         }
-        if (minCapacidadJugadores != null) {
+        if (maxCapacidadJugadores != null) {
             try {
-                Integer minCapacidadJugadoresInt = Integer.parseInt(minCapacidadJugadores);
-                params.put("minCapacidadJugadores", minCapacidadJugadoresInt);
+                Integer maxCapacidadJugadoresInt = Integer.parseInt(maxCapacidadJugadores);
+                params.put("maxCapacidadJugadores", maxCapacidadJugadoresInt);
             } catch (NumberFormatException e) {
                 return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("juego",
                     "number format exception on param",
                     "A numeric param cannot have non numeric characters")).body(null);
             }
         }
-        if (maxCapacidadJugadores != null) {
+        if (minCapacidadJugadores != null) {
             try {
-                Integer maxCapacidadJugadoresInt = Integer.parseInt(maxCapacidadJugadores);
-                params.put("maxCapacidadJugadores", maxCapacidadJugadoresInt);
+                Integer minCapacidadJugadoresInt = Integer.parseInt(minCapacidadJugadores);
+                params.put("minCapacidadJugadores", minCapacidadJugadoresInt);
             } catch (NumberFormatException e) {
                 return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("juego",
                     "number format exception on param",

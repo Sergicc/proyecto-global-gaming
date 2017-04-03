@@ -85,6 +85,7 @@ import java.util.Map;
 
                 filterByMinCapacidadJugadores(parameters, juegoCriteria);
             }
+
             // filtro por Valoracion Web
             if ((parameters.get("minValoracionWeb") != null && parameters.get("minValoracionWeb") instanceof Double)
                 && (parameters.get("maxValoracionWeb") != null && parameters.get("maxValoracionWeb") instanceof Double)
@@ -125,14 +126,12 @@ import java.util.Map;
             return results;
         }
 
-
         private void filterByCapacidadJugadoresBetween(Map<String, Object> parameters, Criteria juegoCriteria) {
             Integer minCapacidadJugadores = (Integer) parameters.get("minCapacidadJugadores");
             Integer maxCapacidadJugadores = (Integer) parameters.get("maxCapacidadJugadores");
 
             juegoCriteria.add(Restrictions.between("capacidadJugadores",minCapacidadJugadores,maxCapacidadJugadores));
         }
-
 
         private void filterByMaxCapacidadJugadores(Map<String, Object> parameters, Criteria juegoCriteria) {
             Integer maxCapacidadJugadores = (Integer) parameters.get("maxCapacidadJugadores");
@@ -144,7 +143,6 @@ import java.util.Map;
 
             juegoCriteria.add(Restrictions.ge("capacidadJugadores", minCapacidadJugadores));
         }
-
 
         private void filterByValoracionWebBetween(Map<String, Object> parameters, Criteria juegoCriteria) {
             Double minValoracionWeb = (Double) parameters.get("minValoracionWeb");
@@ -162,7 +160,6 @@ import java.util.Map;
 
             juegoCriteria.add(Restrictions.ge("valoracionWeb", minValoracionWeb));
         }
-
 
         private void filterByValoracionUsersBetween(Map<String, Object> parameters, Criteria juegoCriteria) {
             Double minValoracionUsers = (Double) parameters.get("minValoracionUsers");
