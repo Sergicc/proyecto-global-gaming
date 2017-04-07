@@ -27,26 +27,29 @@
         loadAll();
 
         function loadAll () {
+
             Juego.query({
                 page: vm.page,
                 size: vm.itemsPerPage,
                 sort: sort()
             }, onSuccess, onError);
 
-            Juego.byFilters({
-                titulo: vm.juegosByFilters.titulo
-                // descripcion: vm.juegosByFilters.descripcion,
-                // desarrollador: vm.juegosByFilters.desarrollador,
-                // genero: vm.juegosByFilters.genero,
-                // edadRecomendada: vm.juegosByFilters.edadRecomendada,
-                // minCapacidadJugadores: vm.juegosByFilters.minCapacidadJugadores,
-                // maxCapacidadJugadores: vm.juegosByFilters.maxCapacidadJugadores,
-                // minValoracionWeb: vm.juegosByFilters.minValoracionWeb,
-                // maxValoracionWeb: vm.juegosByFilters.maxValoracionWeb,
-                // minValoracionUsers: vm.juegosByFilters.minValoracionUsers,
-                // maxValoracionUsers: vm.juegosByFilters.maxValoracionUsers,
-                // idioma: vm.juegosByFilters.idioma
-            }, onSuccessByFilters, onError );
+                    Juego.byFilters({
+                    titulo: vm.juegosByFilters.titulo,
+                    descripcion: vm.juegosByFilters.descripcion,
+                    desarrollador: vm.juegosByFilters.desarrollador,
+                    genero: vm.juegosByFilters.genero,
+                    edadRecomendada: vm.juegosByFilters.edadRecomendada,
+                    minCapacidadJugadores: vm.juegosByFilters.minCapacidadJugadores,
+                    maxCapacidadJugadores: vm.juegosByFilters.maxCapacidadJugadores,
+                    minValoracionWeb: vm.juegosByFilters.minValoracionWeb,
+                    maxValoracionWeb: vm.juegosByFilters.maxValoracionWeb,
+                    minValoracionUsers: vm.juegosByFilters.minValoracionUsers,
+                    maxValoracionUsers: vm.juegosByFilters.maxValoracionUsers,
+                    idioma: vm.juegosByFilters.idioma
+                }, onSuccessByFilters, onError);
+
+            };
 
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
@@ -113,6 +116,5 @@
             function onError(error) {
                 AlertService.error(error.data.message);
             }
-        }
     }
 })();
