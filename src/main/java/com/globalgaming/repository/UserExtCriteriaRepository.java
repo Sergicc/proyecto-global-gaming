@@ -69,6 +69,8 @@ public class UserExtCriteriaRepository {
             filterByExists(parameters,userExtCriteria,"idLol");
         }
 
+
+
         if(parameters.get("pais")!= null) {
             String pais = (String) parameters.get("pais");
             userExtCriteria.add(Restrictions.ilike("pais", pais, MatchMode.ANYWHERE));
