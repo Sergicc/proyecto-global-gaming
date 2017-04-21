@@ -24,32 +24,26 @@
         vm.openFile = DataUtils.openFile;
         vm.byteSize = DataUtils.byteSize;
 
-        loadAll();
 
-        function loadAll () {
+        vm.juegoByFilters = function () {
 
-            Juego.query({
-                page: vm.page,
-                size: vm.itemsPerPage,
-                sort: sort()
-            }, onSuccess, onError);
-
-                    Juego.byFilters({
-                    titulo: vm.juegosByFilters.titulo,
-                    descripcion: vm.juegosByFilters.descripcion,
-                    desarrollador: vm.juegosByFilters.desarrollador,
-                    genero: vm.juegosByFilters.genero,
-                    edadRecomendada: vm.juegosByFilters.edadRecomendada,
-                    minCapacidadJugadores: vm.juegosByFilters.minCapacidadJugadores,
-                    maxCapacidadJugadores: vm.juegosByFilters.maxCapacidadJugadores,
-                    minValoracionWeb: vm.juegosByFilters.minValoracionWeb,
-                    maxValoracionWeb: vm.juegosByFilters.maxValoracionWeb,
-                    minValoracionUsers: vm.juegosByFilters.minValoracionUsers,
-                    maxValoracionUsers: vm.juegosByFilters.maxValoracionUsers,
-                    idioma: vm.juegosByFilters.idioma
-                }, onSuccessByFilters, onError);
-
-            };
+            // es igual a..
+            //?location=Barcelona
+            //parametro:valor
+            Juego.byFilters({
+                titulo: vm.juegosByFilters.titulo,
+                descripcion: vm.juegosByFilters.descripcion,
+                desarrollador: vm.juegosByFilters.desarrollador,
+                genero: vm.juegosByFilters.genero,
+                edadRecomendada: vm.juegosByFilters.edadRecomendada,
+                minCapacidadJugadores: vm.juegosByFilters.minCapacidadJugadores,
+                maxCapacidadJugadores: vm.juegosByFilters.maxCapacidadJugadores,
+                minValoracionWeb: vm.juegosByFilters.minValoracionWeb,
+                maxValoracionWeb: vm.juegosByFilters.maxValoracionWeb,
+                minValoracionUsers: vm.juegosByFilters.minValoracionUsers,
+                maxValoracionUsers: vm.juegosByFilters.maxValoracionUsers,
+                idioma: vm.juegosByFilters.idioma
+            }, onSuccessByFilters, onError);
 
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
@@ -59,27 +53,62 @@
                 return result;
             }
 
-            function onSuccess(data, headers) {
-                vm.links = ParseLinks.parse(headers('link'));
-                vm.totalItems = headers('X-Total-Count');
-                for (var i = 0; i < data.length; i++) {
-                    vm.juegos.push(data[i]);
-                }
+            function onError(error) {
+                toastr.error(error.data.error, 'Error!');
             }
 
             function onSuccessByFilters(data, headers) {
-
-                for (var i = 0; i < data.length; i++) {
-                    vm.juegosByFilters.push(data[i]);
-                }
+                vm.links = ParseLinks.parse(headers('link'));
+                vm.totalItems = headers('X-Total-Count');
+                vm.queryCount = vm.totalItems;
+                vm.listByFilter = data;
+                vm.page = pagingParams.page;
             }
 
-            function onError(error) {
-                AlertService.error(error.data.message);
+        };
+
+        loadAll();
+
+        function loadAll() {
+
+            Juego.query({
+                page: vm.page,
+                size: vm.itemsPerPage,
+                sort: sort()
+            }, onSuccess, onError);
+
+
+        };
+
+        function sort() {
+            var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
+            if (vm.predicate !== 'id') {
+                result.push('id');
+            }
+            return result;
+        }
+
+        function onSuccess(data, headers) {
+            vm.links = ParseLinks.parse(headers('link'));
+            vm.totalItems = headers('X-Total-Count');
+            for (var i = 0; i < data.length; i++) {
+                vm.juegos.push(data[i]);
             }
         }
 
-        function reset () {
+        function onSuccessByFilters(data, headers) {
+
+            for (var i = 0; i < data.length; i++) {
+                vm.juegosByFilters.push(data[i]);
+            }
+        }
+
+        function onError(error) {
+            AlertService.error(error.data.message);
+        }
+
+
+        function reset() {
             vm.page = 0;
             vm.juegos = [];
             loadAll();
@@ -90,7 +119,7 @@
             loadAll();
         }
 
-        vm.loadByFilters = function(){
+        vm.loadByFilters = function () {
             Juego.byFilters({
                 titulo: vm.juegosByFilters.titulo
                 // descripcion: vm.juegosByFilters.descripcion,
@@ -104,7 +133,7 @@
                 // minValoracionUsers: vm.juegosByFilters.minValoracionUsers,
                 // maxValoracionUsers: vm.juegosByFilters.maxValoracionUsers,
                 // idioma: vm.juegosByFilters.idioma
-            }, onSuccessByFilters, onError );
+            }, onSuccessByFilters, onError);
 
             function onSuccessByFilters(data, headers) {
 
@@ -116,5 +145,6 @@
             function onError(error) {
                 AlertService.error(error.data.message);
             }
+        }
     }
 })();

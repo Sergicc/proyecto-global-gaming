@@ -90,4 +90,22 @@
         </button>
 
     </div>
+
+    <div>
+        <div class="widget widget-white">
+            <div class="widget-header">
+                <h3>SEARCH</h3>
+            </div>
+            <form role="form">
+                <div class="form-group">
+                    <label>TÍTULO</label>
+                    <!--wtf-->
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.titulo">
+                </div>
+                <input type="submit" name="submit" value="submit" class="btn btn-success btn-block" ng-click="vm.juegoByFilters()">
+                <!--{{ 'ProyectoGlobalGamingApp.juego.simpleSearch' | translate }}-->
+            </form>
+        </div>
+    </div>
+
 </div>
