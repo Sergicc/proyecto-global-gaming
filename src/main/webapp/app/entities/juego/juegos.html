@@ -78,16 +78,110 @@
             </tbody>
         </table>
 
-        <div class="form-group">
-            <label class="control-label" data-translate="proyectoGlobalGamingApp.juego.titulo" for="field_titulo">Titulo</label>
-            <input type="text" class="form-control" name="titulo" id="field_titulo"
-                   ng-model="vm.juegosByFilters.titulo"
-            />
-        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" data-translate="proyectoGlobalGamingApp.juego.titulo" for="field_titulo">Titulo</label>-->
+            <!--<input type="text" class="form-control" name="titulo" id="field_titulo"-->
+                   <!--ng-model="vm.juegosByFilters.titulo"-->
+            <!--/>-->
+        <!--</div>-->
 
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.loadByFilters()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
-        </button>
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.loadByFilters()">-->
+            <!--<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>-->
+        <!--</button>-->
+
+    </div>
+
+    <div>
+        <div class="widget widget-white">
+            <div class="widget-header">
+                <h3>SEARCH</h3>
+            </div>
+            <form role="form">
+                <div class="form-group">
+                    <label>TÍTULO</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.titulo">
+                </div>
+                <div class="form-group">
+                    <label>DESCRIPCIÓN</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.descripcion">
+                </div>
+                <div class="form-group">
+                    <label>DESARROLLADOR</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.desarrollador">
+                </div>
+                <div class="form-group">
+                    <label>GÉNERO</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.genero">
+                </div>
+                <div class="form-group">
+                    <label>EDAD RECOMENDADA</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.edadRecomendada">
+                </div>
+                <div class="form-group">
+                    <label>MÍNIMO - CAPACIDAD DE JUGADORES</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.minCapacidadJugadores">
+                </div>
+                <div class="form-group">
+                    <label>MÁXIMO - CAPACIDAD DE JUGADORES</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.maxCapacidadJugadores">
+                </div>
+                <div class="form-group">
+                    <label>MÍNIMO - VALORACIÓN DE LA WEB</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.minValoracionWeb">
+                </div>
+                <div class="form-group">
+                    <label>MÁXIMO - VALORACIÓN DE LA WEB</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.maxValoracionWeb">
+                </div>
+                <div class="form-group">
+                    <label>MÍNIMO - VALORACIÓN DE LOS USUARIOS</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.minValoracionUsers">
+                </div>
+                <div class="form-group">
+                    <label>MÁXIMO - VALORACIÓN DE LOS USUARIOS</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.maxValoracionUsers">
+                </div>
+                <!--<div class="form-group">-->
+                    <!--<label>IDIOMA</label>-->
+                    <!--<input type="text" class="form-control" ng-model="vm.juegosByFilters.idioma">-->
+                <!--</div>-->
+
+                <input type="submit" name="submit" value="submit" class="btn btn-success btn-block" ng-click="vm.juegoByFilters()">
+                <!--{{ 'ProyectoGlobalGamingApp.juego.simpleSearch' | translate }}-->
+           </form>
+        </div>
+    </div>
+
+    <div>
+        <label>RESULTADOS: </label>
+        <ul ng-repeat="juego in vm.juegosByFilters">
+            <li>{{juego.titulo}}</li>
+        </ul>
+
+        <!--<div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="property in vm.listByFilter | orderBy:vm.orderCriteria.criteria:vm.orderCriteria.rev | filter:vm.quickSearch track by property.id">-->
+            <!--<div class="property-container">-->
+                <!--<div class="property-image">-->
+                    <!--&lt;!&ndash;{{property.photos}}&ndash;&gt;-->
+                    <!--<img data-ng-src="{{'data:' + property.photos[0].imageContentType + ';base64,' + property.photos[0].image}}" ui-sref="property.detail({id:property.id})" style="max-height: 180px;"/>-->
+                    <!--<div class="property-price">-->
+                        <!--<span>{{property.price}}€</span>-->
+                    <!--</div>-->
+                    <!--<div class="property-status">-->
+                        <!--<span data-translate="{{'assessoriaTorrellesApp.property.ServiceType.' + property.serviceType}}">For Rent</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="property-features">-->
+                    <!--<span><i class="fa fa-home"></i> {{property.m2}} m<sup>2</sup></span>-->
+                    <!--<span><i class="fa fa-hdd-o"></i> {{property.numberBedroom}}</span>-->
+                    <!--<span><i class="fa fa-male"></i> {{property.numberBedroom}}</span>-->
+                <!--</div>-->
+                <!--<div class="property-content">-->
+                    <!--<h3><a ui-sref="property.detail({id:property.id})" data-translate="{{'assessoriaTorrellesApp.property.BuildingType.' + property.buildingType}}">{{property.buildingType}}</a> <small>{{property.location.town}}</small></h3>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
 
     </div>
 </div>
