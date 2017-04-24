@@ -5,13 +5,14 @@
         .module('proyectoGlobalGamingApp')
         .controller('JuegoController', JuegoController);
 
-    JuegoController.$inject = ['$scope', '$state', 'DataUtils', 'Juego', 'ParseLinks', 'AlertService', 'paginationConstants'];
+    JuegoController.$inject = ['$scope', '$state', 'DataUtils', 'Juego', 'ParseLinks', 'AlertService', 'paginationConstants', 'searchJuego'];
 
-    function JuegoController ($scope, $state, DataUtils, Juego, ParseLinks, AlertService, paginationConstants) {
+    function JuegoController ($scope, $state, DataUtils, Juego, ParseLinks, AlertService, paginationConstants, searchJuego) {
         var vm = this;
 
         vm.juegos = [];
-        vm.juegosByFilters = [];
+        vm.juegosByFilters = searchJuego;
+        vm.listJuego = [];
         vm.loadPage = loadPage;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.page = 0;
@@ -58,11 +59,12 @@
             }
 
             function onSuccessByFilters(data, headers) {
-                vm.links = ParseLinks.parse(headers('link'));
+                // vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.juegosByFilters = data;
+                vm.listJuego = data;
                 vm.page = pagingParams.page;
+                console.log("onsuccess");
             }
 
         };

@@ -115,31 +115,31 @@
                 </div>
                 <div class="form-group">
                     <label>EDAD RECOMENDADA</label>
-                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.edadRecomendada">
+                    <input type="number" class="form-control" ng-model="vm.juegosByFilters.edadRecomendada">
                 </div>
                 <div class="form-group">
                     <label>MÍNIMO - CAPACIDAD DE JUGADORES</label>
-                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.minCapacidadJugadores">
+                    <input type="number" class="form-control" ng-model="vm.juegosByFilters.minCapacidadJugadores">
                 </div>
                 <div class="form-group">
                     <label>MÁXIMO - CAPACIDAD DE JUGADORES</label>
-                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.maxCapacidadJugadores">
+                    <input type="number" class="form-control" ng-model="vm.juegosByFilters.maxCapacidadJugadores">
                 </div>
                 <div class="form-group">
                     <label>MÍNIMO - VALORACIÓN DE LA WEB</label>
-                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.minValoracionWeb">
+                    <input type="number" class="form-control" ng-model="vm.juegosByFilters.minValoracionWeb">
                 </div>
                 <div class="form-group">
                     <label>MÁXIMO - VALORACIÓN DE LA WEB</label>
-                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.maxValoracionWeb">
+                    <input type="number" class="form-control" ng-model="vm.juegosByFilters.maxValoracionWeb">
                 </div>
                 <div class="form-group">
                     <label>MÍNIMO - VALORACIÓN DE LOS USUARIOS</label>
-                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.minValoracionUsers">
+                    <input type="number" class="form-control" ng-model="vm.juegosByFilters.minValoracionUsers">
                 </div>
                 <div class="form-group">
                     <label>MÁXIMO - VALORACIÓN DE LOS USUARIOS</label>
-                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.maxValoracionUsers">
+                    <input type="number" class="form-control" ng-model="vm.juegosByFilters.maxValoracionUsers">
                 </div>
                 <!--<div class="form-group">-->
                     <!--<label>IDIOMA</label>-->
@@ -154,7 +154,7 @@
 
     <div>
         <label>RESULTADOS: </label>
-        <ul ng-repeat="juego in vm.juegosByFilters">
+        <ul ng-repeat="juego in vm.listJuego">
             <li>{{juego.titulo}}</li>
         </ul>
 

@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * REST controller for managing Juego.
@@ -243,10 +244,19 @@ public class JuegoResource {
                     "A numeric param cannot have non numeric characters")).body(null);
             }
         }
-        if (idioma != null) {
-            params.put("idioma", idioma);
-        }
+
         List<Juego> result = juegoCriteriaRepository.filterJuegoByCriteria(params);
+
+        if (idioma != null) {
+            result=result.parallelStream()
+                .filter(juego -> juego.getIdiomas()
+                    .stream().map(idioma1 -> idioma1.getNombre())
+                    .anyMatch(s -> s.equalsIgnoreCase(idioma)))
+                    .collect(Collectors.toList());
+        }
+
+
+
         if (result.isEmpty()) {
             return new ResponseEntity<>(
 
