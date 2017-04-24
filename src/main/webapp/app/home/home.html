@@ -1,45 +1,626 @@
+
+<link rel="stylesheet" href="../../content/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../content/css/style.css">
 <div ng-cloak>
-    <div class="row">
-        <!--  <div class="col-md-4">
-            <span class="hipster img-responsive img-rounded"></span>
-        </div> -->
+    <div class="wrapper">
+        <video id="videoHeader" autoplay="autoplay" muted="muted" loop>
 
-        <div class="col-md-8">
-            <h1 data-translate="home.title">Welcome to Global Gaming!</h1>
-            <p class="lead" data-translate="home.subtitle">This is your homepage</p>
+            <source src="../../content/css/video/League of Legends - Cinematic Trailer A New Dawn.mp4" type="video/mp4">
+        </video>
+        <header class="header">
+            <div class="jumbotron">
 
-            <div ng-switch="vm.isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
-                    You are logged in as user "{{vm.account.login}}".
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="jumbotron-content">
+                                <h5>Global Gaming</h5>
+
+                                <h1 class="shadowFont">Bienvenidos a la red social de videojuegos.</h1>
+
+                                <p class="fontWhite">Aquí podrás conocer todo tipo de gente para poder disfrutar los juegos en compañia.</p>
+
+                                <!--							<div class="jumbotron-actions">
+                                                                                                <a href="#" class="btn btn-primary">Download Now</a>
+
+                                                                                                <a href="#" class="btn btn-dark">View Features</a>
+                                                                                        </div> /.jumbotron-actions -->
+                            </div><!-- /.jumbotron-content -->
+                        </div><!-- /.col-md-6 -->
+
+                        <div class="col-md-6">
+                            <div class="jumbotron-image">
+                                <!--							<img src="css/images/temp/jumbotron-image.png" height="519" width="505" alt="">-->
+                            </div><!-- /.jumbotron-image -->
+                        </div><!-- /.col-md-6 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.jumbotron -->
+        </header><!-- /.header -->
+        <section class="section section-features" id="section-features">
+            <div class="container">
+                <header class="section-head">
+
+                    <h2 class="section-title">Características Principales </h2><!-- /.section-title -->
+                </header><!-- /.section-head -->
+
+                <div class="section-body">
+                    <div class="features">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="feature">
+                                    <div class="feature-image">
+                                        <i class="ico ico-monitor"></i>
+                                    </div><!-- /.feature-image -->
+
+                                    <h3 class="feature-title">Comunidad</h3><!-- /.feature-title -->
+
+                                    <div class="feature-entry">
+                                        <p>Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit non ipsum lacinia consectetur.</p>
+                                    </div><!-- /.feature-entry -->
+                                </div><!-- /.feature -->
+                            </div><!-- /.col-md-3 -->
+
+                            <div class="col-md-3">
+                                <div class="feature">
+                                    <div class="feature-image">
+                                        <i class="ico ico-gear"></i>
+                                    </div><!-- /.feature-image -->
+
+                                    <h3 class="feature-title">Juegos</h3><!-- /.feature-title -->
+
+                                    <div class="feature-entry">
+                                        <p>Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit non ipsum lacinia consectetur.</p>
+                                    </div><!-- /.feature-entry -->
+                                </div><!-- /.feature -->
+                            </div><!-- /.col-md-3 -->
+
+                            <div class="col-md-3">
+                                <div class="feature">
+                                    <div class="feature-image">
+                                        <i class="ico ico-thumb"></i>
+                                    </div><!-- /.feature-image -->
+
+                                    <h3 class="feature-title">Noticias</h3><!-- /.feature-title -->
+
+                                    <div class="feature-entry">
+                                        <p>Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit non ipsum lacinia consectetur.</p>
+                                    </div><!-- /.feature-entry -->
+                                </div><!-- /.feature -->
+                            </div><!-- /.col-md-3 -->
+
+                            <div class="col-md-3">
+                                <div class="feature">
+                                    <div class="feature-image">
+                                        <i class="ico ico-device"></i>
+                                    </div><!-- /.feature-image -->
+
+                                    <h3 class="feature-title">Adaptable</h3><!-- /.feature-title -->
+
+                                    <div class="feature-entry">
+                                        <p>Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit non ipsum lacinia consectetur.</p>
+                                    </div><!-- /.feature-entry -->
+                                </div><!-- /.feature -->
+                            </div><!-- /.col-md-3 -->
+                        </div><!-- /.row -->
+                    </div><!-- /.features -->
+                </div><!-- /.section-body -->
+            </div><!-- /.container -->
+        </section><!-- /.section section-features -->7
+        <section class="section section-about" id="section-about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="section-image">
+
+                            <img id="fotoTeam" src="../../content/css/images/temp/foto_team.png"/>
+                            <!--						<img src="css/images/temp/about-image-1.png" alt="">-->
+                        </div><!-- /.section-image -->
+                    </div><!-- /.col-md-6 -->
+
+                    <div class="col-md-6">
+                        <div class="section-content">
+                            <header class="section-head">
+
+
+                                <h2 class="section-title">Comunidad</h2><!-- /.section-title -->
+
+                            </header><!-- /.section-head -->
+
+                            <div class="section-body">
+                                <div class="section-entry">
+                                    <p>Accede a esta comunidad de jugadores de todo el mundo, dónde podrás unirte y administrar salas.Accede a esta comunidad de jugadores de todo el mundo, dónde podrás unirte y administrar salas.Accede a esta comunidad de jugadores de todo el mundo, dónde podrás unirte y administrar salas.</p>
+
+                                    <ul class="list-features">
+                                        <li>
+                                            <i class="ico ico-cup"></i>
+
+                                            Juegos
+                                        </li>
+
+                                        <li>
+                                            <i class="ico ico-mouse"></i>
+
+                                            Salas
+                                        </li>
+                                        <li>
+                                            <i class="ico ico-bolt"></i>
+
+                                            Social
+                                        </li>
+
+                                        <li>
+                                            <i class="ico ico-cup"></i>
+
+                                            Competición
+                                        </li>
+                                    </ul><!-- /.list-features -->
+                                </div><!-- /.section-entry -->
+                            </div><!-- /.section-body -->
+                        </div><!-- /.section-content -->
+                    </div><!-- /.col-md-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.section section-about -->
+
+        <!--	<section class="section section-about section-about-alt">
+                        <div class="container">
+                                <div class="row">
+                                        <div class="col-md-6 col-lg-5">
+                                                <div class="section-content">
+                                                        <header class="section-head">
+                                                                <h5>Dip Into The Details</h5>
+
+                                                                <h2 class="section-title">Super easy to customize</h2> /.section-title
+                                                        </header> /.section-head
+
+                                                        <div class="section-body">
+                                                                <div class="section-entry">
+                                                                        <p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non	mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                                                                </div> /.section-entry
+                                                        </div> /.section-body
+                                                </div> /.section-content
+                                        </div> /.col-md-6
+
+                                        <div class="col-md-6 col-lg-7">
+                                                <div class="section-image">
+                                                        <img src="css/images/temp/about-image-2.png" alt="">-
+                                                </div> /.section-image
+                                        </div> /.col-md-6
+                                </div> /.row
+                        </div> /.container
+                </section> /.section section-about -->
+        <section class="section section-about section-about-alt">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-5">
+                        <div class="section-content">
+                            <header class="section-head">
+                                <h2 class="section-title">Juegos</h2><!-- /.section-title -->
+                            </header><!-- /.section-head -->
+
+                            <div class="section-body">
+                                <div class="section-entry">
+                                    <p>Accede a esta comunidad de jugadores de todo el mundo, dónde podrás unirte y administrar salas.Accede a esta comunidad de jugadores de todo el mundo, dónde podrás unirte y administrar salas.Accede a esta comunidad de jugadores de todo el mundo, dónde podrás unirte y administrar salas.</p>
+                                </div><!-- /.section-entry -->
+                            </div><!-- /.section-body -->
+                        </div><!-- /.section-content -->
+                    </div><!-- /.col-md-6 -->
+
+                    <div class="col-md-6 col-lg-7">
+                        <div class="section-image">
+                            <img id="fotoJuegos" src="../../content/css/images/temp/Nautilus_Render.png" alt=""/>
+                            <!--						<img src="css/images/temp/about-image-2.png" alt="">-->
+                        </div><!-- /.section-image -->
+                    </div><!-- /.col-md-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.section section-about -->
+        <section class="section section-about" id="section-about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="section-image">
+                            <img id="fotoTeam" src="../../content/css/images/temp/foto_team.png" alt=""/>
+                            <!--						<img src="css/images/temp/about-image-1.png" alt="">-->
+                        </div><!-- /.section-image -->
+                    </div><!-- /.col-md-6 -->
+
+                    <div class="col-md-6">
+                        <div class="section-content">
+                            <header class="section-head">
+
+
+                                <h2 class="section-title">Noticias</h2><!-- /.section-title -->
+
+                            </header><!-- /.section-head -->
+
+                            <div class="section-body">
+                                <div class="section-entry">
+                                    <p>Accede a esta comunidad de jugadores de todo el mundo, dónde podrás unirte y administrar salas.Accede a esta comunidad de jugadores de todo el mundo, dónde podrás unirte y administrar salas.Accede a esta comunidad de jugadores de todo el mundo, dónde podrás unirte y administrar salas.</p>
+
+                                    <ul class="list-features">
+                                        <li>
+                                            <i class="ico ico-cup"></i>
+
+                                            Juegos
+                                        </li>
+
+                                        <li>
+                                            <i class="ico ico-mouse"></i>
+
+                                            Salas
+                                        </li>
+
+                                        <li>
+                                            <i class="ico ico-bolt"></i>
+
+                                            Social
+                                        </li>
+
+                                        <li>
+                                            <i class="ico ico-cup"></i>
+
+                                            Competición
+                                        </li>
+                                    </ul><!-- /.list-features -->
+                                </div><!-- /.section-entry -->
+                            </div><!-- /.section-body -->
+                        </div><!-- /.section-content -->
+                    </div><!-- /.col-md-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.section section-about -->
+        <section class="section section-about section-about-alt">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-5">
+                        <div class="section-content">
+                            <header class="section-head">
+                                <h2 class="section-title">Adaptable</h2><!-- /.section-title -->
+                            </header><!-- /.section-head -->
+
+                            <div class="section-body">
+                                <div class="section-entry">
+                                    <p>Accede a esta comunidad de jugadores de todo el mundo, dónde podrás unirte y administrar salas.Accede a esta comunidad de jugadores de todo el mundo, dónde podrás unirte y administrar salas.Accede a esta comunidad de jugadores de todo el mundo, dónde podrás unirte y administrar salas.</p>
+                                </div><!-- /.section-entry -->
+                            </div><!-- /.section-body -->
+                        </div><!-- /.section-content -->
+                    </div><!-- /.col-md-6 -->
+
+                    <div class="col-md-6 col-lg-7">
+                        <div class="section-image">
+                            <img id="fotoAdaptable" src="../../content/css/images/temp/about-image-1.png" alt=""/>
+                            <!--						<img src="css/images/temp/about-image-2.png" alt="">-->
+                        </div><!-- /.section-image -->
+                    </div><!-- /.col-md-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.section section-about -->
+        <section class="section section-testimonials" id="section-testimonials">
+            <div class="container">
+                <header class="section-head">
+                    <h5>Quality Has Its Price</h5>
+
+                    <h2 class="section-title">Pricing &amp; Plans</h2><!-- /.section-title -->
+                </header><!-- /.section-head -->
+
+                <div class="section-body">
+                    <div class="slider-testimoinals">
+                        <div class="slider-clip">
+                            <ul class="slides">
+                                <li class="slide">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="testimonial">
+                                                <div class="testimonial-entry">
+                                                    <p>Once upon a time all the Rivers combined to protest against the action of the Sea in making their waters salt. &ldquo;When we come to you,&rdquo; said they to the Sea.</p>
+                                                </div><!-- /.testimonial-entry -->
+
+                                                <div class="testimonial-author">
+                                                    <div class="testimoinal-author-avatar">
+                                                        <img src="../../content/css/images/temp/avatar-1.jpg" alt="">
+                                                    </div><!-- /.testimoinal-author-avatar -->
+
+                                                    <div class="testimonial-author-name">
+                                                        John Doe
+
+                                                        <span>CEO, The Rivers Company</span>
+                                                    </div><!-- /.testimonial-author-name -->
+                                                </div><!-- /.testimonial-author -->
+                                            </div><!-- /.testimonial -->
+                                        </div><!-- /.col-md-6 -->
+
+                                        <div class="col-md-6">
+                                            <div class="testimonial">
+                                                <div class="testimonial-entry">
+                                                    <p>A shoe is not only a design, but it's a part of your body language, the way you walk. The way you're going to move is quite dictated by your shoes.</p>
+                                                </div><!-- /.testimonial-entry -->
+
+                                                <div class="testimonial-author">
+                                                    <div class="testimoinal-author-avatar">
+                                                        <img src="../../content/css/images/temp/avatar-2.jpg" alt="">
+                                                    </div><!-- /.testimoinal-author-avatar -->
+
+                                                    <div class="testimonial-author-name">
+                                                        Dean Winchester
+
+                                                        <span>UX Designer, Google Inc.</span>
+                                                    </div><!-- /.testimonial-author-name -->
+                                                </div><!-- /.testimonial-author -->
+                                            </div><!-- /.testimonial -->
+                                        </div><!-- /.col-md-6 -->
+                                    </div><!-- /.row -->
+                                </li><!-- /.slide -->
+
+                                <li class="slide">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="testimonial">
+                                                <div class="testimonial-entry">
+                                                    <p>Once upon a time all the Rivers combined to protest against the action of the Sea in making their waters salt. &ldquo;When we come to you,&rdquo; said they to the Sea.</p>
+                                                </div><!-- /.testimonial-entry -->
+
+                                                <div class="testimonial-author">
+                                                    <div class="testimoinal-author-avatar">
+                                                        <img src="../../content/css/images/temp/avatar-1.jpg" alt="">
+                                                    </div><!-- /.testimoinal-author-avatar -->
+
+                                                    <div class="testimonial-author-name">
+                                                        John Doe
+
+                                                        <span>CEO, The Rivers Company</span>
+                                                    </div><!-- /.testimonial-author-name -->
+                                                </div><!-- /.testimonial-author -->
+                                            </div><!-- /.testimonial -->
+                                        </div><!-- /.col-md-6 -->
+
+                                        <div class="col-md-6">
+                                            <div class="testimonial">
+                                                <div class="testimonial-entry">
+                                                    <p>A shoe is not only a design, but it's a part of your body language, the way you walk. The way you're going to move is quite dictated by your shoes.</p>
+                                                </div><!-- /.testimonial-entry -->
+
+                                                <div class="testimonial-author">
+                                                    <div class="testimoinal-author-avatar">
+                                                        <img src="../../content/css/images/temp/avatar-2.jpg" alt="">
+                                                    </div><!-- /.testimoinal-author-avatar -->
+
+                                                    <div class="testimonial-author-name">
+                                                        Dean Winchester
+
+                                                        <span>UX Designer, Google Inc.</span>
+                                                    </div><!-- /.testimonial-author-name -->
+                                                </div><!-- /.testimonial-author -->
+                                            </div><!-- /.testimonial -->
+                                        </div><!-- /.col-md-6 -->
+                                    </div><!-- /.row -->
+                                </li><!-- /.slide -->
+
+                                <li class="slide">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="testimonial">
+                                                <div class="testimonial-entry">
+                                                    <p>Once upon a time all the Rivers combined to protest against the action of the Sea in making their waters salt. &ldquo;When we come to you,&rdquo; said they to the Sea.</p>
+                                                </div><!-- /.testimonial-entry -->
+
+                                                <div class="testimonial-author">
+                                                    <div class="testimoinal-author-avatar">
+                                                        <img src="../../content/css/images/temp/avatar-1.jpg" alt="">
+                                                    </div><!-- /.testimoinal-author-avatar -->
+
+                                                    <div class="testimonial-author-name">
+                                                        John Doe
+
+                                                        <span>CEO, The Rivers Company</span>
+                                                    </div><!-- /.testimonial-author-name -->
+                                                </div><!-- /.testimonial-author -->
+                                            </div><!-- /.testimonial -->
+                                        </div><!-- /.col-md-6 -->
+
+                                        <div class="col-md-6">
+                                            <div class="testimonial">
+                                                <div class="testimonial-entry">
+                                                    <p>A shoe is not only a design, but it's a part of your body language, the way you walk. The way you're going to move is quite dictated by your shoes.</p>
+                                                </div><!-- /.testimonial-entry -->
+
+                                                <div class="testimonial-author">
+                                                    <div class="testimoinal-author-avatar">
+                                                        <img src="../../content/css/images/temp/avatar-2.jpg" alt="">
+                                                    </div><!-- /.testimoinal-author-avatar -->
+
+                                                    <div class="testimonial-author-name">
+                                                        Dean Winchester
+
+                                                        <span>UX Designer, Google Inc.</span>
+                                                    </div><!-- /.testimonial-author-name -->
+                                                </div><!-- /.testimonial-author -->
+                                            </div><!-- /.testimonial -->
+                                        </div><!-- /.col-md-6 -->
+                                    </div><!-- /.row -->
+                                </li><!-- /.slide -->
+
+                                <li class="slide">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="testimonial">
+                                                <div class="testimonial-entry">
+                                                    <p>Once upon a time all the Rivers combined to protest against the action of the Sea in making their waters salt. &ldquo;When we come to you,&rdquo; said they to the Sea.</p>
+                                                </div><!-- /.testimonial-entry -->
+
+                                                <div class="testimonial-author">
+                                                    <div class="testimoinal-author-avatar">
+                                                        <img src="../../content/css/images/temp/avatar-1.jpg" alt="">
+                                                    </div><!-- /.testimoinal-author-avatar -->
+
+                                                    <div class="testimonial-author-name">
+                                                        John Doe
+
+                                                        <span>CEO, The Rivers Company</span>
+                                                    </div><!-- /.testimonial-author-name -->
+                                                </div><!-- /.testimonial-author -->
+                                            </div><!-- /.testimonial -->
+                                        </div><!-- /.col-md-6 -->
+
+                                        <div class="col-md-6">
+                                            <div class="testimonial">
+                                                <div class="testimonial-entry">
+                                                    <p>A shoe is not only a design, but it's a part of your body language, the way you walk. The way you're going to move is quite dictated by your shoes.</p>
+                                                </div><!-- /.testimonial-entry -->
+
+                                                <div class="testimonial-author">
+                                                    <div class="testimoinal-author-avatar">
+                                                        <img src="../../content/css/images/temp/avatar-2.jpg" alt="">
+                                                    </div><!-- /.testimoinal-author-avatar -->
+
+                                                    <div class="testimonial-author-name">
+                                                        Dean Winchester
+
+                                                        <span>UX Designer, Google Inc.</span>
+                                                    </div><!-- /.testimonial-author-name -->
+                                                </div><!-- /.testimonial-author -->
+                                            </div><!-- /.testimonial -->
+                                        </div><!-- /.col-md-6 -->
+                                    </div><!-- /.row -->
+                                </li><!-- /.slide -->
+                            </ul><!-- /.slides -->
+                        </div><!-- /.slider-clip -->
+                    </div><!-- /.slider-testimoinals -->
+                </div><!-- /.section-body -->
+            </div><!-- /.container -->
+        </section><!-- /.section section-testimonials -->
+
+        <div class="callout">
+            <div class="container">
+                <h2 class="callout-title">
+                    <strong>Like what you see?</strong> Get this great theme now!
+                </h2><!-- /.callout-title -->
+
+                <div class="callout-actions">
+                    <a href="#" class="btn btn-dark">View Features</a>
+
+                    <a href="#" class="btn btn-primary">Download Now</a>
+                </div><!-- /.callout-actions -->
+            </div><!-- /.container -->
+        </div><!-- /.callout -->
+        <section class="section section-contacts" id="section-contacts">
+            <div class="container">
+                <header class="section-head">
+                    <h5>Entérate de todas las novedades!</h5>
+
+                    <h2 class="section-title">Contacto</h2>
+                </header>
+
+                <div class="section-body">
+                    <div class="contacts">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <i class="ico ico-device"></i>
+
+                                <p>
+                                    Phone: (36) 636636636 <br>
+
+                                </p>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <i class="ico ico-marker"></i>
+
+                                <p>
+                                    08001 Carrer de Pelai, 8. <br>
+
+                                    Barcelona,  Barcelona
+                                </p>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <i class="ico ico-envelope"></i>
+
+                                <p>
+                                    <a href="#">globalgaming@gmail.com</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="section-foot">
+                <div class="map" id="map" data-address="1001 Brickell Bay Dr. Suite 1900 Miami, FL 33131"></div><!-- /.map -->
+            </footer>
+        </section>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-socials">
+                    <ul>
+                        <li>
+                            <a href="#" class="link-behance">behance</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="link-dribble">dribble</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="link-twitter">twitter</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="link-facebook">facebook</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="link-linkedin">linkedin</a>
+                        </li>
+                    </ul>
                 </div>
 
-                <!--     <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.authenticated" translate-compile>
-                       If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-                   </div> -->
+                <p class="copyright">Copyright © 2018 GLOBALGAMING</p>
+            </div>
+        </footer>
+    </div>
+    <!--<div class="row">-->
+        <!--&lt;!&ndash;  <div class="col-md-4">-->
+            <!--<span class="hipster img-responsive img-rounded"></span>-->
+        <!--</div> &ndash;&gt;-->
 
-                   <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.register" translate-compile>
-                       You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
-                   </div>
-               </div>
+        <!--<div class="col-md-8">-->
+            <!--<h1 data-translate="home.title">Welcome to Global Gaming!</h1>-->
+            <!--<p class="lead" data-translate="home.subtitle">This is your homepage</p>-->
 
-               <!--  <p data-translate="home.question">
-                      If you have any question on JHipster:
-                  </p> -->
+            <!--<div ng-switch="vm.isAuthenticated()">-->
+                <!--<div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">-->
+                    <!--You are logged in as user "{{vm.account.login}}".-->
+                <!--</div>-->
+
+                <!--&lt;!&ndash;     <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.authenticated" translate-compile>-->
+                       <!--If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").-->
+                   <!--</div> &ndash;&gt;-->
+
+                   <!--<div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.register" translate-compile>-->
+                       <!--You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>-->
+                   <!--</div>-->
+               <!--</div>-->
+
+               <!--&lt;!&ndash;  <p data-translate="home.question">-->
+                      <!--If you have any question on JHipster:-->
+                  <!--</p> &ndash;&gt;-->
 
 
-            <!--      <ul>
-                  <li><a href="http://jhipster.github.io/" target="_blank" data-translate="home.link.homepage">JHipster homepage</a></li>
-                  <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" data-translate="home.link.stackoverflow">JHipster on Stack Overflow</a></li>
-                  <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" data-translate="home.link.bugtracker">JHipster bug tracker</a></li>
-                  <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" data-translate="home.link.chat">JHipster public chat room</a></li>
-                  <li><a href="https://twitter.com/java_hipster" target="_blank"  data-translate="home.link.follow">follow @java_hipster on Twitter</a></li>
-              </ul>
-              -->
+            <!--&lt;!&ndash;      <ul>-->
+                  <!--<li><a href="http://jhipster.github.io/" target="_blank" data-translate="home.link.homepage">JHipster homepage</a></li>-->
+                  <!--<li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" data-translate="home.link.stackoverflow">JHipster on Stack Overflow</a></li>-->
+                  <!--<li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" data-translate="home.link.bugtracker">JHipster bug tracker</a></li>-->
+                  <!--<li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" data-translate="home.link.chat">JHipster public chat room</a></li>-->
+                  <!--<li><a href="https://twitter.com/java_hipster" target="_blank"  data-translate="home.link.follow">follow @java_hipster on Twitter</a></li>-->
+              <!--</ul>-->
+              <!--&ndash;&gt;-->
 
-            <!--  <p>
-              <span data-translate="home.like">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" data-translate="home.github">Github</a>!
-             </p>-->
+            <!--&lt;!&ndash;  <p>-->
+              <!--<span data-translate="home.like">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" data-translate="home.github">Github</a>!-->
+             <!--</p>&ndash;&gt;-->
 
-         </div>
-     </div>
+         <!--</div>-->
+     <!--</div>-->
  </div>
