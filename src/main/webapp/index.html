@@ -15,27 +15,51 @@
     <!-- endinject -->
     <!-- endbuild -->
     <!-- build:css content/css/main.css -->
+
     <link rel="stylesheet" href="content/css/main.css">
     <link rel="stylesheet" href="content/css/newcss.css">
+    <link rel="stylesheet" href="content/css/style.css">
+    <link rel="stylesheet" href="content/css/normalize.css">
+    <script src="bower_components/modernizr/modernizr-2.6.2.min.js"></script>
     <!-- endbuild -->
 </head>
 <body ng-app="proyectoGlobalGamingApp" ng-strict-di>
+<script>
+
+    setTimeout(function(){
+        $('body').addClass('loaded');
+        $('h1').css('color','#222222');
+    }, 3000);
+</script>
     <!--[if lt IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <page-ribbon></page-ribbon>
-    <div ui-view="navbar" ng-cloak></div>
-    <div class="container">
-        <div class="well" ui-view="content">
-            <!-- Angular views -->
+    <!--<page-ribbon></page-ribbon>-->
+    <div ui-view="navbar" ng-cloak id="cargaHome"></div>
+    <div class="container" id="containerHome">
+    <div id="demo-content">
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
         </div>
 
+        <!--<div id="content">-->
+
+
+            <div class="well" ui-view="content">
+
+            </div>
+        <!--</div>-->
+        </div>
         <div class="footer" ng-cloak>
             <!--<p data-translate="footer">This is your footer</p>-->
         </div>
-        <div class="footer" ng-cloak>
-            <p data-translate="home.copyright"></p>
-        </div>
+        <!--<div class="footer" ng-cloak>-->
+            <!--<p data-translate="home.copyright"></p>-->
+        <!--</div>-->
     </div>
 <!-- COMMIT FUNCIONANDO-->
     <!-- SOLUCIONANDO PROBLEMA DE LOS COMMITS-->
@@ -79,6 +103,7 @@
 
     <!-- build:js app/app.js  -->
     <!-- inject:js -->
+
     <script src="app/app.module.js"></script>
     <script src="app/services/user/user.service.js"></script>
     <script src="app/services/profiles/profile.service.js"></script>
@@ -264,6 +289,5 @@
     <script src="app/account/account.state.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
-
 </body>
 </html>
