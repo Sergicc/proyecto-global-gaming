@@ -141,12 +141,12 @@
                     <label>MÁXIMO - VALORACIÓN DE LOS USUARIOS</label>
                     <input type="number" class="form-control" ng-model="vm.juegosByFilters.maxValoracionUsers">
                 </div>
-                <!--<div class="form-group">-->
-                    <!--<label>IDIOMA</label>-->
-                    <!--<input type="text" class="form-control" ng-model="vm.juegosByFilters.idioma">-->
-                <!--</div>-->
+                <div class="form-group">
+                    <label>IDIOMA</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.idioma">
+                </div>
 
-                <input type="submit" name="submit" value="submit" class="btn btn-success btn-block" ng-click="vm.juegoByFilters()">
+                <input type="submit" name="submit" value="buscar" class="btn btn-success btn-block" ng-click="vm.juegoByFilters()">
                 <!--{{ 'ProyectoGlobalGamingApp.juego.simpleSearch' | translate }}-->
            </form>
         </div>
@@ -155,7 +155,7 @@
     <div>
         <label>RESULTADOS: </label>
         <ul ng-repeat="juego in vm.listJuego">
-            <li>{{juego.titulo}}</li>
+            <li><a ng-href="/#/juego/{{juego.id}}"><img ng-src="data:image/jpeg;base64,{{juego.portada}}" width="50px"> {{juego.titulo}}</a></li>
         </ul>
 
         <!--<div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="property in vm.listByFilter | orderBy:vm.orderCriteria.criteria:vm.orderCriteria.rev | filter:vm.quickSearch track by property.id">-->
