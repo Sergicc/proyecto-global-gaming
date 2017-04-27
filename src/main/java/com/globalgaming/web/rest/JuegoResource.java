@@ -206,7 +206,7 @@ public class JuegoResource {
         }
         if (minValoracionWeb != null) {
             try {
-                Integer minValoracionWebDouble = Integer.parseInt(minValoracionWeb);
+                Double minValoracionWebDouble = Double.parseDouble(minValoracionWeb);
                 params.put("minValoracionWeb", minValoracionWebDouble);
             } catch (NumberFormatException e) {
                 return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("juego",
@@ -216,7 +216,7 @@ public class JuegoResource {
         }
         if (maxValoracionWeb != null) {
             try {
-                Integer maxValoracionWebDouble = Integer.parseInt(maxValoracionWeb);
+                Double maxValoracionWebDouble = Double.parseDouble(maxValoracionWeb);
                 params.put("maxValoracionWeb", maxValoracionWebDouble);
             } catch (NumberFormatException e) {
                 return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("juego",
@@ -226,7 +226,7 @@ public class JuegoResource {
         }
         if (minValoracionUsers != null) {
             try {
-                Integer minValoracionUsersDouble = Integer.parseInt(minValoracionUsers);
+                Double minValoracionUsersDouble = Double.parseDouble(minValoracionUsers);
                 params.put("minValoracionUsers", minValoracionUsersDouble);
             } catch (NumberFormatException e) {
                 return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("juego",
@@ -236,7 +236,7 @@ public class JuegoResource {
         }
         if (maxValoracionUsers != null) {
             try {
-                Integer maxValoracionUsersDouble = Integer.parseInt(maxValoracionUsers);
+                Double maxValoracionUsersDouble = Double.parseDouble(maxValoracionUsers);
                 params.put("maxValoracionUsers", maxValoracionUsersDouble);
             } catch (NumberFormatException e) {
                 return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("juego",
