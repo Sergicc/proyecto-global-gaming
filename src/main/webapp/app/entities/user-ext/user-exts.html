@@ -76,4 +76,51 @@
             </tbody>
         </table>
     </div>
+    <div>
+        <div class="widget widget-white">
+            <div class="widget-header">
+                <h3>SEARCH</h3>
+            </div>
+            <form role="form">
+                <div class="form-group">
+                    <label>NICK</label>
+                    <input type="text" class="form-control" ng-model="vm.userExtsByFilters.nick">
+                </div>
+                <div class="form-group">
+                    <label>ID BATTLE.NET</label>
+                    <input type="checkbox" class="form-control" ng-model="vm.userExtsByFilters.idBattlenet">
+                </div>
+                <div class="form-group">
+                    <label>ID STEAM</label>
+                    <input type="checkbox" class="form-control" ng-model="vm.userExtsByFilters.idSteam">
+                </div>
+                <div class="form-group">
+                    <label>ID ORIGIN</label>
+                    <input type="checkbox" class="form-control" ng-model="vm.userExtsByFilters.idOrigin">
+                </div>
+                <div class="form-group">
+                    <label>ID LOL</label>
+                    <input type="checkbox" class="form-control" ng-model="vm.userExtsByFilters.idLol">
+                </div>
+                <div class="form-group">
+                    <label>PAIS</label>
+                    <input type="text" class="form-control" ng-model="vm.userExtsByFilters.pais">
+                    <!--<select class="form-control" ng-model="vm.salasByFilters.juego" ng-repeat="sala in vm.listsala">-->
+                    <!--<option selected value>-Selecciona un idioma-</option>-->
+                    <!--<option value="{{sala.juego}}">{{sala.juego}}</option>-->
+                    <!--</select>-->
+                </div>
+
+                <input type="submit" name="submit" value="buscar" class="btn btn-success btn-block" ng-click="vm.UserExtByFilters()">
+                <!--{{ 'ProyectoGlobalGamingApp.juego.simpleSearch' | translate }}-->
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <label>RESULTADOS: </label>
+        <ul ng-repeat="userExt in vm.listUserExt">
+            <li><a ng-href="/#/user-ext/{{userExt.id}}"><img ng-src="data:image/jpeg;base64,{{userExt.avatar}}" width="50px">{{userExt.nick}}</a></li>
+        </ul>
+    </div>
 </div>
