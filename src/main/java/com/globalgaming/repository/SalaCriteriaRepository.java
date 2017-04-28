@@ -31,6 +31,7 @@ public class SalaCriteriaRepository {
     public List<Sala> filterSalaByCriteria(Map<String, Object> parameters) {
 
         Criteria salaCriteria = currentSession().createCriteria(Sala.class);
+        Criteria juegoSalaCriteria= salaCriteria.createCriteria("juego");
         salaCriteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         //idiomas mismo error que con juegos
         //Criteria idiomaCriteria = salaCriteria.createCriteria("idiomas");
@@ -46,8 +47,8 @@ public class SalaCriteriaRepository {
         }
 
         if(parameters.get("juego")!= null) {
-            String juego = (String) parameters.get("juego");
-            salaCriteria.add(Restrictions.ilike("juego", juego, MatchMode.ANYWHERE));
+            String tituloJuego = (String) parameters.get("juego");
+            juegoSalaCriteria.add(Restrictions.like("titulo", tituloJuego, MatchMode.EXACT));
         }
 
 //        if(parameters.get("idioma")!= null) {
@@ -89,12 +90,12 @@ public class SalaCriteriaRepository {
     private void filterByMaxLimiteUsuarios(Map<String, Object> parameters, Criteria salaCriteria) {
         Integer maxLimiteUsuarios = (Integer) parameters.get("maxLimiteUsuarios");
 
-        salaCriteria.add(Restrictions.le("LimiteUsuarios", maxLimiteUsuarios));
+        salaCriteria.add(Restrictions.le("limiteUsuarios", maxLimiteUsuarios));
     }
     private void filterByMinLimiteUsuarios(Map<String, Object> parameters, Criteria salaCriteria) {
         Integer minLimiteUsuarios = (Integer) parameters.get("minLimiteUsuarios");
 
-        salaCriteria.add(Restrictions.ge("LimiteUsuarios", minLimiteUsuarios));
+        salaCriteria.add(Restrictions.ge("limiteUsuarios", minLimiteUsuarios));
     }
 
 

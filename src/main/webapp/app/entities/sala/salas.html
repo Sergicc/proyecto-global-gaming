@@ -68,4 +68,47 @@
             </tbody>
         </table>
     </div>
+    <div>
+        <div class="widget widget-white">
+            <div class="widget-header">
+                <h3>SEARCH</h3>
+            </div>
+            <form role="form">
+                <div class="form-group">
+                    <label>NOMBRE</label>
+                    <input type="text" class="form-control" ng-model="vm.salasByFilters.nombre">
+                </div>
+                <div class="form-group">
+                    <label>DESCRIPCIÓN</label>
+                    <input type="text" class="form-control" ng-model="vm.salasByFilters.descripcion">
+                </div>
+                <div class="form-group">
+                    <label>MÍNIMO - LÍMITE DE USUARIOS</label>
+                    <input type="number" class="form-control" ng-model="vm.salasByFilters.minLimiteUsuarios">
+                </div>
+                <div class="form-group">
+                    <label>MÁXIMO - LÍMITE DE USUARIOS</label>
+                    <input type="number" class="form-control" ng-model="vm.salasByFilters.maxLimiteUsuarios">
+                </div>
+                <div class="form-group">
+                    <label>JUEGO</label>
+                    <input type="text" class="form-control" ng-model="vm.salasByFilters.juego">
+                    <!--<select class="form-control" ng-model="vm.salasByFilters.juego" ng-repeat="sala in vm.listsala">-->
+                        <!--<option selected value>-Selecciona un idioma-</option>-->
+                        <!--<option value="{{sala.juego}}">{{sala.juego}}</option>-->
+                    <!--</select>-->
+                </div>
+
+                <input type="submit" name="submit" value="buscar" class="btn btn-success btn-block" ng-click="vm.salaByFilters()">
+                <!--{{ 'ProyectoGlobalGamingApp.juego.simpleSearch' | translate }}-->
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <label>RESULTADOS: </label>
+        <ul ng-repeat="sala in vm.listSala">
+            <li><a ng-href="/#/sala/{{sala.id}}"><img ng-src="data:image/jpeg;base64,{{sala.imagen}}" width="50px"> {{sala.nombre}}</a></li>
+        </ul>
+    </div>
 </div>
