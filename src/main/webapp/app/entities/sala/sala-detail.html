@@ -1,5 +1,98 @@
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:200);
+    @import url(http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+    .snip1578 {
+        font-family: 'Open Sans', Arial, sans-serif;
+        position: relative;
+        display: inline-block;
+        margin: 40px 8px;
+        min-width: 230px;
+        max-width: 315px;
+        width: 100%;
+        color: #000;
+        text-align: left;
+        font-size: 16px;
+        background: #fff;
+        border-radius: 5px;
+    }
 
+    .snip1578 *,
+    .snip1578:before,
+    .snip1578:after {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+
+    .snip1578 img {
+        max-width: 35%;
+        margin-top: -15px;
+        margin-left: 60%;
+        margin-bottom: 15px;
+        backface-visibility: hidden;
+        vertical-align: top;
+        border-radius: 5px;
+    }
+
+    .snip1578 figcaption {
+        position: absolute;
+        top: 0;
+        right: 40%;
+        left: 0;
+        bottom: 0;
+        padding: 15px;
+    }
+
+    .snip1578 h3 {
+        margin: 0;
+        font-size: 1.1em;
+        font-weight: normal;
+    }
+
+    .snip1578 .icons {
+        font-size: 1.6rem;
+    }
+
+    .snip1578 .icons a {
+        color: #ccc;
+    }
+
+    .snip1578 .icons a:hover {
+        color: #2980b9;
+    }
+
+    .imagenes{
+        width:250px;
+        height:250px;
+    }
+
+    /* Demo purposes only */
+
+   /* body {
+        background-color: #212121;
+        text-align: center;
+    }*/
+    </style>
 <div>
+    <div class="row">
+        <div class="col-md-8">.col-md-8</div>
+
+        <div class="col-md-4">.col-md-4
+        <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+        <figure class="snip1578">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample6.jpg" alt="profile-sample6" />
+            <figcaption>
+                <h3>Bailey Wonger</h3>
+                <div class="icons"><a href="#"><i class="ion-social-twitter"></i></a>
+                    <a href="#"> <i class="ion-social-instagram-outline"></i></a>
+                    <a href="#"> <i class="ion-social-github"></i></a>
+                </div>
+            </figcaption>
+        </figure>
+        </tbody>
+        </div>
+    </div>
     <h2><span data-translate="proyectoGlobalGamingApp.sala.detail.title">Sala</span> {{vm.sala.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>

@@ -5,9 +5,9 @@
         .module('proyectoGlobalGamingApp')
         .controller('UserExtDialogController', UserExtDialogController);
 
-    UserExtDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'DataUtils', 'entity', 'UserExt', 'User'];
+    UserExtDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'DataUtils', 'entity','Pais', 'UserExt', 'User'];
 
-    function UserExtDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, DataUtils, entity, UserExt, User) {
+    function UserExtDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, DataUtils, entity,Pais, UserExt, User) {
         var vm = this;
 
         vm.userExt = entity;
@@ -15,6 +15,7 @@
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
         vm.save = save;
+        vm.pais = Pais.query();
         vm.users = User.query();
 
         $timeout(function (){

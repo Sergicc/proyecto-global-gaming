@@ -1,10 +1,162 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.9";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div>
     <h2 data-translate="proyectoGlobalGamingApp.articulo.home.title">Articulos</h2>
     <jhi-alert></jhi-alert>
-    <div class="container-fluid">
+    <style>
+        @import url(http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+        @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700);
+        .snip1369 {
+            font-family: 'Raleway', Arial, sans-serif;
+            position: relative;
+            float: left;
+            overflow: hidden;
+            margin: 10px 1%;
+            min-width: 230px;
+            max-width: 315px;
+            width: 100%;
+            background: #20638f;
+            text-align: left;
+            color: #ffffff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+            font-size: 16px;
+        }
+        .snip1369 * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+        }
+        .snip1369 > img,
+        .snip1369 .image img {
+            -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+            max-width: 100%;
+        }
+        .snip1369 > img {
+            vertical-align: top;
+            position: relative;
+            -webkit-filter: blur(5px);
+            filter: blur(5px);
+            opacity: 0.6;
+        }
+        .snip1369 figcaption,
+        .snip1369 .image {
+            -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s;
+        }
+        .snip1369 .image {
+            position: absolute;
+            top: 0;
+            bottom: 25%;
+            right: 0;
+            left: 0;
+            overflow: hidden;
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1), 0px 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        .snip1369 .image img {
+            position: absolute;
+            top: 0;
+        }
+        .snip1369 figcaption {
+            position: absolute;
+            top: 75%;
+            bottom: 46px;
+            left: 20px;
+            right: 20px;
+            border-bottom: 2px solid #ffffff;
+            padding-top: 20px;
+            z-index: 1;
+        }
+        .snip1369 h3,
+        .snip1369 p {
+            margin: 0;
+            color:white;
+
+        }
+        .snip1369 h3 {
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+
+        }
+        .snip1369 p {
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            font-weight: 400;
+            opacity: 0;
+
+            text-overflow:ellipsis;
+        }
+        .snip1369 .read-more {
+            display: block;
+            opacity: 0;
+            -webkit-transform: translateX(-20px);
+            transform: translateX(-20px);
+            line-height: 48px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0 20px;
+            color: #ffffff;
+            right: 0;
+            bottom: 0;
+            font-weight: 500;
+            position: absolute;
+        }
+        .snip1369 a {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            position: absolute;
+            z-index: 1;
+        }
+        .snip1369:hover .read-more,
+        .snip1369.hover .read-more,
+        .snip1369:hover figcaption,
+        .snip1369.hover figcaption {
+            opacity: 1;
+            -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+        }
+        .snip1369:hover figcaption,
+        .snip1369.hover figcaption,
+        .snip1369:hover .image,
+        .snip1369.hover .image {
+            -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+        }
+        .snip1369:hover figcaption,
+        .snip1369.hover figcaption {
+            top: 50%;
+        }
+        .snip1369:hover .image,
+        .snip1369.hover .image {
+            bottom: 50%;
+        }
+        .snip1369:hover p,
+        .snip1369.hover p {
+            opacity: 1;
+            -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s;
+        }
+        #articulodiv{
+           width:270px;
+            height:100px;
+            overflow:hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+    <div  class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="articulo.new" >
+                <button has-any-authority="ROLE_ADMIN" class="btn btn-primary" ui-sref="articulo.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span  data-translate="proyectoGlobalGamingApp.articulo.home.createLabel">
                         Create new Articulo
@@ -29,6 +181,25 @@
                 </tr>
             </thead>
             <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+
+            <figure ng-repeat="articulo in vm.articulos track by articulo.id" class="snip1369 orange"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample16.jpg" alt="pr-sample16" />
+                <div class="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample16.jpg" alt="pr-sample16" /></div>
+                <figcaption>
+                    <h3>{{articulo.titulo}}</h3>
+                    <div id = articulodiv >
+                    <p>
+                        {{articulo.texto}}
+                    </p>
+                    </div>
+                </figcaption>
+
+                <span class="read-more">
+
+                LEER MÁS <i class="ion-android-arrow-forward"></i>
+                </span>
+                <a ui-sref="articulo-detail({id:articulo.id})"></a>
+            </figure>
+
                 <tr ng-repeat="articulo in vm.articulos track by articulo.id">
                     <td><a ui-sref="articulo-detail({id:articulo.id})">{{articulo.id}}</a></td>
                     <td>{{articulo.titulo}}</td>

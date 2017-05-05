@@ -40,6 +40,9 @@ public class Sala implements Serializable {
 //añadido el nuevo atributo descripcion como CLOB
     @ManyToOne
     private Juego juego;
+
+    @ManyToOne
+    private User user;
     //Comentario
 
     @OneToMany(mappedBy = "sala")
@@ -138,6 +141,14 @@ public class Sala implements Serializable {
 
     public Set<Mensaje> getMensajes() {
         return mensajes;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Sala mensajes(Set<Mensaje> mensajes) {

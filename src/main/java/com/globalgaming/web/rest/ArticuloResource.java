@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -31,7 +32,7 @@ import java.util.Optional;
 public class ArticuloResource {
 
     private final Logger log = LoggerFactory.getLogger(ArticuloResource.class);
-        
+
     @Inject
     private ArticuloRepository articuloRepository;
 
@@ -43,6 +44,7 @@ public class ArticuloResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/articulos")
+    @Secured("ROLE_ADMIN")
     @Timed
     public ResponseEntity<Articulo> createArticulo(@RequestBody Articulo articulo) throws URISyntaxException {
         log.debug("REST request to save Articulo : {}", articulo);

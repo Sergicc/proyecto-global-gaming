@@ -6,9 +6,9 @@
         .controller('RegisterController', RegisterController);
 
 
-    RegisterController.$inject = ['$translate', '$timeout', 'Auth', 'LoginService'];
+    RegisterController.$inject = ['$translate', '$scope', '$timeout', 'Auth', 'Pais','LoginService','Register'];
 
-    function RegisterController ($translate, $timeout, Auth, LoginService) {
+    function RegisterController ($translate,  $scope, $timeout, Auth, Pais, LoginService,Register) {
         var vm = this;
 
         vm.doNotMatch = null;
@@ -18,6 +18,7 @@
         vm.register = register;
         vm.registerAccount = {};
         vm.success = null;
+        vm.pais = Register;
 
         $timeout(function (){angular.element('#login').focus();});
 
@@ -30,6 +31,7 @@
                 vm.error = null;
                 vm.errorUserExists = null;
                 vm.errorEmailExists = null;
+
 
                 Auth.createAccount(vm.registerAccount).then(function () {
                     vm.success = 'OK';

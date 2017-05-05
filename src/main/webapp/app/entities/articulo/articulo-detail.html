@@ -1,9 +1,20 @@
 
 <div>
-    <h2><span data-translate="proyectoGlobalGamingApp.articulo.detail.title">Articulo</span> {{vm.articulo.id}}</h2>
+    <!--<h2><span data-translate="proyectoGlobalGamingApp.articulo.detail.title">Articulo</span> {{vm.articulo.id}}</h2>-->
+    <center>
+    <h1><span>{{vm.articulo.titulo}}</span></h1>
+
+    <p><span class="glyphicon glyphicon-time"></span> {{vm.articulo.fecha | date:'mediumDate'}}</p>
+    <img  src="../../../content/images/mario.jpg" height="640" width="640"/>
+    </center>
+    <br>
+    <div style="width:80%; margin:0 auto" class="row "><span>{{vm.articulo.texto}}</span></div>
+    <iframe width="560" height="315" ng-src="{{vm.articulo.url}}" frameborder="0" allowfullscreen></iframe>
+    <!--<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=small&mobile_iframe=true&width=142&height=20&appId" width="142" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>-->
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
+
+    <!--<dl class="dl-horizontal jh-entity-details">
         <dt><span data-translate="proyectoGlobalGamingApp.articulo.titulo">Titulo</span></dt>
         <dd>
             <span>{{vm.articulo.titulo}}</span>
@@ -34,7 +45,7 @@
                 <a ui-sref="etiqueta-detail({id: etiqueta.id})">{{etiqueta.nombre}}</a>{{$last ? '' : ', '}}
             </span>
         </dd>
-    </dl>
+    </dl>-->
 
     <button type="submit"
             ui-sref="{{ vm.previousState }}"

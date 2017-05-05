@@ -124,8 +124,8 @@
             <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
                 <div class="form-group">
                     <label class="control-label" for="login" data-translate="global.form.battle">Id de battle.net</label>
-                    <input type="text" class="form-control" id="battle" name="login" placeholder="{{'global.form.battle.placeholder' | translate}}"
-                           ng-model="vm.registerAccount.battle" ng-minlength=1 ng-maxlength=50  required>
+                    <input type="text" class="form-control" id="battle" name="battle" placeholder="{{'global.form.battle.placeholder' | translate}}"
+                           ng-model="vm.registerAccount.battle" ng-minlength=1 ng-maxlength=50 >
                     <div ng-show="form.login.$dirty && form.login.$invalid">
                         <p class="help-block"
                            ng-show="form.login.$error.required" data-translate="register.messages.validate.login.required">
@@ -214,18 +214,55 @@
                         </p>
                     </div>
                 </div>
+            <!--    <div class="form-group">
+                    <label data-translate="proyectoGlobalGamingApp.userExt.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" ng-model="vm.userExt.user" ng-options="user as user.login for user in vm.users track by user.id">
+                        <option value=""></option>
+                    </select>
+                </div>-->
+
+
+                <div class="form-group">
+                    {{ vm.pais }}
+
+                    <label class="control-label" data-translate="global.form.pais" for="field_pais">Pais</label>
+                    <select class="form-control" id="field_pais" name="pais" ng-model="vm.pais" ng-options="pais as pais.nombre for pais in vm.pais track by pais.id">
+                        <option value=""></option>
+                    </select>
+                    <!--<div ng-show="form.login.$dirty && form.login.$invalid">
+                        <p class="help-block"
+                           ng-show="form.login.$error.required" data-translate="register.messages.validate.login.required">
+                            Your username is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.minlength" data-translate="register.messages.validate.login.minlength">
+                            Your username is required to be at least 1 character.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.maxlength" data-translate="register.messages.validate.login.maxlength">
+                            Your username cannot be longer than 50 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.login.$error.pattern" data-translate="register.messages.validate.login.pattern">
+                            Your username can only contain lower-case letters and digits.
+                        </p>
+                    </div>-->
+                    <!--<input type="text" class="form-control" name="pais" id="field_pais"
+                            ng-model="vm.userExt.pais"
+                             />-->
+                </div>
             </form>
             <p></p>
             <!--<div class="alert alert-warning" data-translate="global.messages.info.authenticated" translate-compile>
                 If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
             </div>-->
         </div>
-        <div class="col-md-4">
+         <!--<div class="col-md-4">
             <br/>
             <jh-social ng-provider="google"></jh-social>
             <jh-social ng-provider="facebook"></jh-social>
             <jh-social ng-provider="twitter"></jh-social>
-            <!-- jhipster-needle-add-social-button -->
-        </div>
+            <!-- jhipster-needle-add-social-button
+        </div>-->
     </div>
 </div>
