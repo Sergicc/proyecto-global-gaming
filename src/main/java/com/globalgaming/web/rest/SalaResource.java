@@ -31,6 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * REST controller for managing Sala.
@@ -199,6 +200,7 @@ public class SalaResource {
             }
         }
         List<Sala> result = salaCriteriaRepository.filterSalaByCriteria(params);
+
         if (result.isEmpty()) {
             return new ResponseEntity<>(
 
