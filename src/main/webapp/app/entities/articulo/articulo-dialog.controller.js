@@ -49,6 +49,20 @@
 
         vm.datePickerOpenStatus.fecha = false;
 
+        vm.setFoto = function ($file, articulo) {
+            if ($file && $file.$error === 'pattern') {
+                return;
+            }
+            if ($file) {
+                DataUtils.toBase64($file, function(base64Data) {
+                    $scope.$apply(function() {
+                        articulo.foto = base64Data;
+                        articulo.fotoContentType = $file.type;
+                    });
+                });
+            }
+        };
+
         function openCalendar (date) {
             vm.datePickerOpenStatus[date] = true;
         }

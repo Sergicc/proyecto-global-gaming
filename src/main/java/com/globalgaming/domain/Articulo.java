@@ -41,6 +41,13 @@ public class Articulo implements Serializable {
     @Column(name = "texto")
     private String texto;
 
+    @Lob
+    @Column(name = "foto")
+    private byte[] foto;
+
+    @Column(name = "foto_content_type")
+    private String fotoContentType;
+
     @ManyToMany
     @JoinTable(name = "articulo_etiqueta",
                joinColumns = @JoinColumn(name="articulos_id", referencedColumnName="ID"),
@@ -137,6 +144,32 @@ public class Articulo implements Serializable {
         this.texto = texto;
     }
 
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public Articulo foto(byte[] foto) {
+        this.foto = foto;
+        return this;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
+    public String getFotoContentType() {
+        return fotoContentType;
+    }
+
+    public Articulo fotoContentType(String fotoContentType) {
+        this.fotoContentType = fotoContentType;
+        return this;
+    }
+
+    public void setFotoContentType(String fotoContentType) {
+        this.fotoContentType = fotoContentType;
+    }
+
     public Set<Etiqueta> getEtiquetas() {
         return etiquetas;
     }
@@ -217,6 +250,8 @@ public class Articulo implements Serializable {
             ", visitas='" + visitas + "'" +
             ", comentarios='" + comentarios + "'" +
             ", texto='" + texto + "'" +
+            ", foto='" + foto + "'" +
+            ", fotoContentType='" + fotoContentType + "'" +
             '}';
     }
 }

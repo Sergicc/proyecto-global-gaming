@@ -49,22 +49,22 @@ public class UserExtCriteriaRepository {
         }
 
         /** FILTERR BYY BOOLEANN VALUESS **/
-        if(parameters.get("idBattlenet")!=null){
+        if(parameters.get("idBattlenet")!=null && !"idBattlenet".equals("")){
 
             filterByExists(parameters,userExtCriteria,"idBattlenet");
         }
 
-        if(parameters.get("idSteam")!=null){
+        if(parameters.get("idSteam")!=null && !"idSteam".equals("")){
 
             filterByExists(parameters,userExtCriteria,"idSteam");
         }
 
-        if(parameters.get("idOrigin")!=null){
+        if(parameters.get("idOrigin")!=null && !"idOrigin".equals("")){
 
             filterByExists(parameters,userExtCriteria,"idOrigin");
         }
 
-        if(parameters.get("idLol")!=null){
+        if(parameters.get("idLol")!=null && !"idLol".equals("")){
 
             filterByExists(parameters,userExtCriteria,"idLol");
         }
@@ -91,6 +91,3 @@ public class UserExtCriteriaRepository {
  //       userExtCriteria.add(Restrictions.eq(key, hasItem));
     }
 }
-
-
-

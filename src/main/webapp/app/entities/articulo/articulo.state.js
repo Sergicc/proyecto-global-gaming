@@ -110,6 +110,8 @@
                                 visitas: null,
                                 comentarios: null,
                                 texto: null,
+                                foto: null,
+                                fotoContentType: null,
                                 id: null
                             };
                         }

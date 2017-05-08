@@ -28,6 +28,15 @@
         <dd>
             <span>{{vm.articulo.texto}}</span>
         </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.articulo.foto">Foto</span></dt>
+        <dd>
+            <div ng-if="vm.articulo.foto">
+                <a ng-click="vm.openFile(vm.articulo.fotoContentType, vm.articulo.foto)">
+                    <img data-ng-src="{{'data:' + vm.articulo.fotoContentType + ';base64,' + vm.articulo.foto}}" style="max-width: 100%;" alt="articulo image"/>
+                </a>
+                {{vm.articulo.fotoContentType}}, {{vm.byteSize(vm.articulo.foto)}}
+            </div>
+        </dd>
         <dt><span data-translate="proyectoGlobalGamingApp.articulo.etiqueta">Etiqueta</span></dt>
         <dd>
             <span ng-repeat="etiqueta in vm.articulo.etiquetas">

@@ -25,6 +25,7 @@
                     <th jh-sort-by="visitas"><span data-translate="proyectoGlobalGamingApp.articulo.visitas">Visitas</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="comentarios"><span data-translate="proyectoGlobalGamingApp.articulo.comentarios">Comentarios</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="texto"><span data-translate="proyectoGlobalGamingApp.articulo.texto">Texto</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="foto"><span data-translate="proyectoGlobalGamingApp.articulo.foto">Foto</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -37,6 +38,12 @@
                     <td>{{articulo.visitas}}</td>
                     <td>{{articulo.comentarios}}</td>
                     <td>{{articulo.texto}}</td>
+                    <td>
+                        <a ng-if="articulo.foto" ng-click="vm.openFile(articulo.fotoContentType, articulo.foto)">
+                            <img data-ng-src="{{'data:' + articulo.fotoContentType + ';base64,' + articulo.foto}}" style="max-height: 30px;" alt="articulo image"/>
+                        </a>
+                        <span ng-if="articulo.foto">{{articulo.fotoContentType}}, {{vm.byteSize(articulo.foto)}}</span>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

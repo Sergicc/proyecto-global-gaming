@@ -58,6 +58,11 @@ public class ArticuloResourceIntTest {
     private static final String DEFAULT_TEXTO = "AAAAAAAAAA";
     private static final String UPDATED_TEXTO = "BBBBBBBBBB";
 
+    private static final byte[] DEFAULT_FOTO = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_FOTO = TestUtil.createByteArray(2, "1");
+    private static final String DEFAULT_FOTO_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_FOTO_CONTENT_TYPE = "image/png";
+
     @Inject
     private ArticuloRepository articuloRepository;
 
@@ -97,7 +102,9 @@ public class ArticuloResourceIntTest {
                 .url(DEFAULT_URL)
                 .visitas(DEFAULT_VISITAS)
                 .comentarios(DEFAULT_COMENTARIOS)
-                .texto(DEFAULT_TEXTO);
+                .texto(DEFAULT_TEXTO)
+                .foto(DEFAULT_FOTO)
+                .fotoContentType(DEFAULT_FOTO_CONTENT_TYPE);
         return articulo;
     }
 
@@ -128,6 +135,8 @@ public class ArticuloResourceIntTest {
         assertThat(testArticulo.getVisitas()).isEqualTo(DEFAULT_VISITAS);
         assertThat(testArticulo.getComentarios()).isEqualTo(DEFAULT_COMENTARIOS);
         assertThat(testArticulo.getTexto()).isEqualTo(DEFAULT_TEXTO);
+        assertThat(testArticulo.getFoto()).isEqualTo(DEFAULT_FOTO);
+        assertThat(testArticulo.getFotoContentType()).isEqualTo(DEFAULT_FOTO_CONTENT_TYPE);
     }
 
     @Test
@@ -166,7 +175,9 @@ public class ArticuloResourceIntTest {
             .andExpect(jsonPath("$.[*].url").value(hasItem(DEFAULT_URL.toString())))
             .andExpect(jsonPath("$.[*].visitas").value(hasItem(DEFAULT_VISITAS)))
             .andExpect(jsonPath("$.[*].comentarios").value(hasItem(DEFAULT_COMENTARIOS.toString())))
-            .andExpect(jsonPath("$.[*].texto").value(hasItem(DEFAULT_TEXTO.toString())));
+            .andExpect(jsonPath("$.[*].texto").value(hasItem(DEFAULT_TEXTO.toString())))
+            .andExpect(jsonPath("$.[*].fotoContentType").value(hasItem(DEFAULT_FOTO_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].foto").value(hasItem(Base64Utils.encodeToString(DEFAULT_FOTO))));
     }
 
     @Test
@@ -185,7 +196,9 @@ public class ArticuloResourceIntTest {
             .andExpect(jsonPath("$.url").value(DEFAULT_URL.toString()))
             .andExpect(jsonPath("$.visitas").value(DEFAULT_VISITAS))
             .andExpect(jsonPath("$.comentarios").value(DEFAULT_COMENTARIOS.toString()))
-            .andExpect(jsonPath("$.texto").value(DEFAULT_TEXTO.toString()));
+            .andExpect(jsonPath("$.texto").value(DEFAULT_TEXTO.toString()))
+            .andExpect(jsonPath("$.fotoContentType").value(DEFAULT_FOTO_CONTENT_TYPE))
+            .andExpect(jsonPath("$.foto").value(Base64Utils.encodeToString(DEFAULT_FOTO)));
     }
 
     @Test
@@ -211,7 +224,9 @@ public class ArticuloResourceIntTest {
                 .url(UPDATED_URL)
                 .visitas(UPDATED_VISITAS)
                 .comentarios(UPDATED_COMENTARIOS)
-                .texto(UPDATED_TEXTO);
+                .texto(UPDATED_TEXTO)
+                .foto(UPDATED_FOTO)
+                .fotoContentType(UPDATED_FOTO_CONTENT_TYPE);
 
         restArticuloMockMvc.perform(put("/api/articulos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -228,6 +243,8 @@ public class ArticuloResourceIntTest {
         assertThat(testArticulo.getVisitas()).isEqualTo(UPDATED_VISITAS);
         assertThat(testArticulo.getComentarios()).isEqualTo(UPDATED_COMENTARIOS);
         assertThat(testArticulo.getTexto()).isEqualTo(UPDATED_TEXTO);
+        assertThat(testArticulo.getFoto()).isEqualTo(UPDATED_FOTO);
+        assertThat(testArticulo.getFotoContentType()).isEqualTo(UPDATED_FOTO_CONTENT_TYPE);
     }
 
     @Test

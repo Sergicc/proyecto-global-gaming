@@ -52,6 +52,28 @@
                 <textarea class="form-control" name="texto" id="field_texto"
                     ng-model="vm.articulo.texto"  ></textarea>
         </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setFoto($file, vm.articulo)" ngf-pattern="'image/*'">
+            <label class="control-label" data-translate="proyectoGlobalGamingApp.articulo.foto" for="field_foto">Foto</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.articulo.fotoContentType + ';base64,' + vm.articulo.foto}}" style="max-height: 100px;" ng-if="vm.articulo.foto" alt="articulo image"/>
+                <div ng-if="vm.articulo.foto" class="help-block clearfix">
+                    <span class="pull-left">{{vm.articulo.fotoContentType}}, {{vm.byteSize(vm.articulo.foto)}}</span>
+                    <button type="button" ng-click="vm.articulo.foto=null;vm.articulo.fotoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setFoto($file, vm.articulo)" accept="image/*" data-translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="foto" id="field_foto"
+                    ng-model="vm.articulo.foto"
+                     />
+            <input type="hidden" class="form-control" name="fotoContentType" id="field_fotoContentType"
+                    ng-model="vm.articulo.fotoContentType" />
+        </div>
 
         <div class="form-group">
             <label data-translate="proyectoGlobalGamingApp.articulo.etiqueta" for="field_etiqueta">Etiqueta</label>
