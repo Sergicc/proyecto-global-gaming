@@ -7,12 +7,20 @@
         Added the constraints for entity Sala.
     -->
     <changeSet id="20170204002235-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="juego_id"
                                  baseTableName="sala"
                                  constraintName="fk_sala_juego_id"
                                  referencedColumnNames="id"
                                  referencedTableName="juego"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="sala"
+                                 constraintName="FKpel3ynixhqq5qeycbw0hbgwnh"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
 
     </changeSet>
 </databaseChangeLog>

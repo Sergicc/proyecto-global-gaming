@@ -3,8 +3,12 @@ package com.globalgaming.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.globalgaming.domain.Sala;
 
+import com.globalgaming.domain.User;
 import com.globalgaming.repository.SalaCriteriaRepository;
 import com.globalgaming.repository.SalaRepository;
+import com.globalgaming.repository.UserRepository;
+import com.globalgaming.security.AuthoritiesConstants;
+import com.globalgaming.security.SecurityUtils;
 import com.globalgaming.web.rest.util.HeaderUtil;
 import com.globalgaming.web.rest.util.PaginationUtil;
 
@@ -43,6 +47,9 @@ public class SalaResource {
 
     @Inject
     private SalaCriteriaRepository salaCriteriaRepository;
+
+    @Inject
+    private UserRepository userRepository;
     /**
      * POST  /salas : Create a new sala.
      *
@@ -57,6 +64,11 @@ public class SalaResource {
         if (sala.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("sala", "idexists", "A new sala cannot already have an ID")).body(null);
         }
+
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        sala.setUser(user);
+
+
         Sala result = salaRepository.save(sala);
         return ResponseEntity.created(new URI("/api/salas/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("sala", result.getId().toString()))
@@ -79,6 +91,15 @@ public class SalaResource {
         if (sala.getId() == null) {
             return createSala(sala);
         }
+
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+         Sala saladb = salaRepository.findOne(sala.getId());
+        if (!saladb.getUser().equals(user) && !SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)){
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("sala", "UserNotOwner", "El usuario no es el propietario de la sala")).body(null);
+        }
+
+
+
         Sala result = salaRepository.save(sala);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("sala", sala.getId().toString()))

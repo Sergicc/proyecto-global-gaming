@@ -27,28 +27,32 @@
             <column name="nombre" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="imagen" type="longblob">
                 <constraints nullable="true" />
             </column>
             <column name="imagen_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="limite_usuarios" type="integer">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="descripcion" type="clob">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="juego_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
+
+             <column name="user_id" type="bigint"/>
+
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
+
     </changeSet>
 </databaseChangeLog>

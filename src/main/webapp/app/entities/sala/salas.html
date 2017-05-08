@@ -1,6 +1,115 @@
 <div>
     <h2 data-translate="proyectoGlobalGamingApp.sala.home.title">Salas</h2>
     <jhi-alert></jhi-alert>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:400,700');
+    @import url(http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+    .snip1583 {
+        font-family: 'Fira Sans Extra Condensed', Arial, sans-serif;
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        margin: 8px;
+        min-width: 230px;
+        max-width: 315px;
+        width: 100%;
+        font-size: 16px;
+        background-color: #fff;
+        color: #111;
+        line-height: 1.2em;
+        text-align: left;
+    }
+
+    .snip1583 *,
+    .snip1583 *:before,
+    .snip1583 *:after {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all 0.35s ease;
+        transition: all 0.35s ease;
+    }
+
+    .snip1583 img {
+        max-width: 100%;
+        vertical-align: top;
+    }
+
+    .snip1583 figcaption {
+        padding: 10px;
+    }
+
+    .snip1583 h3 {
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin: 0 0 4px;
+    }
+
+    .snip1583 .price {
+        margin: 8px 0;
+        font-weight: 700;
+        color: #4da3e2;
+        font-size: 1.5rem;
+    }
+
+    .snip1583 .icons {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .snip1583 .icons a {
+        margin: 2px;
+        opacity: 0;
+        -webkit-transform: translateY(50%);
+        transform: translateY(50%);
+    }
+
+    .snip1583 .icons a i {
+        display: block;
+        font-size: 23.52941176px;
+        line-height: 40px;
+        width: 40px;
+        background-color: #ffffff;
+        text-align: center;
+        color: #000000;
+    }
+
+    .snip1583 .icons a i:hover {
+        background-color: #4da3e2;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    .snip1583:hover a,
+    .snip1583.hover a {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    .snip1583:hover a:nth-child(2),
+    .snip1583.hover a:nth-child(2) {
+        -webkit-transition-delay: 0.1s;
+        transition-delay: 0.1s;
+    }
+
+    .snip1583:hover a:nth-child(3),
+    .snip1583.hover a:nth-child(3) {
+        -webkit-transition-delay: 0.2s;
+        transition-delay: 0.2s;
+    }
+        .imagenes{
+            width:350px;
+            height:250px;
+        }
+
+    </style>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
@@ -16,7 +125,7 @@
     <br/>
     <div class="table-responsive">
         <table class="jh-table table table-striped">
-            <thead>
+          <!--  <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="nombre"><span data-translate="proyectoGlobalGamingApp.sala.nombre">Nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -26,9 +135,19 @@
                     <th jh-sort-by="juego.titulo"><span data-translate="proyectoGlobalGamingApp.sala.juego">Juego</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
-            </thead>
+            </thead>-->
             <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
-                <tr ng-repeat="sala in vm.salas track by sala.id">
+                    <figure ng-repeat="sala in vm.salas track by sala.id" class="snip1583"><a ng-if="sala.imagen" ng-click="vm.openFile(sala.imagenContentType, sala.imagen)">
+                        <img data-ng-src="{{'data:' + sala.imagenContentType + ';base64,' + sala.imagen}}" class="imagenes" alt="sala image"/>
+                    </a>
+                        <div class="icons"><a><i class="ion-android-cart"></i></a><a><i class="ion-android-star"></i></a><a><i class="ion-android-share-alt"></i></a></div>
+                        <figcaption>
+                            <h3>{{sala.nombre}}</h3>
+                            <div class="price">$19.00</div>
+                        </figcaption>
+                    </figure>
+
+               <tr ng-repeat="sala in vm.salas track by sala.id">
                     <td><a ui-sref="sala-detail({id:sala.id})">{{sala.id}}</a></td>
                     <td>{{sala.nombre}}</td>
                     <td>

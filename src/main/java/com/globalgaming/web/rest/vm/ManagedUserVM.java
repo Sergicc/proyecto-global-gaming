@@ -1,6 +1,6 @@
 package com.globalgaming.web.rest.vm;
 
-import java.time.ZonedDateTime;
+import  java.time.ZonedDateTime;
 
 import java.util.Set;
 
@@ -75,6 +75,8 @@ public class ManagedUserVM extends UserDTO {
     public String getSteam() {
         return steam;
     }
+
+
 
     public String getLol() {
         return lol;
