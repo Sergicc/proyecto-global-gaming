@@ -48,6 +48,8 @@ public class UserExtResource {
     @Inject
     private UserRepository userRepository;
 
+
+
     /**
      * POST  /user-exts : Create a new userExt.
      *
@@ -67,13 +69,14 @@ public class UserExtResource {
 
         userExt.setUser(user);
 
+
         UserExt result = userExtRepository.save(userExt);
         return ResponseEntity.created(new URI("/api/user-exts/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("userExt", result.getId().toString()))
             .body(result);
     }
 
-    /*
+    /**
      * PUT  /user-exts : Updates an existing userExt.
      *
      * @param userExt the userExt to update
@@ -143,7 +146,6 @@ public class UserExtResource {
         userExtRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("userExt", id.toString())).build();
     }
-
     @RequestMapping(value = "/userext/byfilters",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)

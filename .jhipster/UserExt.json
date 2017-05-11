@@ -8,6 +8,12 @@
             "otherEntityField": "login",
             "ownerSide": true,
             "otherEntityRelationshipName": "userExt"
+        },
+        {
+            "relationshipName": "pais",
+            "otherEntityName": "pais",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nombre"
         }
     ],
     "fields": [
@@ -37,17 +43,13 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "pais",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "puntos",
             "fieldType": "Integer"
         }
     ],
     "changelogDate": "20170204002233",
-    "entityTableName": "user_ext",
     "dto": "no",
-    "pagination": "infinite-scroll",
-    "service": "no"
+    "service": "no",
+    "entityTableName": "user_ext",
+    "pagination": "infinite-scroll"
 }

@@ -22,9 +22,9 @@
             "idSteam": "Id Steam",
             "idOrigin": "Id Origin",
             "idLol": "Id Lol",
-            "pais": "Pais",
             "puntos": "Puntos",
-            "user": "User"
+            "user": "User",
+            "pais": "Pais"
         }
     }
 }

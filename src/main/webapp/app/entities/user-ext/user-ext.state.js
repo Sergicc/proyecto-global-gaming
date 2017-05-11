@@ -111,8 +111,8 @@
                                 idSteam: null,
                                 idOrigin: null,
                                 idLol: null,
-                                pais: null,
                                 puntos: null,
+                                pais: null,
                                 id: null
                             };
                         }

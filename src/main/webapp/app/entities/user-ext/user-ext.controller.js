@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     UserExtController.$inject = ['$scope', '$state', 'DataUtils', 'UserExt', 'ParseLinks', 'AlertService', 'paginationConstants', 'searchUserExt'];
 
-    function UserExtController ($scope, $state, DataUtils, UserExt, ParseLinks, AlertService, paginationConstants, searchUserExt) {
+    function UserExtController($scope, $state, DataUtils, UserExt, ParseLinks, AlertService, paginationConstants, searchUserExt) {
         var vm = this;
 
         vm.userExts = [];
@@ -36,6 +36,7 @@
                 pais: vm.userExtsByFilters.pais
             }, onSuccessByFilters, onError);
 
+
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
                 if (vm.predicate !== 'id') {
@@ -61,7 +62,7 @@
 
         loadAll();
 
-        function loadAll () {
+        function loadAll() {
             UserExt.query({
                 page: vm.page,
                 size: vm.itemsPerPage,
@@ -88,7 +89,7 @@
             }
         }
 
-        function reset () {
+        function reset() {
             vm.page = 0;
             vm.userExts = [];
             loadAll();

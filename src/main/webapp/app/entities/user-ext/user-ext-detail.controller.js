@@ -5,9 +5,9 @@
         .module('proyectoGlobalGamingApp')
         .controller('UserExtDetailController', UserExtDetailController);
 
-    UserExtDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'UserExt', 'User'];
+    UserExtDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'UserExt', 'User', 'Pais'];
 
-    function UserExtDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, UserExt, User) {
+    function UserExtDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, UserExt, User, Pais) {
         var vm = this;
 
         vm.userExt = entity;

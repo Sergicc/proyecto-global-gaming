@@ -32,6 +32,7 @@ public class UserExtCriteriaRepository {
     public List<UserExt> filterUserExtByCriteria(Map<String, Object> parameters) {
 
         Criteria userExtCriteria = currentSession().createCriteria(UserExt.class);
+        Criteria paisUserExtCriteria= userExtCriteria.createCriteria("pais");
         userExtCriteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         //idiomas mismo error que con juegos
         //Criteria idiomaCriteria = salaCriteria.createCriteria("idiomas");
@@ -73,7 +74,7 @@ public class UserExtCriteriaRepository {
 
         if(parameters.get("pais")!= null) {
             String pais = (String) parameters.get("pais");
-            userExtCriteria.add(Restrictions.ilike("pais", pais, MatchMode.ANYWHERE));
+            paisUserExtCriteria.add(Restrictions.ilike("pais", pais, MatchMode.ANYWHERE));
         }
 
         List<UserExt> results = userExtCriteria.list();

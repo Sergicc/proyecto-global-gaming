@@ -15,7 +15,6 @@ public class UserExt implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -41,16 +40,15 @@ public class UserExt implements Serializable {
     @Column(name = "id_lol")
     private String idLol;
 
-    @Column(name = "pais")
-    private String pais;
-
     @Column(name = "puntos")
     private Integer puntos;
 
     @OneToOne
     @JoinColumn(unique = true)
-
     private User user;
+
+    @ManyToOne
+    private Pais pais;
 
     public Long getId() {
         return id;
@@ -120,6 +118,7 @@ public class UserExt implements Serializable {
         this.idSteam = idSteam;
         return this;
     }
+
     public void setIdSteam(String idSteam) {
         this.idSteam = idSteam;
     }
@@ -150,19 +149,6 @@ public class UserExt implements Serializable {
         this.idLol = idLol;
     }
 
-    public String getPais() {
-        return pais;
-    }
-
-    public UserExt pais(String pais) {
-        this.pais = pais;
-        return this;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
     public Integer getPuntos() {
         return puntos;
     }
@@ -189,6 +175,19 @@ public class UserExt implements Serializable {
         this.user = user;
     }
 
+    public Pais getPais() {
+        return pais;
+    }
+
+    public UserExt pais(Pais pais) {
+        this.pais = pais;
+        return this;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -212,7 +211,7 @@ public class UserExt implements Serializable {
     @Override
     public String toString() {
         return "UserExt{" +
-            "id=" + id + "'"+
+            "id=" + id +
             ", avatar='" + avatar + "'" +
             ", avatarContentType='" + avatarContentType + "'" +
             ", nick='" + nick + "'" +
@@ -220,7 +219,6 @@ public class UserExt implements Serializable {
             ", idSteam='" + idSteam + "'" +
             ", idOrigin='" + idOrigin + "'" +
             ", idLol='" + idLol + "'" +
-            ", pais='" + pais + "'" +
             ", puntos='" + puntos + "'" +
             '}';
     }

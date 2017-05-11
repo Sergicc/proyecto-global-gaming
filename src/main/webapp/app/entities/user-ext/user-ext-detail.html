@@ -33,10 +33,6 @@
         <dd>
             <span>{{vm.userExt.idLol}}</span>
         </dd>
-        <dt><span data-translate="proyectoGlobalGamingApp.userExt.pais">Pais</span></dt>
-        <dd>
-            <span>{{vm.userExt.pais}}</span>
-        </dd>
         <dt><span data-translate="proyectoGlobalGamingApp.userExt.puntos">Puntos</span></dt>
         <dd>
             <span>{{vm.userExt.puntos}}</span>
@@ -44,6 +40,10 @@
         <dt><span data-translate="proyectoGlobalGamingApp.userExt.user">User</span></dt>
         <dd>
             {{vm.userExt.user.login}}
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.userExt.pais">Pais</span></dt>
+        <dd>
+            <a ui-sref="pais-detail({id:vm.userExt.pais.id})">{{vm.userExt.pais.nombre}}</a>
         </dd>
     </dl>
 

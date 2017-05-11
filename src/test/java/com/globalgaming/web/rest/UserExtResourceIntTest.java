@@ -58,9 +58,6 @@ public class UserExtResourceIntTest {
     private static final String DEFAULT_ID_LOL = "AAAAAAAAAA";
     private static final String UPDATED_ID_LOL = "BBBBBBBBBB";
 
-    private static final String DEFAULT_PAIS = "AAAAAAAAAA";
-    private static final String UPDATED_PAIS = "BBBBBBBBBB";
-
     private static final Integer DEFAULT_PUNTOS = 1;
     private static final Integer UPDATED_PUNTOS = 2;
 
@@ -105,7 +102,6 @@ public class UserExtResourceIntTest {
                 .idSteam(DEFAULT_ID_STEAM)
                 .idOrigin(DEFAULT_ID_ORIGIN)
                 .idLol(DEFAULT_ID_LOL)
-                .pais(DEFAULT_PAIS)
                 .puntos(DEFAULT_PUNTOS);
         return userExt;
     }
@@ -138,7 +134,6 @@ public class UserExtResourceIntTest {
         assertThat(testUserExt.getIdSteam()).isEqualTo(DEFAULT_ID_STEAM);
         assertThat(testUserExt.getIdOrigin()).isEqualTo(DEFAULT_ID_ORIGIN);
         assertThat(testUserExt.getIdLol()).isEqualTo(DEFAULT_ID_LOL);
-        assertThat(testUserExt.getPais()).isEqualTo(DEFAULT_PAIS);
         assertThat(testUserExt.getPuntos()).isEqualTo(DEFAULT_PUNTOS);
     }
 
@@ -180,7 +175,6 @@ public class UserExtResourceIntTest {
             .andExpect(jsonPath("$.[*].idSteam").value(hasItem(DEFAULT_ID_STEAM.toString())))
             .andExpect(jsonPath("$.[*].idOrigin").value(hasItem(DEFAULT_ID_ORIGIN.toString())))
             .andExpect(jsonPath("$.[*].idLol").value(hasItem(DEFAULT_ID_LOL.toString())))
-            .andExpect(jsonPath("$.[*].pais").value(hasItem(DEFAULT_PAIS.toString())))
             .andExpect(jsonPath("$.[*].puntos").value(hasItem(DEFAULT_PUNTOS)));
     }
 
@@ -202,7 +196,6 @@ public class UserExtResourceIntTest {
             .andExpect(jsonPath("$.idSteam").value(DEFAULT_ID_STEAM.toString()))
             .andExpect(jsonPath("$.idOrigin").value(DEFAULT_ID_ORIGIN.toString()))
             .andExpect(jsonPath("$.idLol").value(DEFAULT_ID_LOL.toString()))
-            .andExpect(jsonPath("$.pais").value(DEFAULT_PAIS.toString()))
             .andExpect(jsonPath("$.puntos").value(DEFAULT_PUNTOS));
     }
 
@@ -231,7 +224,6 @@ public class UserExtResourceIntTest {
                 .idSteam(UPDATED_ID_STEAM)
                 .idOrigin(UPDATED_ID_ORIGIN)
                 .idLol(UPDATED_ID_LOL)
-                .pais(UPDATED_PAIS)
                 .puntos(UPDATED_PUNTOS);
 
         restUserExtMockMvc.perform(put("/api/user-exts")
@@ -250,7 +242,6 @@ public class UserExtResourceIntTest {
         assertThat(testUserExt.getIdSteam()).isEqualTo(UPDATED_ID_STEAM);
         assertThat(testUserExt.getIdOrigin()).isEqualTo(UPDATED_ID_ORIGIN);
         assertThat(testUserExt.getIdLol()).isEqualTo(UPDATED_ID_LOL);
-        assertThat(testUserExt.getPais()).isEqualTo(UPDATED_PAIS);
         assertThat(testUserExt.getPuntos()).isEqualTo(UPDATED_PUNTOS);
     }
 

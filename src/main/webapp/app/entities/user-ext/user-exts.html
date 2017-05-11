@@ -25,9 +25,9 @@
                     <th jh-sort-by="idSteam"><span data-translate="proyectoGlobalGamingApp.userExt.idSteam">Id Steam</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="idOrigin"><span data-translate="proyectoGlobalGamingApp.userExt.idOrigin">Id Origin</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="idLol"><span data-translate="proyectoGlobalGamingApp.userExt.idLol">Id Lol</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="pais"><span data-translate="proyectoGlobalGamingApp.userExt.pais">Pais</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="puntos"><span data-translate="proyectoGlobalGamingApp.userExt.puntos">Puntos</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="user.login"><span data-translate="proyectoGlobalGamingApp.userExt.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pais.nombre"><span data-translate="proyectoGlobalGamingApp.userExt.pais">Pais</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -45,10 +45,12 @@
                     <td>{{userExt.idSteam}}</td>
                     <td>{{userExt.idOrigin}}</td>
                     <td>{{userExt.idLol}}</td>
-                    <td>{{userExt.pais}}</td>
                     <td>{{userExt.puntos}}</td>
                     <td>
                         {{userExt.user.login}}
+                    </td>
+                    <td>
+                        <a ui-sref="pais-detail({id:userExt.pais.id})">{{userExt.pais.nombre}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
@@ -111,15 +113,15 @@
                     <span class="custom-control-description">ID LOL</span>
                 </div>
                 <!--<div class="form-group">-->
-                    <!--<label>ID LOL-->
-                    <!--<input type="checkbox" class="form-control" ng-model="vm.userExtsByFilters.idLol"></label>-->
+                <!--<label>ID LOL-->
+                <!--<input type="checkbox" class="form-control" ng-model="vm.userExtsByFilters.idLol"></label>-->
                 <!--</div>-->
                 <div class="form-group">
                     <label>PAIS</label>
                     <input type="text" class="form-control" ng-model="vm.userExtsByFilters.pais">
-                    <!--<select class="form-control" ng-model="vm.salasByFilters.juego" ng-repeat="sala in vm.listsala">-->
-                    <!--<option selected value>-Selecciona un idioma-</option>-->
-                    <!--<option value="{{sala.juego}}">{{sala.juego}}</option>-->
+                    <!--<select class="form-control" ng-model="vm.userExtByFilters.pais" ng-repeat="pais in vm.listUserExt">-->
+                    <!--<option selected value>-Selecciona un pais-</option>-->
+                    <!--<option value="{{pais.id}}">{{pais.nombre}}</option>-->
                     <!--</select>-->
                 </div>
 
