@@ -212,11 +212,11 @@
                 <div class="form-group">
                     <label>JUEGO</label>
 
-                    <input type="text" class="form-control" ng-model="vm.salasByFilters.juego">
-                    <!--<select class="form-control" ng-model="vm.salasByFilters.juego" ng-repeat="sala in vm.listsala">-->
+                    <!--<input type="text" class="form-control" ng-model="vm.salasByFilters.juego">-->
+                    <select class="form-control" ng-model="vm.salasByFilters.juego" ng-repeat="sala in vm.listsala">
                         <!--<option selected value>-Selecciona un juego-</option>-->
-                        <!--<option value="{{sala.juego}}">{{sala.juego}}</option>-->
-                    <!--</select>-->
+                        <option value="{{sala.juego}}">{{sala.juego}}</option>
+                    </select>
                 </div>
 
                 <input type="submit" name="submit" value="buscar" class="btn btn-success btn-block" ng-click="vm.salaByFilters()">

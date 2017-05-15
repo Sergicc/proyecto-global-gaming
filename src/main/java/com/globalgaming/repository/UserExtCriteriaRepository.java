@@ -74,7 +74,7 @@ public class UserExtCriteriaRepository {
 
         if(parameters.get("pais")!= null) {
             String pais = (String) parameters.get("pais");
-            paisUserExtCriteria.add(Restrictions.ilike("pais", pais, MatchMode.ANYWHERE));
+            paisUserExtCriteria.add(Restrictions.ilike("nombre", pais, MatchMode.ANYWHERE));
         }
 
         List<UserExt> results = userExtCriteria.list();

@@ -164,16 +164,16 @@ public class UserExtResource {
         if (nick != null) {
             params.put("nick", nick);
         }
-        if (idBattlenet != null) {
+        if (idBattlenet != null && idBattlenet) {
             params.put("idBattlenet", idBattlenet);
         }
-        if (idSteam != null) {
+        if (idSteam != null && idSteam) {
             params.put("idSteam", idSteam);
         }
-        if (idOrigin != null) {
+        if (idOrigin != null && idOrigin) {
             params.put("idOrigin", idOrigin);
         }
-        if (idLol != null) {
+        if (idLol != null && idLol) {
             params.put("idLol", idLol);
         }
         if (pais != null) {

@@ -5,9 +5,9 @@
         .module('proyectoGlobalGamingApp')
         .controller('UserExtController', UserExtController);
 
-    UserExtController.$inject = ['$scope', '$state', 'DataUtils', 'UserExt', 'ParseLinks', 'AlertService', 'paginationConstants', 'searchUserExt'];
+    UserExtController.$inject = ['$scope', '$state', 'DataUtils', 'UserExt', 'ParseLinks', 'AlertService', 'paginationConstants', 'searchUserExt', 'Pais'];
 
-    function UserExtController($scope, $state, DataUtils, UserExt, ParseLinks, AlertService, paginationConstants, searchUserExt) {
+    function UserExtController($scope, $state, DataUtils, UserExt, ParseLinks, AlertService, paginationConstants, searchUserExt, Pais) {
         var vm = this;
 
         vm.userExts = [];
@@ -24,6 +24,7 @@
         vm.reverse = true;
         vm.openFile = DataUtils.openFile;
         vm.byteSize = DataUtils.byteSize;
+        vm.pais = Pais.query();
 
         vm.UserExtByFilters = function () {
 
@@ -33,7 +34,7 @@
                 idSteam: vm.userExtsByFilters.idSteam,
                 idOrigin: vm.userExtsByFilters.idOrigin,
                 idLol: vm.userExtsByFilters.idLol,
-                pais: vm.userExtsByFilters.pais
+                pais: vm.userExtsByFilters.pais.nombre
             }, onSuccessByFilters, onError);
 
 
