@@ -99,7 +99,12 @@
                     ng-model="vm.juego.valoracionUsers"
                      />
         </div>
-
+        <div class="form-group">
+            <label data-translate="proyectoGlobalGamingApp.juego.idioma" for="field_idioma">Idioma</label>
+            <select class="form-control" id="field_idioma" name="idioma" ng-model="vm.juego.idioma" ng-options="idioma as idioma.nombre for idioma in vm.idioma track by idioma.id">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

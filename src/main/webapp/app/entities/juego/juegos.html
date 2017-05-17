@@ -144,10 +144,15 @@
                 <div class="form-group">
                     <label>IDIOMA</label>
                     <!--<input type="text" class="form-control" ng-model="vm.juegosByFilters.idioma">-->
-                    <select class="form-control" ng-model="vm.juegosByFilters.idioma" ng-repeat="idioma in vm.listJuego">
-                        <!--<option selected value>-Selecciona un pais-</option>-->
-                        <option value="{{idioma.id}}">{{idioma.nombre}}</option>
+                    <!--<select class="form-control" ng-model="vm.juegosByFilters.idioma" ng-repeat="idioma in vm.listJuego">-->
+                        <!--&lt;!&ndash;<option selected value>-Selecciona un pais-</option>&ndash;&gt;-->
+                        <!--<option value="{{idioma.id}}">{{idioma.nombre}}</option>-->
+                    <!--</select>-->
+                    <select class="form-control" id="field_idioma" name="idioma" ng-model="vm.juegosByFilters.idioma" ng-options="idioma as idioma.nombre for idioma in vm.idioma track by idioma.id">
+                        <option value=""></option>
                     </select>
+
+
                     <!--<input type="text" class="form-control" ng-model="vm.userExtsByFilters.pais">-->
                     <!--<select class="form-control" ng-model="vm.juegosByFilters.idioma">-->
                         <!--<option selected value>-Selecciona un idioma-</option>-->

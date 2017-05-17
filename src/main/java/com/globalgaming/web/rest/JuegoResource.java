@@ -245,17 +245,19 @@ public class JuegoResource {
             }
         }
 
-        List<Juego> result = juegoCriteriaRepository.filterJuegoByCriteria(params);
-
         if (idioma != null) {
-            result=result.parallelStream()
-                .filter(juego -> juego.getIdiomas()
-                    .stream().map(idioma1 -> idioma1.getNombre())
-                    .anyMatch(s -> s.equalsIgnoreCase(idioma)))
-                    .collect(Collectors.toList());
+            params.put("idioma", idioma);
         }
 
+        List<Juego> result = juegoCriteriaRepository.filterJuegoByCriteria(params);
 
+//        if (idioma != null) {
+//            result=result.parallelStream()
+//                .filter(juego -> juego.getIdiomas()
+//                    .stream().map(idioma1 -> idioma1.getNombre())
+//                    .anyMatch(s -> s.equalsIgnoreCase(idioma)))
+//                    .collect(Collectors.toList());
+//        }
 
         if (result.isEmpty()) {
             return new ResponseEntity<>(

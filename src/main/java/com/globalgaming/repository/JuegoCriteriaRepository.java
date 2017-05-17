@@ -35,9 +35,10 @@ import java.util.Map;
         public List<Juego> filterJuegoByCriteria(Map<String, Object> parameters) {
 
             Criteria juegoCriteria = currentSession().createCriteria(Juego.class);
+            Criteria idiomaJuegoCriteria = juegoCriteria.createCriteria("idiomas");
             juegoCriteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
             //error con idiomas encontrado, el atributo es plural y todos los juegos deben tener idiomas asignados
-          //  Criteria idiomaCriteria = juegoCriteria.createCriteria("idiomas");
+
 
             if(parameters.get("titulo")!= null) {
                 String titulo = (String) parameters.get("titulo");
@@ -64,9 +65,14 @@ import java.util.Map;
                 juegoCriteria.add(Restrictions.eq("edadRecomendada", Integer.parseInt(edadRecomendada)));
             }
 
+//            if(parameters.get("pais")!= null) {
+//                String pais = (String) parameters.get("pais");
+//                paisUserExtCriteria.add(Restrictions.ilike("nombre", pais, MatchMode.ANYWHERE));
+//            }
+
             if(parameters.get("idioma")!= null) {
                 String idioma = (String) parameters.get("idioma");
-                juegoCriteria.add(Restrictions.ilike("idioma", idioma, MatchMode.ANYWHERE));
+                idiomaJuegoCriteria.add(Restrictions.ilike("nombre", idioma, MatchMode.ANYWHERE));
             }
 
             // filtro por Capacidad de jugadores

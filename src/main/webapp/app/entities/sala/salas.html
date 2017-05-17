@@ -213,10 +213,15 @@
                     <label>JUEGO</label>
 
                     <!--<input type="text" class="form-control" ng-model="vm.salasByFilters.juego">-->
-                    <select class="form-control" ng-model="vm.salasByFilters.juego" ng-repeat="sala in vm.listsala">
-                        <!--<option selected value>-Selecciona un juego-</option>-->
-                        <option value="{{sala.juego}}">{{sala.juego}}</option>
+                    <!--<select class="form-control" ng-model="vm.salasByFilters.juego" ng-repeat="sala in vm.listsala">-->
+                        <!--&lt;!&ndash;<option selected value>-Selecciona un juego-</option>&ndash;&gt;-->
+                        <!--<option value="{{sala.juego}}">{{sala.juego}}</option>-->
+                    <!--</select>-->
+
+                    <select class="form-control" id="field_juego" name="juego" ng-model="vm.salasByFilters.juego" ng-options="juego as juego.titulo for juego in vm.juego track by juego.id">
+                        <option value=""></option>
                     </select>
+
                 </div>
 
                 <input type="submit" name="submit" value="buscar" class="btn btn-success btn-block" ng-click="vm.salaByFilters()">

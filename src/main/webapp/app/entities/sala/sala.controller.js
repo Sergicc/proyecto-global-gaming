@@ -5,9 +5,9 @@
         .module('proyectoGlobalGamingApp')
         .controller('SalaController', SalaController);
 
-    SalaController.$inject = ['$scope', '$state', 'DataUtils', 'Sala', 'ParseLinks', 'AlertService', 'paginationConstants', 'searchSala'];
+    SalaController.$inject = ['$scope', '$state', 'DataUtils', 'Sala', 'ParseLinks', 'AlertService', 'paginationConstants', 'searchSala', 'Juego'];
 
-    function SalaController ($scope, $state, DataUtils, Sala, ParseLinks, AlertService, paginationConstants, searchSala) {
+    function SalaController ($scope, $state, DataUtils, Sala, ParseLinks, AlertService, paginationConstants, searchSala, Juego) {
         var vm = this;
 
         vm.salas = [];
@@ -24,6 +24,7 @@
         vm.reverse = true;
         vm.openFile = DataUtils.openFile;
         vm.byteSize = DataUtils.byteSize;
+        vm.juego = Juego.query();
 
         vm.salaByFilters = function () {
 
@@ -33,7 +34,7 @@
                 descripcion: vm.salasByFilters.descripcion,
                 minLimiteUsuarios: vm.salasByFilters.minLimiteUsuarios,
                 maxLimiteUsuarios: vm.salasByFilters.maxLimiteUsuarios,
-                juego: vm.salasByFilters.juego
+                juego: vm.salasByFilters.juego.titulo
             }, onSuccessByFilters, onError);
 
             function sort() {

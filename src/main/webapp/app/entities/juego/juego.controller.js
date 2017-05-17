@@ -5,9 +5,9 @@
         .module('proyectoGlobalGamingApp')
         .controller('JuegoController', JuegoController);
 
-    JuegoController.$inject = ['$scope', '$state', 'DataUtils', 'Juego', 'ParseLinks', 'AlertService', 'paginationConstants', 'searchJuego'];
+    JuegoController.$inject = ['$scope', '$state', 'DataUtils', 'Juego', 'ParseLinks', 'AlertService', 'paginationConstants', 'searchJuego', 'Idioma'];
 
-    function JuegoController ($scope, $state, DataUtils, Juego, ParseLinks, AlertService, paginationConstants, searchJuego) {
+    function JuegoController ($scope, $state, DataUtils, Juego, ParseLinks, AlertService, paginationConstants, searchJuego, Idioma) {
         var vm = this;
 
         vm.juegos = [];
@@ -24,7 +24,7 @@
         vm.reverse = true;
         vm.openFile = DataUtils.openFile;
         vm.byteSize = DataUtils.byteSize;
-
+        vm.idioma = Idioma.query();
 
         vm.juegoByFilters = function () {
 
@@ -43,7 +43,7 @@
                 maxValoracionWeb: vm.juegosByFilters.maxValoracionWeb,
                 minValoracionUsers: vm.juegosByFilters.minValoracionUsers,
                 maxValoracionUsers: vm.juegosByFilters.maxValoracionUsers,
-                idioma: vm.juegosByFilters.idioma
+                idioma: vm.juegosByFilters.idioma.nombre
             }, onSuccessByFilters, onError);
 
             function sort() {
