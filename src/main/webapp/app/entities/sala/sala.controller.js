@@ -28,14 +28,23 @@
 
         vm.salaByFilters = function () {
 
-
-            Sala.byFilters({
-                nombre: vm.salasByFilters.nombre,
-                descripcion: vm.salasByFilters.descripcion,
-                minLimiteUsuarios: vm.salasByFilters.minLimiteUsuarios,
-                maxLimiteUsuarios: vm.salasByFilters.maxLimiteUsuarios,
-                juego: vm.salasByFilters.juego.titulo
-            }, onSuccessByFilters, onError);
+            if(vm.salasByFilters.juego==null) {
+                Sala.byFilters({
+                    nombre: vm.salasByFilters.nombre,
+                    descripcion: vm.salasByFilters.descripcion,
+                    minLimiteUsuarios: vm.salasByFilters.minLimiteUsuarios,
+                    maxLimiteUsuarios: vm.salasByFilters.maxLimiteUsuarios
+                    //juego: vm.salasByFilters.juego.titulo
+                }, onSuccessByFilters, onError);
+            }else{
+                Sala.byFilters({
+                    nombre: vm.salasByFilters.nombre,
+                    descripcion: vm.salasByFilters.descripcion,
+                    minLimiteUsuarios: vm.salasByFilters.minLimiteUsuarios,
+                    maxLimiteUsuarios: vm.salasByFilters.maxLimiteUsuarios,
+                    juego: vm.salasByFilters.juego.titulo
+                }, onSuccessByFilters, onError);
+            }
 
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];

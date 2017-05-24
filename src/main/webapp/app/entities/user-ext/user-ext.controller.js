@@ -28,15 +28,25 @@
 
         vm.UserExtByFilters = function () {
 
-            UserExt.byFilters({
-                nick: vm.userExtsByFilters.nick,
-                idBattlenet: vm.userExtsByFilters.idBattlenet,
-                idSteam: vm.userExtsByFilters.idSteam,
-                idOrigin: vm.userExtsByFilters.idOrigin,
-                idLol: vm.userExtsByFilters.idLol,
-                pais: vm.userExtsByFilters.pais.nombre
-            }, onSuccessByFilters, onError);
-
+            if(vm.userExtsByFilters.pais==null) {
+                UserExt.byFilters({
+                    nick: vm.userExtsByFilters.nick,
+                    idBattlenet: vm.userExtsByFilters.idBattlenet,
+                    idSteam: vm.userExtsByFilters.idSteam,
+                    idOrigin: vm.userExtsByFilters.idOrigin,
+                    idLol: vm.userExtsByFilters.idLol
+                    //pais: vm.userExtsByFilters.pais.nombre
+                }, onSuccessByFilters, onError);
+            }else{
+                UserExt.byFilters({
+                    nick: vm.userExtsByFilters.nick,
+                    idBattlenet: vm.userExtsByFilters.idBattlenet,
+                    idSteam: vm.userExtsByFilters.idSteam,
+                    idOrigin: vm.userExtsByFilters.idOrigin,
+                    idLol: vm.userExtsByFilters.idLol,
+                    pais: vm.userExtsByFilters.pais.nombre
+                }, onSuccessByFilters, onError);
+            }
 
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
