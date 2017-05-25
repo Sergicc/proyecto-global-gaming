@@ -148,7 +148,7 @@
                         <!--&lt;!&ndash;<option selected value>-Selecciona un pais-</option>&ndash;&gt;-->
                         <!--<option value="{{idioma.id}}">{{idioma.nombre}}</option>-->
                     <!--</select>-->
-                    <select class="form-control" id="field_idioma" name="idioma" ng-model="vm.juegosByFilters.idioma" ng-options="idioma as idioma.nombre for idioma in vm.idioma track by idioma.id "> <!-- | unique: 'idioma.nombre'-->
+                    <select class="form-control" id="field_idioma" name="idioma" ng-model="vm.juegosByFilters.idioma" ng-options="idioma as idioma for idioma in vm.idioma"> <!-- | unique: 'idioma.nombre'-->
                         <option value=""></option>
                     </select>
 
