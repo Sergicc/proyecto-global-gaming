@@ -66,7 +66,7 @@
         }
         .snip1369 figcaption {
             position: absolute;
-            top: 75%;
+            top: 70%;
             bottom: 46px;
             left: 20px;
             right: 20px;
@@ -152,6 +152,10 @@
             overflow:hidden;
             text-overflow: ellipsis;
         }
+        .imagens{
+            width:350px;
+            height:295px;
+        }
     </style>
     <div  class="container-fluid">
         <div class="row">
@@ -182,9 +186,8 @@
                 </tr>
             </thead>
             <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
-
-            <figure ng-repeat="articulo in vm.articulos track by articulo.id" class="snip1369 orange"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample16.jpg" alt="pr-sample16" />
-                <div class="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample16.jpg" alt="pr-sample16" /></div>
+            <figure ng-repeat="articulo in vm.articulos track by articulo.id" class="snip1369 orange"><img data-ng-src="{{'data:' + articulo.fotoContentType + ';base64,' + articulo.foto}}" class="imagens" alt="articulo image"/>
+                <div class="image"><img data-ng-src="{{'data:' + articulo.fotoContentType + ';base64,' + articulo.foto}}" class="imagens" alt="articulo image"/></div>
                 <figcaption>
                     <h3>{{articulo.titulo}}</h3>
                     <div id = articulodiv >
