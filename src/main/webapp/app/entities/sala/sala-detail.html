@@ -112,7 +112,7 @@
                 <a ng-click="vm.openFile(vm.sala.imagenContentType, vm.sala.imagen)">
                     <img data-ng-src="{{'data:' + vm.sala.imagenContentType + ';base64,' + vm.sala.imagen}}" style="max-width: 100%;" alt="sala image"/>
                 </a>
-                {{vm.sala.imagenContentType}}, {{vm.byteSize(vm.sala.imagen)}}
+                {{vm.sala.imagenContent}}<!--, {{vm.byteSize(vm.sala.imagen)}}-->
             </div>
         </dd>
         <dt><span data-translate="proyectoGlobalGamingApp.sala.limiteUsuarios">Limite Usuarios</span></dt>

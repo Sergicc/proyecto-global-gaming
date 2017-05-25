@@ -9,20 +9,27 @@
     <style>
         @import url('https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:400,700');
     @import url(http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+
+        h2{
+            text-align:center;
+        }
+
     .snip1583 {
         font-family: 'Fira Sans Extra Condensed', Arial, sans-serif;
         position: relative;
         display: inline-block;
         overflow: hidden;
         margin: 8px;
-        min-width: 230px;
-        max-width: 315px;
+        min-width: 180px;
+        max-width: 230px;
         width: 100%;
         font-size: 16px;
         background-color: #fff;
         color: #111;
         line-height: 1.2em;
         text-align: left;
+        border: 1px solid grey;
+        margin-left: 2.9%;
     }
 
     .snip1583 *,
@@ -32,6 +39,7 @@
         box-sizing: border-box;
         -webkit-transition: all 0.35s ease;
         transition: all 0.35s ease;
+
     }
 
     .snip1583 img {
@@ -41,6 +49,7 @@
 
     .snip1583 figcaption {
         padding: 10px;
+
     }
 
     .snip1583 h3 {
@@ -66,6 +75,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+
     }
 
     .snip1583 .icons a {
@@ -73,6 +83,7 @@
         opacity: 0;
         -webkit-transform: translateY(50%);
         transform: translateY(50%);
+
     }
 
     .snip1583 .icons a i {
@@ -83,6 +94,8 @@
         background-color: #ffffff;
         text-align: center;
         color: #000000;
+        background-color: lightgrey;
+
     }
 
     .snip1583 .icons a i:hover {
@@ -96,6 +109,7 @@
         opacity: 1;
         -webkit-transform: translateX(0);
         transform: translateX(0);
+
     }
 
     .snip1583:hover a:nth-child(2),
@@ -111,7 +125,7 @@
     }
         .imagenes{
             width:350px;
-            height:250px;
+            height:200px;
         }
 
     </style>
@@ -145,21 +159,21 @@
                     <figure ng-repeat="sala in vm.salas track by sala.id" class="snip1583"><a ng-if="sala.imagen" ng-click="vm.openFile(sala.imagenContentType, sala.imagen)">
                         <img data-ng-src="{{'data:' + sala.imagenContentType + ';base64,' + sala.imagen}}" class="imagenes" alt="sala image"/>
                     </a>
-                        <div class="icons"><a><i class="ion-android-cart"></i></a><a><i class="ion-android-star"></i></a><a><i class="ion-android-share-alt"></i></a></div>
+                        <div class="icons"><a type="submit" ui-sref="sala-detail({id:sala.id})"><i class="ion-eye"></i></a><a type="submit" ui-sref="sala.edit({id:sala.id})" ><i class="ion-edit"></i></a><a type="submit" ui-sref="sala.delete({id:sala.id})"><i class="ion-close-circled"></i></a></div>
                         <figcaption>
                             <h3>{{sala.nombre}}</h3>
-                            <div class="price">$19.00</div>
+                            <h3>{{sala.juego.titulo}}</h3>
                         </figcaption>
                     </figure>
 
-               <tr ng-repeat="sala in vm.salas track by sala.id">
+               <!--<tr ng-repeat="sala in vm.salas track by sala.id">
                     <td><a ui-sref="sala-detail({id:sala.id})">{{sala.id}}</a></td>
                     <td>{{sala.nombre}}</td>
                     <td>
                         <a ng-if="sala.imagen" ng-click="vm.openFile(sala.imagenContentType, sala.imagen)">
                             <img data-ng-src="{{'data:' + sala.imagenContentType + ';base64,' + sala.imagen}}" style="max-height: 30px;" alt="sala image"/>
                         </a>
-                        <span ng-if="sala.imagen">{{sala.imagenContentType}}, {{vm.byteSize(sala.imagen)}}</span>
+                        <span ng-if="sala.imagen">{{sala.imagenContent}}</span><!--, {{vm.byteSize(sala.imagen)}}-->
                     </td>
                     <td>{{sala.limiteUsuarios}}</td>
                     <td>{{sala.descripcion}}</td>
@@ -188,7 +202,7 @@
                             </button>
                         </div>
                     </td>
-                </tr>
+                </tr>-->
             </tbody>
         </table>
     </div>

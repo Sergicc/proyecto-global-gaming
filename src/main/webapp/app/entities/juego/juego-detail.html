@@ -10,7 +10,7 @@
     <dl class="dl-horizontal jh-entity-details">
         <dt><span data-translate="proyectoGlobalGamingApp.juego.titulo">Titulo</span></dt>
         <dd>
-            <span>{{vm.juego.id}} - {{vm.juego.titulo}}</span>
+            <span>{{vm.juego.titulo}}</span>
         </dd>
         <dt><span data-translate="proyectoGlobalGamingApp.juego.portada">Portada</span></dt>
         <dd>
@@ -18,7 +18,7 @@
                 <a ng-click="vm.openFile(vm.juego.portadaContentType, vm.juego.portada)">
                     <img data-ng-src="{{'data:' + vm.juego.portadaContentType + ';base64,' + vm.juego.portada}}" style="max-width: 100%;" alt="juego image"/>
                 </a>
-                {{vm.juego.portadaContentType}}, {{vm.byteSize(vm.juego.portada)}}
+                {{vm.juego.portadaContent}}<!--, {{vm.byteSize(vm.juego.portada)}}-->
             </div>
         </dd>
         <dt><span data-translate="proyectoGlobalGamingApp.juego.descripcion">Descripcion</span></dt>

@@ -24,7 +24,7 @@
             <div>
                 <img data-ng-src="{{'data:' + vm.juego.portadaContentType + ';base64,' + vm.juego.portada}}" style="max-height: 100px;" ng-if="vm.juego.portada" alt="juego image"/>
                 <div ng-if="vm.juego.portada" class="help-block clearfix">
-                    <span class="pull-left">{{vm.juego.portadaContentType}}, {{vm.byteSize(vm.juego.portada)}}</span>
+                    <span class="pull-left">{{vm.juego.portadaContent}}<!--Type, {{vm.byteSize(vm.juego.portada)}}--></span>
                     <button type="button" ng-click="vm.juego.portada=null;vm.juego.portadaContentType=null;"
                             class="btn btn-default btn-xs pull-right">
                         <span class="glyphicon glyphicon-remove"></span>

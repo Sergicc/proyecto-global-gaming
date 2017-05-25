@@ -46,7 +46,7 @@
                         <a ng-if="juego.portada" ng-click="vm.openFile(juego.portadaContentType, juego.portada)">
                             <img data-ng-src="{{'data:' + juego.portadaContentType + ';base64,' + juego.portada}}" style="max-height: 30px;" alt="juego image"/>
                         </a>
-                        <span ng-if="juego.portada">{{juego.portadaContentType}}, {{vm.byteSize(juego.portada)}}</span>
+                        <span ng-if="juego.portada">{{juego.portadaContent}}</span><!--, {{vm.byteSize(juego.portada)}}-->
                     </td>
                     <td>{{juego.descripcion}}</td>
                     <td>{{juego.trailer}}</td>
@@ -153,7 +153,7 @@
                         <!--&lt;!&ndash;<option selected value>-Selecciona un pais-</option>&ndash;&gt;-->
                         <!--<option value="{{idioma.id}}">{{idioma.nombre}}</option>-->
                     <!--</select>-->
-                    <select class="form-control" id="field_idioma" name="idioma" ng-model="vm.juegosByFilters.idioma" ng-options="idioma as idioma.nombre for idioma in vm.idioma track by idioma.id">
+                    <select class="form-control" id="field_idioma" name="idioma" ng-model="vm.juegosByFilters.idioma" ng-options="idioma as idioma for idioma in vm.idioma"> <!-- | unique: 'idioma.nombre'-->
                         <option value=""></option>
                     </select>
 

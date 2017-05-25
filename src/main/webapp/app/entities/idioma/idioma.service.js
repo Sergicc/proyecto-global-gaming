@@ -11,6 +11,7 @@
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
+            'queryDistinct': { method: 'GET', isArray: true, url:'api/idiomasDistinct'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
