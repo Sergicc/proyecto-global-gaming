@@ -31,7 +31,7 @@ import java.util.Optional;
 public class IdiomaResource {
 
     private final Logger log = LoggerFactory.getLogger(IdiomaResource.class);
-        
+
     @Inject
     private IdiomaRepository idiomaRepository;
 
@@ -94,6 +94,15 @@ public class IdiomaResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+    @GetMapping("/idiomasDistinct")
+    @Timed
+    public ResponseEntity<List<String>> getAllIdiomasDistinct(@ApiParam Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of Idiomas");
+        Page<String> page = idiomaRepository.findAllDistinct(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/idiomas");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
     /**
      * GET  /idiomas/:id : get the "id" idioma.
      *

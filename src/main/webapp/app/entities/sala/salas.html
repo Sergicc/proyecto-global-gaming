@@ -168,7 +168,7 @@
                         <a ng-if="sala.imagen" ng-click="vm.openFile(sala.imagenContentType, sala.imagen)">
                             <img data-ng-src="{{'data:' + sala.imagenContentType + ';base64,' + sala.imagen}}" style="max-height: 30px;" alt="sala image"/>
                         </a>
-                        <span ng-if="sala.imagen">{{sala.imagenContentType}}, {{vm.byteSize(sala.imagen)}}</span>
+                        <span ng-if="sala.imagen">{{sala.imagenContent}}</span><!--, {{vm.byteSize(sala.imagen)}}-->
                     </td>
                     <td>{{sala.limiteUsuarios}}</td>
                     <td>{{sala.descripcion}}</td>

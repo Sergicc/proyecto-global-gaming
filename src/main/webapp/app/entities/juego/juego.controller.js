@@ -24,7 +24,7 @@
         vm.reverse = true;
         vm.openFile = DataUtils.openFile;
         vm.byteSize = DataUtils.byteSize;
-        vm.idioma = Idioma.query();
+        vm.idioma = Idioma.queryDistinct();
 
         // es igual a..
         //?location=Barcelona
@@ -59,7 +59,7 @@
                     maxValoracionWeb: vm.juegosByFilters.maxValoracionWeb,
                     minValoracionUsers: vm.juegosByFilters.minValoracionUsers,
                     maxValoracionUsers: vm.juegosByFilters.maxValoracionUsers,
-                    idioma: vm.juegosByFilters.idioma.nombre
+                    idioma: vm.juegosByFilters.idioma
                 }, onSuccessByFilters, onError);
             }
             function sort() {
