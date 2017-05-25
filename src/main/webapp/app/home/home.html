@@ -1,6 +1,35 @@
-
-<link rel="stylesheet" href="../../content/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../content/css/style.css">
+<link rel="stylesheet" href="../../content/css/bootstrap.min.css">
+<style>
+    .navbar-default {
+        background-color: rgba(48, 48, 48, 0.42);
+        border-color:0;
+    }
+
+    .navbar {
+        min-height:90px;
+        margin-bottom:0;
+        border:0;
+        border-radius:0;
+    }
+
+    .navbar-default .navbar-nav>li>a {
+        font-size:14px;
+        text-transform:uppercase;
+        color:#fff;
+        line-height: 55px;
+    }
+
+    .navbar-default .navbar-nav>li>a:hover {
+        color:#4bcaff;
+    }
+
+    .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+        color: #fff;
+        background-color: transparent;
+        border-top: 3px solid #4bcaff;
+    }
+</style>
 <div ng-cloak>
     <div class="wrapper">
         <video id="videoHeader" autoplay="autoplay" muted="muted" loop>
@@ -106,7 +135,7 @@
                     </div><!-- /.features -->
                 </div><!-- /.section-body -->
             </div><!-- /.container -->
-        </section><!-- /.section section-features -->7
+        </section><!-- /.section section-features -->
         <section class="section section-about" id="section-about">
             <div class="container">
                 <div class="row">

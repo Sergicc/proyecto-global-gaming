@@ -1,4 +1,34 @@
-<nav class="navbar navbar-default" role="navigation">
+<style>
+    .navbar-default {
+        background-color: rgba(48, 48, 48, 0.42);
+        border-color:0;
+    }
+
+    .navbar {
+        min-height:90px;
+        margin-bottom:0;
+        border:0;
+        border-radius:0;
+    }
+
+    .navbar-default .navbar-nav>li>a {
+        font-size:14px;
+        text-transform:uppercase;
+        color:#fff;
+        line-height: 55px;
+    }
+
+    .navbar-default .navbar-nav>li>a:hover {
+        color:#4bcaff;
+    }
+
+    .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+        color: #fff;
+        background-color: transparent;
+        border-top: 3px solid #4bcaff;
+    }
+</style>
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" ng-click="vm.toggleNavbar()">
@@ -7,7 +37,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-<h1>Global Gaming</h1>
+            <h1 style="color:white;">Gl<img width="50px" height="50px" src="../../../content/images/gg logo.png"/>bal Gaming</h1>
         </div>
         <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
             <ul class="nav navbar-nav navbar-right">
@@ -17,8 +47,63 @@
                         <span class="hidden-sm" data-translate="global.menu.home">Home</span>
                     </a>
                 </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="juego" ng-click="vm.collapseNavbar()">
+                        <span class="glyphicon glyphicon-play-circle"></span>&nbsp;
+                        <span data-translate="global.menu.entities.juego">Juego</span>
+                    </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="articulo" ng-click="vm.collapseNavbar()">
+                        <span class="glyphicon glyphicon-list-alt"></span>&nbsp;
+                        <span data-translate="global.menu.entities.articulo">Articulo</span>
+                    </a>
+                </li>
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-                <li ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" uib-dropdown class="dropdown pointer">
+                <li ng-class="{active: vm.$state.includes('account')}" uib-dropdown class="dropdown pointer">
+                    <a class="dropdown-toggle" uib-dropdown-toggle href="" id="account-menu">
+                        <span>
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span class="hidden-sm" data-translate="global.menu.account.main">
+                                Account
+                            </span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu>
+                        <li ui-sref-active="active" ng-switch-when="true">
+                            <a ui-sref="settings" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-wrench"></span>&nbsp;
+                                <span data-translate="global.menu.account.settings">Settings</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" ng-switch-when="true">
+                            <a ui-sref="password" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-lock"></span>&nbsp;
+                                <span data-translate="global.menu.account.password">Password</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" ng-switch-when="true">
+                            <a href="" ng-click="vm.logout()" id="logout">
+                                <span class="glyphicon glyphicon-log-out"></span>&nbsp;
+                                <span data-translate="global.menu.account.logout">Sign out</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" ng-switch-when="false">
+                            <a href="" ng-click="vm.login()" id="login">
+                                <span class="glyphicon glyphicon-log-in"></span>&nbsp;
+                                <span data-translate="global.menu.account.login">Sign in</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" ng-switch-when="false">
+                            <a ui-sref="register" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+                                <span data-translate="global.menu.account.register">Register</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown class="dropdown pointer">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="entity-menu">
                         <span>
                             <span class="glyphicon glyphicon-th-list"></span>
@@ -110,49 +195,6 @@
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                     </ul>
                 </li>
-                <li ng-class="{active: vm.$state.includes('account')}" uib-dropdown class="dropdown pointer">
-                    <a class="dropdown-toggle" uib-dropdown-toggle href="" id="account-menu">
-                        <span>
-                            <span class="glyphicon glyphicon-user"></span>
-                            <span class="hidden-sm" data-translate="global.menu.account.main">
-                                Account
-                            </span>
-                            <b class="caret"></b>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu" uib-dropdown-menu>
-                        <li ui-sref-active="active" ng-switch-when="true">
-                            <a ui-sref="settings" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-wrench"></span>&nbsp;
-                                <span data-translate="global.menu.account.settings">Settings</span>
-                            </a>
-                        </li>
-                        <li ui-sref-active="active" ng-switch-when="true">
-                            <a ui-sref="password" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-lock"></span>&nbsp;
-                                <span data-translate="global.menu.account.password">Password</span>
-                            </a>
-                        </li>
-                        <li ui-sref-active="active" ng-switch-when="true">
-                            <a href="" ng-click="vm.logout()" id="logout">
-                                <span class="glyphicon glyphicon-log-out"></span>&nbsp;
-                                <span data-translate="global.menu.account.logout">Sign out</span>
-                            </a>
-                        </li>
-                        <li ui-sref-active="active" ng-switch-when="false">
-                            <a href="" ng-click="vm.login()" id="login">
-                                <span class="glyphicon glyphicon-log-in"></span>&nbsp;
-                                <span data-translate="global.menu.account.login">Sign in</span>
-                            </a>
-                        </li>
-                        <li ui-sref-active="active" ng-switch-when="false">
-                            <a ui-sref="register" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
-                                <span data-translate="global.menu.account.register">Register</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
                 <li ng-class="{active: vm.$state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown class="dropdown pointer">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="admin-menu">
                         <span>
@@ -223,23 +265,30 @@
                 </li>
             </ul>
             <!--<ul class="nav navbar-nav navbar-middle">-->
-                <!--TODO BÚSQUEDA AVANZADA-->
-                <!--<div class="col-md-3 col-md-pull-9 sidebar">-->
-                    <!--<div class="widget widget-white">-->
-                        <!--<div class="widget-header">-->
-                            <!--<h3>SEARCH</h3>-->
-                        <!--</div>-->
-                        <!--<form role="form">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="titulo" >TÍTULO</label>-->
-                                                                                            <!--&lt;!&ndash;wtf&ndash;&gt;-->
-                                <!--<input type="text" class="form-control" ng-model="vm.juegosByFilters.titulo">-->
-                            <!--</div>-->
-                            <!--<input type="submit" name="submit" value="{{ 'ProyectoGlobalGamingApp.juego.simpleSearch' | translate }}" class="btn btn-success btn-block" ng-click="vm.searchByFilters()">-->
-                        <!--</form>-->
-                    <!--</div>-->
-                <!--</div>-->
+            <!--TODO BÚSQUEDA AVANZADA-->
+            <!--<div class="col-md-3 col-md-pull-9 sidebar">-->
+            <!--<div class="widget widget-white">-->
+            <!--<div class="widget-header">-->
+            <!--<h3>SEARCH</h3>-->
+            <!--</div>-->
+            <!--<form role="form">-->
+            <!--<div class="form-group">-->
+            <!--<label for="titulo" >TÍTULO</label>-->
+            <!--&lt;!&ndash;wtf&ndash;&gt;-->
+            <!--<input type="text" class="form-control" ng-model="vm.juegosByFilters.titulo">-->
+            <!--</div>-->
+            <!--<input type="submit" name="submit" value="{{ 'ProyectoGlobalGamingApp.juego.simpleSearch' | translate }}" class="btn btn-success btn-block" ng-click="vm.searchByFilters()">-->
+            <!--</form>-->
+            <!--</div>-->
+            <!--</div>-->
             <!--</ul>-->
         </div>
     </div>
 </nav>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
