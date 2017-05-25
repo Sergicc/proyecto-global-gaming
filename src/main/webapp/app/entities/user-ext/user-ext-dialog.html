@@ -18,7 +18,7 @@
             <div>
                 <img data-ng-src="{{'data:' + vm.userExt.avatarContentType + ';base64,' + vm.userExt.avatar}}" style="max-height: 100px;" ng-if="vm.userExt.avatar" alt="userExt image"/>
                 <div ng-if="vm.userExt.avatar" class="help-block clearfix">
-                    <span class="pull-left">{{vm.userExt.avatarContentType}}, {{vm.byteSize(vm.userExt.avatar)}}</span>
+                    <span class="pull-left">{{vm.userExt.avatarContent}}<!--, {{vm.byteSize(vm.userExt.avatar)}}--></span>
                     <button type="button" ng-click="vm.userExt.avatar=null;vm.userExt.avatarContentType=null;"
                             class="btn btn-default btn-xs pull-right">
                         <span class="glyphicon glyphicon-remove"></span>

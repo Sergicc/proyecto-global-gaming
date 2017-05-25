@@ -38,7 +38,7 @@
                         <a ng-if="userExt.avatar" ng-click="vm.openFile(userExt.avatarContentType, userExt.avatar)">
                             <img data-ng-src="{{'data:' + userExt.avatarContentType + ';base64,' + userExt.avatar}}" style="max-height: 30px;" alt="userExt image"/>
                         </a>
-                        <span ng-if="userExt.avatar">{{userExt.avatarContentType}}, {{vm.byteSize(userExt.avatar)}}</span>
+                        <span ng-if="userExt.avatar">{{userExt.avatarContent}}<!--, {{vm.byteSize(userExt.avatar)}}--></span>
                     </td>
                     <td>{{userExt.nick}}</td>
                     <td>{{userExt.idBattlenet}}</td>

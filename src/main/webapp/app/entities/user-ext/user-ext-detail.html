@@ -10,7 +10,7 @@
                 <a ng-click="vm.openFile(vm.userExt.avatarContentType, vm.userExt.avatar)">
                     <img data-ng-src="{{'data:' + vm.userExt.avatarContentType + ';base64,' + vm.userExt.avatar}}" style="max-width: 100%;" alt="userExt image"/>
                 </a>
-                {{vm.userExt.avatarContentType}}, {{vm.byteSize(vm.userExt.avatar)}}
+                {{vm.userExt.avatarContent}}<!--, {{vm.byteSize(vm.userExt.avatar)}}-->
             </div>
         </dd>
         <dt><span data-translate="proyectoGlobalGamingApp.userExt.nick">Nick</span></dt>
