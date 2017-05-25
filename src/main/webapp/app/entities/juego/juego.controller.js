@@ -26,26 +26,42 @@
         vm.byteSize = DataUtils.byteSize;
         vm.idioma = Idioma.query();
 
+        // es igual a..
+        //?location=Barcelona
+        //parametro:valor
+
         vm.juegoByFilters = function () {
-
-            // es igual a..
-            //?location=Barcelona
-            //parametro:valor
-            Juego.byFilters({
-                titulo: vm.juegosByFilters.titulo,
-                descripcion: vm.juegosByFilters.descripcion,
-                desarrollador: vm.juegosByFilters.desarrollador,
-                genero: vm.juegosByFilters.genero,
-                edadRecomendada: vm.juegosByFilters.edadRecomendada,
-                minCapacidadJugadores: vm.juegosByFilters.minCapacidadJugadores,
-                maxCapacidadJugadores: vm.juegosByFilters.maxCapacidadJugadores,
-                minValoracionWeb: vm.juegosByFilters.minValoracionWeb,
-                maxValoracionWeb: vm.juegosByFilters.maxValoracionWeb,
-                minValoracionUsers: vm.juegosByFilters.minValoracionUsers,
-                maxValoracionUsers: vm.juegosByFilters.maxValoracionUsers,
-                idioma: vm.juegosByFilters.idioma.nombre
-            }, onSuccessByFilters, onError);
-
+            if(vm.juegosByFilters.idioma==null){
+                Juego.byFilters({
+                    titulo: vm.juegosByFilters.titulo,
+                    descripcion: vm.juegosByFilters.descripcion,
+                    desarrollador: vm.juegosByFilters.desarrollador,
+                    genero: vm.juegosByFilters.genero,
+                    edadRecomendada: vm.juegosByFilters.edadRecomendada,
+                    minCapacidadJugadores: vm.juegosByFilters.minCapacidadJugadores,
+                    maxCapacidadJugadores: vm.juegosByFilters.maxCapacidadJugadores,
+                    minValoracionWeb: vm.juegosByFilters.minValoracionWeb,
+                    maxValoracionWeb: vm.juegosByFilters.maxValoracionWeb,
+                    minValoracionUsers: vm.juegosByFilters.minValoracionUsers,
+                    maxValoracionUsers: vm.juegosByFilters.maxValoracionUsers
+                    //idioma: vm.juegosByFilters.idioma.nombre
+                }, onSuccessByFilters, onError);
+            }else {
+                Juego.byFilters({
+                    titulo: vm.juegosByFilters.titulo,
+                    descripcion: vm.juegosByFilters.descripcion,
+                    desarrollador: vm.juegosByFilters.desarrollador,
+                    genero: vm.juegosByFilters.genero,
+                    edadRecomendada: vm.juegosByFilters.edadRecomendada,
+                    minCapacidadJugadores: vm.juegosByFilters.minCapacidadJugadores,
+                    maxCapacidadJugadores: vm.juegosByFilters.maxCapacidadJugadores,
+                    minValoracionWeb: vm.juegosByFilters.minValoracionWeb,
+                    maxValoracionWeb: vm.juegosByFilters.maxValoracionWeb,
+                    minValoracionUsers: vm.juegosByFilters.minValoracionUsers,
+                    maxValoracionUsers: vm.juegosByFilters.maxValoracionUsers,
+                    idioma: vm.juegosByFilters.idioma.nombre
+                }, onSuccessByFilters, onError);
+            }
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
                 if (vm.predicate !== 'id') {
