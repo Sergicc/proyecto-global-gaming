@@ -103,7 +103,7 @@
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                <tr has-any-authority="ROLE_ADMIN" jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="titulo"><span data-translate="proyectoGlobalGamingApp.juego.titulo">Titulo</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="portada"><span data-translate="proyectoGlobalGamingApp.juego.portada">Portada</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -125,24 +125,7 @@
                     <h3 class="title1">{{juego.titulo}}</h3>
                 </figcaption><a href="#"></a>
             </figure>
-                <tr ng-repeat="juego in vm.juegos track by juego.id">
-                    <td><a ui-sref="juego-detail({id:juego.id})">{{juego.id}}</a></td>
-                    <td>{{juego.titulo}}</td>
-                    <td>
-                        <a ng-if="juego.portada" ng-click="vm.openFile(juego.portadaContentType, juego.portada)">
-                            <img data-ng-src="{{'data:' + juego.portadaContentType + ';base64,' + juego.portada}}" style="max-height: 30px;" alt="juego image"/>
-                        </a>
-                        <span ng-if="juego.portada">{{juego.portadaContent}}</span><!--, {{vm.byteSize(juego.portada)}}-->
-                    </td>
-                    <td>{{juego.descripcion}}</td>
-                    <td>{{juego.trailer}}</td>
-                    <td>{{juego.desarrollador}}</td>
-                    <td>{{juego.genero}}</td>
-                    <td>{{juego.edadRecomendada}}</td>
-                        <td>{{juego.fechaLanzamiento | date:'mediumDate'}}</td>
-                    <td>{{juego.capacidadJugadores}}</td>
-                    <td>{{juego.valoracionWeb}}</td>
-                    <td>{{juego.valoracionUsers}}</td>
+                <tr has-any-authority="ROLE_ADMIN" ng-repeat="juego in vm.juegos track by juego.id">
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
@@ -165,6 +148,23 @@
                             </button>
                         </div>
                     </td>
+                    <td><a ui-sref="juego-detail({id:juego.id})">{{juego.id}}</a></td>
+                    <td>{{juego.titulo}}</td>
+                    <td>
+                        <a ng-if="juego.portada" ng-click="vm.openFile(juego.portadaContentType, juego.portada)">
+                            <img data-ng-src="{{'data:' + juego.portadaContentType + ';base64,' + juego.portada}}" style="max-height: 30px;" alt="juego image"/>
+                        </a>
+                        <span ng-if="juego.portada">{{juego.portadaContent}}</span><!--, {{vm.byteSize(juego.portada)}}-->
+                    </td>
+                    <td>{{juego.descripcion}}</td>
+                    <td>{{juego.trailer}}</td>
+                    <td>{{juego.desarrollador}}</td>
+                    <td>{{juego.genero}}</td>
+                    <td>{{juego.edadRecomendada}}</td>
+                        <td>{{juego.fechaLanzamiento | date:'mediumDate'}}</td>
+                    <td>{{juego.capacidadJugadores}}</td>
+                    <td>{{juego.valoracionWeb}}</td>
+                    <td>{{juego.valoracionUsers}}</td>
                 </tr>
             </tbody>
         </table>

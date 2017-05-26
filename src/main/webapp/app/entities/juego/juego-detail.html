@@ -4,9 +4,20 @@
     }
 </style>
 <div>
-    <h2><span data-translate="proyectoGlobalGamingApp.juego.detail.title">Juego</span> {{vm.juego.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
+  <!--  <h2><span data-translate="proyectoGlobalGamingApp.juego.detail.title"></span></h2>-->
+ <jhi-alert-error></jhi-alert-error>
+    <div class="container">
+    <div  ng-if="vm.juego.portada">
+        <div ng-if="vm.juego.portada"  class="col-xs-4">
+            <a ng-click="vm.openFile(vm.juego.portadaContentType, vm.juego.portada)">
+                <img data-ng-src="{{'data:' + vm.juego.portadaContentType + ';base64,' + vm.juego.portada}}" style="max-width: 100%;" alt="juego image"/>
+            </a>
+            {{vm.juego.portadaContent}}
+        </div>
+        <div class="col-xs-6">
+            <h2>{{vm.juego.titulo}}</h2>
+        </div>
+    </div>
     <dl class="dl-horizontal jh-entity-details">
         <dt><span data-translate="proyectoGlobalGamingApp.juego.titulo">Titulo</span></dt>
         <dd>
@@ -18,7 +29,7 @@
                 <a ng-click="vm.openFile(vm.juego.portadaContentType, vm.juego.portada)">
                     <img data-ng-src="{{'data:' + vm.juego.portadaContentType + ';base64,' + vm.juego.portada}}" style="max-width: 100%;" alt="juego image"/>
                 </a>
-                {{vm.juego.portadaContent}}<!--, {{vm.byteSize(vm.juego.portada)}}-->
+                {{vm.juego.portadaContent}}, {{vm.byteSize(vm.juego.portada)}}
             </div>
         </dd>
         <dt><span data-translate="proyectoGlobalGamingApp.juego.descripcion">Descripcion</span></dt>
