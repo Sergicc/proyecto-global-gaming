@@ -258,6 +258,12 @@
                             </a>
                         </li>
                         <li ui-sref-active="active">
+                                                        <a ui-sref="idioma" ng-click="vm.collapseNavbar()">
+                                                            <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                                            <span data-translate="global.menu.entities.idioma">Idioma</span>
+                                                      </a>
+                                                   </li>
+                        <li ui-sref-active="active">
                             <a ui-sref="articulo" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-list-alt"></span>&nbsp;
                                 <span data-translate="global.menu.entities.articulo">Articulo</span>
@@ -359,17 +365,11 @@
                                 <span data-translate="global.menu.admin.apidocs">API</span>
                             </a>
                         </li>
-
-
-
                         <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
                     </ul>
-                <!--<li style="position: relative; bottom: 27px;">-->
-                <li>
-                    <ul class="nav navbar-nav">
-                        <li><a href="#search">Search</a></li>
-                    </ul>
                 </li>
+                <li ui-sref-active="active">
+                    <a href="#search" class="glyphicon glyphicon-search"></a>
                 </li>
             </ul>
 
