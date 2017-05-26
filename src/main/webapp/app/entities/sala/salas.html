@@ -132,7 +132,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="sala.new" >
+                <button style="margin-left:9%" class="btn btn-primary" ui-sref="sala.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span  data-translate="proyectoGlobalGamingApp.sala.home.createLabel">
                         Create new Sala
@@ -159,7 +159,7 @@
                     <figure ng-repeat="sala in vm.salas track by sala.id" class="snip1583"><a ng-if="sala.imagen" ng-click="vm.openFile(sala.imagenContentType, sala.imagen)">
                         <img data-ng-src="{{'data:' + sala.imagenContentType + ';base64,' + sala.imagen}}" class="imagenes" alt="sala image"/>
                     </a>
-                        <div class="icons"><a type="submit" ui-sref="sala-detail({id:sala.id})"><i class="ion-eye"></i></a><a type="submit" ui-sref="sala.edit({id:sala.id})" ><i class="ion-edit"></i></a><a type="submit" ui-sref="sala.delete({id:sala.id})"><i class="ion-close-circled"></i></a></div>
+                        <div class="icons"><a type="submit" ui-sref="sala-detail({id:sala.id})"><i class="ion-eye"></i></a><a has-any-authority="ROLE_ADMIN" type="submit" ui-sref="sala.edit({id:sala.id})" ><i class="ion-edit"></i></a><a has-any-authority="ROLE_ADMIN" type="submit" ui-sref="sala.delete({id:sala.id})"><i class="ion-close-circled"></i></a></div>
                         <figcaption>
                             <h3>{{sala.nombre}}</h3>
                             <h3>{{sala.juego.titulo}}</h3>
@@ -173,7 +173,7 @@
                         <a ng-if="sala.imagen" ng-click="vm.openFile(sala.imagenContentType, sala.imagen)">
                             <img data-ng-src="{{'data:' + sala.imagenContentType + ';base64,' + sala.imagen}}" style="max-height: 30px;" alt="sala image"/>
                         </a>
-                        <span ng-if="sala.imagen">{{sala.imagenContent}}</span><!--, {{vm.byteSize(sala.imagen)}}-->
+                        <span ng-if="sala.imagen">{{sala.imagenContent}}</span><!--, {{vm.byteSize(sala.imagen)}}
                     </td>
                     <td>{{sala.limiteUsuarios}}</td>
                     <td>{{sala.descripcion}}</td>

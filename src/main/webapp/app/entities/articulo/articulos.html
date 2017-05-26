@@ -12,6 +12,11 @@
     <style>
         @import url(http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
         @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700);
+
+        h2{
+            text-align:center;
+        }
+
         .snip1369 {
             font-family: 'Raleway', Arial, sans-serif;
             position: relative;
@@ -26,6 +31,7 @@
             color: #ffffff;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
             font-size: 16px;
+            margin-left: 2.9%;
         }
         .snip1369 * {
             -webkit-box-sizing: border-box;
@@ -165,7 +171,7 @@
     <div  class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button has-any-authority="ROLE_ADMIN" class="btn btn-primary" ui-sref="articulo.new" >
+                <button style="margin-left:9%" has-any-authority="ROLE_ADMIN" class="btn btn-primary" ui-sref="articulo.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span  data-translate="proyectoGlobalGamingApp.articulo.home.createLabel">
                         Create new Articulo
@@ -178,7 +184,7 @@
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                <tr has-any-authority="ROLE_ADMIN" jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="titulo"><span data-translate="proyectoGlobalGamingApp.articulo.titulo">Titulo</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fecha"><span data-translate="proyectoGlobalGamingApp.articulo.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -203,13 +209,13 @@
                 </figcaption>
 
                 <span class="read-more">
-
+                {{articulo.fecha}}
                 LEER MÁS <i class="ion-android-arrow-forward"></i>
                 </span>
                 <a ui-sref="articulo-detail({id:articulo.id})"></a>
             </figure>
 
-                <tr ng-repeat="articulo in vm.articulos track by articulo.id">
+                <tr has-any-authority="ROLE_ADMIN" ng-repeat="articulo in vm.articulos track by articulo.id">
                     <td><a ui-sref="articulo-detail({id:articulo.id})">{{articulo.id}}</a></td>
                     <td>{{articulo.titulo}}</td>
                         <td>{{articulo.fecha | date:'mediumDate'}}</td>
