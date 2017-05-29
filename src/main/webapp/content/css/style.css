@@ -248,7 +248,7 @@ td { padding: 0; }
         #Testimonials
 \* ================================================================ */
 
-.section-testimonials { background: #15141a url(images/testimonials-bg.jpg) no-repeat 0 0; background-size: cover; text-align: center; height: 640px; }
+.section-testimonials { background: #15141a url(images/fondo.jpg) no-repeat 0 0; background-size: cover; text-align: center; height: 640px; }
 .section-testimonials .section-title { color: #fff;  }
 .section-testimonials .section-title:after { margin: 30px auto 0; }
 

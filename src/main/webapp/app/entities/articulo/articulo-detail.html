@@ -6,10 +6,15 @@
 <div>
     <!--<h2><span data-translate="proyectoGlobalGamingApp.articulo.detail.title">Articulo</span> {{vm.articulo.id}}</h2>-->
     <center>
-    <h1><span>{{vm.articulo.titulo}}</span></h1>
+        <h1><span>{{vm.articulo.titulo}}</span></h1>
 
-    <p><span class="glyphicon glyphicon-time"></span> {{vm.articulo.fecha | date:'mediumDate'}}</p>
-    <img  src="../../../content/images/mario.jpg" height="640" width="640"/>
+        <p><span class="glyphicon glyphicon-time"></span> {{vm.articulo.fecha | date:'mediumDate'}}</p>
+        <div ng-if="vm.articulo.foto">
+            <a ng-click="vm.openFile(vm.articulo.fotoContentType, vm.articulo.foto)">
+                <img data-ng-src="{{'data:' + vm.articulo.fotoContentType + ';base64,' + vm.articulo.foto}}" style="max-width: 100%;" alt="articulo image"/>
+            </a>
+            {{vm.articulo.fotoContentType}}
+        </div>
     </center>
     <br>
     <div style="width:80%; margin:0 auto" class="row "><span>{{vm.articulo.texto}}</span></div>

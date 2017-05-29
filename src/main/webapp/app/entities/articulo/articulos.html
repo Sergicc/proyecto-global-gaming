@@ -217,19 +217,6 @@
             </figure>
 
                 <tr has-any-authority="ROLE_ADMIN" ng-repeat="articulo in vm.articulos track by articulo.id">
-                    <td><a ui-sref="articulo-detail({id:articulo.id})">{{articulo.id}}</a></td>
-                    <td>{{articulo.titulo}}</td>
-                        <td>{{articulo.fecha | date:'mediumDate'}}</td>
-                    <td>{{articulo.url}}</td>
-                    <td>{{articulo.visitas}}</td>
-                    <td>{{articulo.comentarios}}</td>
-                    <td>{{articulo.texto}}</td>
-                    <td>
-                        <a ng-if="articulo.foto" ng-click="vm.openFile(articulo.fotoContentType, articulo.foto)">
-                            <img data-ng-src="{{'data:' + articulo.fotoContentType + ';base64,' + articulo.foto}}" style="max-height: 30px;" alt="articulo image"/>
-                        </a>
-                        <span ng-if="articulo.foto">{{articulo.fotoContentType}}, {{vm.byteSize(articulo.foto)}}</span>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
@@ -252,6 +239,20 @@
                             </button>
                         </div>
                     </td>
+                    <td><a ui-sref="articulo-detail({id:articulo.id})">{{articulo.id}}</a></td>
+                    <td>{{articulo.titulo}}</td>
+                        <td>{{articulo.fecha | date:'mediumDate'}}</td>
+                    <td>{{articulo.url}}</td>
+                    <td>{{articulo.visitas}}</td>
+                    <td>{{articulo.comentarios}}</td>
+                    <td>{{articulo.texto}}</td>
+                    <td>
+                        <a ng-if="articulo.foto" ng-click="vm.openFile(articulo.fotoContentType, articulo.foto)">
+                            <img data-ng-src="{{'data:' + articulo.fotoContentType + ';base64,' + articulo.foto}}" style="max-height: 30px;" alt="articulo image"/>
+                        </a>
+                        <span ng-if="articulo.foto">{{articulo.fotoContentType}}, {{vm.byteSize(articulo.foto)}}</span>
+                    </td>
+
                 </tr>
             </tbody>
         </table>
