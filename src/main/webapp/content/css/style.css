@@ -200,6 +200,12 @@ td { padding: 0; }
     top: 10%;
     width: 70%;
 }
+.fotonews {
+    left: 30%;
+    position: relative;
+    top: 10%;
+    width: 40%;
+}
 #fotoJuegos{
     left: 15%;
     max-width: 43%;
