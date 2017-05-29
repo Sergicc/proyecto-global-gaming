@@ -299,6 +299,7 @@ public class JuegoResource {
             .body(result);
     }
 
+
     @GetMapping("/juegos/{idJuego}/valoraciones/stat")
     @Timed
     public ResponseEntity<DoubleSummaryStatistics> valoracionesStat(@PathVariable Long idJuego)

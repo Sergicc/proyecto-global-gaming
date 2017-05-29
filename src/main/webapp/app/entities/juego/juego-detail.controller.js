@@ -27,7 +27,6 @@
 
         };
 
-
         Juego.stats ({'id' : vm.juego.id}, function (result) {
             vm.juego.stats = result;
         })
