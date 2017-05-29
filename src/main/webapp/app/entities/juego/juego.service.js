@@ -12,6 +12,7 @@
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
             'byFilters': { method: 'GET', isArray: true, url: 'api/juego/byfilters'},
+            'stats': { method: 'GET', isArray: false, url: 'api/juegos/:id/valoraciones/stat'},
             'addValoracion': {
                 method: 'POST',
                 isArray: false,

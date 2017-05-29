@@ -4,7 +4,6 @@
     }
 </style>
 <div>
-
   <!--  <h2><span data-translate="proyectoGlobalGamingApp.juego.detail.title"></span></h2>-->
  <jhi-alert-error></jhi-alert-error>
     <div class="container">
@@ -15,83 +14,71 @@
             </a>
             {{vm.juego.portadaContent}}
         </div>
-        <div class="col-xs-8">
+        <div class="col-xs-6">
             <h2>{{vm.juego.titulo}}</h2>
-        </div><br>
-        <div class="col-xs-8">Valoración: {{vm.juego.valoracionWeb}}/5
-            </div><br>
-        <div class="col-xs-8">Desarrollador: {{vm.juego.desarrollador}}
-        </div><br>
-        <div class="col-xs-8">Fecha Lanzamiento: {{vm.juego.fechaLanzamiento | date:'mediumDate'}}
-        </div><br>
-        <div class="col-xs-8">Edad Recomendada: {{vm.juego.edadRecomendada}}
-        </div><br>
-        <div class="col-xs-8">Genero: {{vm.juego.genero}}
-        </div><br>
-
-
+        </div>
     </div>
-    <!--<dl class="dl-horizontal jh-entity-details">-->
-        <!--<dt><span data-translate="proyectoGlobalGamingApp.juego.titulo">Titulo</span></dt>-->
-        <!--<dd>-->
-            <!--<span>{{vm.juego.titulo}}</span>-->
-        <!--</dd>-->
-        <!--<dt><span data-translate="proyectoGlobalGamingApp.juego.portada">Portada</span></dt>-->
-        <!--<dd>-->
-            <!--<div ng-if="vm.juego.portada">-->
-                <!--<a ng-click="vm.openFile(vm.juego.portadaContentType, vm.juego.portada)">-->
-                    <!--<img data-ng-src="{{'data:' + vm.juego.portadaContentType + ';base64,' + vm.juego.portada}}" style="max-width: 100%;" alt="juego image"/>-->
-                <!--</a>-->
-                <!--{{vm.juego.portadaContent}}, {{vm.byteSize(vm.juego.portada)}}-->
-            <!--</div>-->
-        <!--</dd>-->
-        <!--<dt><span data-translate="proyectoGlobalGamingApp.juego.descripcion">Descripcion</span></dt>-->
-        <!--<dd>-->
-            <!--<span>{{vm.juego.descripcion}}</span>-->
-        <!--</dd>-->
-        <!--<dt><span data-translate="proyectoGlobalGamingApp.juego.trailer">Trailer</span></dt>-->
-        <!--<dd>-->
-            <!--<span>{{vm.juego.trailer}}</span>-->
-        <!--</dd>-->
-        <!--<dt><span data-translate="proyectoGlobalGamingApp.juego.desarrollador">Desarrollador</span></dt>-->
-        <!--<dd>-->
-            <!--<span>{{vm.juego.desarrollador}}</span>-->
-        <!--</dd>-->
-        <!--<dt><span data-translate="proyectoGlobalGamingApp.juego.genero">Genero</span></dt>-->
-        <!--<dd>-->
-            <!--<span>{{vm.juego.genero}}</span>-->
-        <!--</dd>-->
-        <!--<dt><span data-translate="proyectoGlobalGamingApp.juego.edadRecomendada">Edad Recomendada</span></dt>-->
-        <!--<dd>-->
-            <!--<span>{{vm.juego.edadRecomendada}}</span>-->
-        <!--</dd>-->
-        <!--<dt><span data-translate="proyectoGlobalGamingApp.juego.fechaLanzamiento">Fecha Lanzamiento</span></dt>-->
-        <!--<dd>-->
-            <!--<span>{{vm.juego.fechaLanzamiento | date:'mediumDate'}}</span>-->
-        <!--</dd>-->
-        <!--<dt><span data-translate="proyectoGlobalGamingApp.juego.capacidadJugadores">Capacidad Jugadores</span></dt>-->
-        <!--<dd>-->
-            <!--<span>{{vm.juego.capacidadJugadores}}</span>-->
-        <!--</dd>-->
-        <!--<dt><span data-translate="proyectoGlobalGamingApp.juego.valoracionWeb">Valoracion Web</span></dt>-->
-        <!--<dd>-->
-            <!--<span>{{vm.juego.valoracionWeb}}</span>-->
-        <!--</dd>-->
-        <!--<dt><span data-translate="proyectoGlobalGamingApp.juego.valoracionUsers">Valoracion Users</span></dt>-->
-        <!--<dd>-->
-            <!--<span>{{vm.juego.valoracionUsers}}</span>-->
-        <!--</dd>-->
-        <!--<div class="form-group">-->
-            <!--<label class="control-label"-->
-                   <!--data-translate="proyectoGlobalGamingApp.juego.valoracion"-->
-                   <!--for="field_valoracion">Valoracion</label>-->
-            <!--<input type="text" class="form-control" name="valoracion" id="field_valoracion"-->
-                   <!--ng-model="vm.juego.valoracion"/>-->
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.titulo">Titulo</span></dt>
+        <dd>
+            <span>{{vm.juego.titulo}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.portada">Portada</span></dt>
+        <dd>
+            <div ng-if="vm.juego.portada">
+                <a ng-click="vm.openFile(vm.juego.portadaContentType, vm.juego.portada)">
+                    <img data-ng-src="{{'data:' + vm.juego.portadaContentType + ';base64,' + vm.juego.portada}}" style="max-width: 100%;" alt="juego image"/>
+                </a>
+                {{vm.juego.portadaContent}}, {{vm.byteSize(vm.juego.portada)}}
+            </div>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.descripcion">Descripcion</span></dt>
+        <dd>
+            <span>{{vm.juego.descripcion}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.trailer">Trailer</span></dt>
+        <dd>
+            <span>{{vm.juego.trailer}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.desarrollador">Desarrollador</span></dt>
+        <dd>
+            <span>{{vm.juego.desarrollador}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.genero">Genero</span></dt>
+        <dd>
+            <span>{{vm.juego.genero}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.edadRecomendada">Edad Recomendada</span></dt>
+        <dd>
+            <span>{{vm.juego.edadRecomendada}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.fechaLanzamiento">Fecha Lanzamiento</span></dt>
+        <dd>
+            <span>{{vm.juego.fechaLanzamiento | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.capacidadJugadores">Capacidad Jugadores</span></dt>
+        <dd>
+            <span>{{vm.juego.capacidadJugadores}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.valoracionWeb">Valoracion Web</span></dt>
+        <dd>
+            <span>{{vm.juego.valoracionWeb}}</span>
+        </dd>
+        <dt><span data-translate="proyectoGlobalGamingApp.juego.valoracionUsers">Valoracion Users</span></dt>
+        <dd>
+            <span>{{vm.juego.stats.average}}</span>
+        </dd>
+        <div class="form-group">
+            <label class="control-label"
+                   data-translate="proyectoGlobalGamingApp.juego.valoracion"
+                   for="field_valoracion">Valoracion</label>
+            <input type="text" class="form-control" name="valoracion" id="field_valoracion"
+                   ng-model="vm.juego.valoracion"/>
 
-            <!--<button ng-click="vm.addValoracion()">-->
-                <!--Valorar-->
-            <!--</button>-->
-        <!--</div>-->
+            <button ng-click="vm.addValoracion()">
+                Valorar
+            </button>
+        </div>
     </dl>
 
     <button type="submit"
@@ -99,10 +86,9 @@
             class="btn btn-info">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
     </button>
-<div has-any-authority="ROLE_ADMIN">
+
     <button type="button" ui-sref="juego-detail.edit({id:vm.juego.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
     </button>
-    </div>
 </div>

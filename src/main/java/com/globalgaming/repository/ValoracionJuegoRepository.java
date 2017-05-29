@@ -1,5 +1,6 @@
 package com.globalgaming.repository;
 
+import com.globalgaming.domain.Juego;
 import com.globalgaming.domain.ValoracionJuego;
 
 import org.springframework.data.jpa.repository.*;
@@ -14,5 +15,7 @@ public interface ValoracionJuegoRepository extends JpaRepository<ValoracionJuego
 
     @Query("select valoracionJuego from ValoracionJuego valoracionJuego where valoracionJuego.user.login = ?#{principal.username}")
     List<ValoracionJuego> findByUserIsCurrentUser();
+
+    List<ValoracionJuego> findByJuego(Juego juego);
 
 }

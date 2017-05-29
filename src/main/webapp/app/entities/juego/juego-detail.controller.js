@@ -27,6 +27,12 @@
 
         };
 
+
+        Juego.stats ({'id' : vm.juego.id}, function (result) {
+            vm.juego.stats = result;
+        })
+
+
         var successLike = function(result){
             console.log(result);
         }

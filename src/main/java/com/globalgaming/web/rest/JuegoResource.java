@@ -29,10 +29,7 @@ import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.ZonedDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -55,6 +52,7 @@ public class JuegoResource {
 
     @Inject
     private JuegoCriteriaRepository juegoCriteriaRepository;
+
 
     /**
      * POST  /juegos : Create a new juego.
@@ -299,6 +297,22 @@ public class JuegoResource {
         return ResponseEntity.created(new URI("/api/valoracion-juegos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("valoracionJuego", result.getId().toString()))
             .body(result);
+    }
+
+    @GetMapping("/juegos/{idJuego}/valoraciones/stat")
+    @Timed
+    public ResponseEntity<DoubleSummaryStatistics> valoracionesStat(@PathVariable Long idJuego)
+        throws URISyntaxException{
+
+        Juego juego = juegoRepository.findOne(idJuego);
+
+
+        DoubleSummaryStatistics statistics = valoracionJuegoRepository.findByJuego(juego)
+            .parallelStream()
+            .collect(Collectors.summarizingDouble(ValoracionJuego::getValoracion));
+
+        return new ResponseEntity<>(statistics, HttpStatus.OK);
+
     }
 }
 
