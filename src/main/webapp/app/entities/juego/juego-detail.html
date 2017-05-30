@@ -8,29 +8,62 @@
     <!--  <h2><span data-translate="proyectoGlobalGamingApp.juego.detail.title"></span></h2>-->
     <jhi-alert-error></jhi-alert-error>
     <div class="container">
+        <div  style="display:inline-block">
+        <button  type="submit"
+                 ui-sref="{{ vm.previousState }}"
+                 class="btn btn-info">
+            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+        </button>
+        </div>
+        <div has-any-authority="ROLE_ADMIN" style="display:inline-block">
+            <button type="button" ui-sref="juego-detail.edit({id:vm.juego.id})" class="btn btn-primary">
+                <span class="glyphicon glyphicon-pencil"></span>
+                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+        <h1 style="color:black;text-align:center;">{{vm.juego.titulo}}</h1>
         <div  ng-if="vm.juego.portada">
-            <div ng-if="vm.juego.portada"  class="col-xs-4">
-                <a ng-click="vm.openFile(vm.juego.portadaContentType, vm.juego.portada)">
-                    <img data-ng-src="{{'data:' + vm.juego.portadaContentType + ';base64,' + vm.juego.portada}}" style="max-width: 100%;" alt="juego image"/>
-                </a>
-                {{vm.juego.portadaContent}}
-            </div>
-            <div class="col-xs-8">
-                <h2>{{vm.juego.titulo}}</h2>
-            </div><br>
-            <div class="col-xs-8">Valoración Web: {{vm.juego.valoracionWeb}}/5
-            </div><br>
-            <div class="col-xs-8">Valoración Usuarios: {{vm.juego.stats.average}}/5
-            </div><br>
-            <div class="col-xs-8">Desarrollador: {{vm.juego.desarrollador}}
-            </div><br>
-            <div class="col-xs-8">Fecha Lanzamiento: {{vm.juego.fechaLanzamiento | date:'mediumDate'}}
-            </div><br>
-            <div class="col-xs-8">Edad Recomendada: {{vm.juego.edadRecomendada}}
-            </div><br>
-            <div class="col-xs-8">Genero: {{vm.juego.genero}}
-            </div><br>
+            <div class="jumbotron">
+                <div ng-if="vm.juego.portada"  class="col-xs-4">
+                    <a ng-click="vm.openFile(vm.juego.portadaContentType, vm.juego.portada)">
+                        <img data-ng-src="{{'data:' + vm.juego.portadaContentType + ';base64,' + vm.juego.portada}}" style="max-width: 100%;" alt="juego image"/>
+                    </a>
+                    {{vm.juego.portadaContent}}
+                </div>
+                <style>
+                    #inputValoracion{
+                        width:30%;
+                    }
+                </style>
+                <div></div> <div class="col-xs-8"><label>Valoración Web:</label> {{vm.juego.valoracionWeb}}/5<div class="col-xs-8"><label>Valoración Usuarios:</label> {{vm.juego.stats.average}}/5        <div class="form-group" id="diValoracion">
+                <label class="control-label"
+                       data-translate="proyectoGlobalGamingApp.juego.valoracion"
+                       for="field_valoracion">Valoracion</label>
+                <input id="inputValoracion" type="text" class="form-control" name="valoracion" id="field_valoracion"
+                       ng-model="vm.juego.valoracion"/>
 
+                <button  class="btn btn-primary btn-lg" onclick="comprobarCheck();" ng-click="vm.addValoracion()">
+                    Valorar
+                </button>
+                <script>
+                    function comprobarCheck(){
+                        var inputValoracion = $('#inputValoracion').val();
+                        if(inputValoracion != '') {
+                            alertify.success('Valoración insertada correctamente');
+                            $("#diValoracion").empty();
+                        }
+                    };
+
+                </script>
+            </div>
+                <hr class="my-2">
+                <p class="lead"><label>Desarrollador:</label> {{vm.juego.desarrollador}}</p>
+                <p><label>Fecha Lanzamiento:</label> {{vm.juego.fechaLanzamiento | date:'mediumDate'}}</p>
+                <p><label>Edad Recomendada:</label> {{vm.juego.edadRecomendada}}</p>
+                <p><label>Genero:</label> {{vm.juego.genero}}</p>
+                <p class="lead">
+                </p>
+            </div>
 
         </div>
         <!--<dl class="dl-horizontal jh-entity-details">-->
@@ -83,38 +116,6 @@
         <!--<dd>-->
         <!--<span>{{vm.juego.valoracionUsers}}</span>-->
         <!--</dd>-->
-        <div class="form-group" id="diValoracion">
-        <label class="control-label"
-        data-translate="proyectoGlobalGamingApp.juego.valoracion"
-        for="field_valoracion">Valoracion</label>
-        <input id="inputValoracion" type="text" class="form-control" name="valoracion" id="field_valoracion"
-        ng-model="vm.juego.valoracion"/>
-
-        <button  onclick="comprobarCheck();" ng-click="vm.addValoracion()">
-        Valorar
-        </button>
-            <script>
-                function comprobarCheck(){
-                    var inputValoracion = $('#inputValoracion').val();
-                    if(inputValoracion != '') {
-                        alertify.success('Valoración insertada correctamente');
-                        $("#diValoracion").empty();
-                    }
-                };
-
-            </script>
-        </div>
         </dl>
-        <button  type="submit"
-                ui-sref="{{ vm.previousState }}"
-                class="btn btn-info">
-            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-        </button>
-        <div has-any-authority="ROLE_ADMIN">
-            <button type="button" ui-sref="juego-detail.edit({id:vm.juego.id})" class="btn btn-primary">
-                <span class="glyphicon glyphicon-pencil"></span>
-                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
-            </button>
-        </div>
     </div>
 </div>
