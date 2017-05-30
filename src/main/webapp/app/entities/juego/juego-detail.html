@@ -87,7 +87,7 @@
         <label class="control-label"
         data-translate="proyectoGlobalGamingApp.juego.valoracion"
         for="field_valoracion">Valoracion</label>
-        <input type="text" class="form-control" name="valoracion" id="field_valoracion"
+        <input id="inputValoracion" type="text" class="form-control" name="valoracion" id="field_valoracion"
         ng-model="vm.juego.valoracion"/>
 
         <button  onclick="comprobarCheck();" ng-click="vm.addValoracion()">
@@ -95,9 +95,11 @@
         </button>
             <script>
                 function comprobarCheck(){
-                    alertify.success('Valoración insertada correctamente');
-                    $("#diValoracion").empty();
-
+                    var inputValoracion = $('#inputValoracion').val();
+                    if(inputValoracion != '') {
+                        alertify.success('Valoración insertada correctamente');
+                        $("#diValoracion").empty();
+                    }
                 };
 
             </script>
