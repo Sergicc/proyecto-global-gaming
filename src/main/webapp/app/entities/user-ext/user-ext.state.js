@@ -31,6 +31,28 @@
                 }]
             }
         })
+            .state('buscadorUsuario', {
+                parent: 'entity',
+                url: '/buscadorUsuario',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'proyectoGlobalGamingApp.userExt.home.title'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'app/entities/user-ext/buscadorUsuario.html',
+                        controller: 'UserExtController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('userExt');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
+            })
         .state('user-ext-detail', {
             parent: 'entity',
             url: '/user-ext/{id}',

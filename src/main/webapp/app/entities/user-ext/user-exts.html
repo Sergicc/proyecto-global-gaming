@@ -83,69 +83,69 @@
             </tbody>
         </table>
     </div>
-    <div>
-        <div class="widget widget-white">
-            <div class="widget-header">
-                <h3>SEARCH</h3>
-            </div>
-            <form role="form">
-                <div class="form-group">
-                    <label>NICK</label>
-                    <input type="text" class="form-control" ng-model="vm.userExtsByFilters.nick">
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <!--<label >ID BATTLE.NET</label>-->
-                    <input type="checkbox" class="custom-control-input" ng-model="vm.userExtsByFilters.idBattlenet" style="width: 50px; height: 50px;">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">ID BATTLE.NET</span>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <!--<label>ID STEAM</label>-->
-                    <input type="checkbox" class="custom-control-input" ng-model="vm.userExtsByFilters.idSteam" style="width: 50px; height: 50px;">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">ID STEAM</span>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <!--<label>ID ORIGIN</label>-->
-                    <input type="checkbox" class="custom-control-input" ng-model="vm.userExtsByFilters.idOrigin" style="width: 50px; height: 50px;">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">ID ORIGIN</span>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <!--<label>ID LOL</label>-->
-                    <input type="checkbox" class="custom-control-input" ng-model="vm.userExtsByFilters.idLol" style="width: 50px; height: 50px;">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">ID LOL</span>
-                </div>
+    <!--<div>-->
+        <!--<div class="widget widget-white">-->
+            <!--<div class="widget-header">-->
+                <!--<h3>SEARCH</h3>-->
+            <!--</div>-->
+            <!--<form role="form">-->
                 <!--<div class="form-group">-->
-                <!--<label>ID LOL-->
-                <!--<input type="checkbox" class="form-control" ng-model="vm.userExtsByFilters.idLol"></label>-->
+                    <!--<label>NICK</label>-->
+                    <!--<input type="text" class="form-control" ng-model="vm.userExtsByFilters.nick">-->
                 <!--</div>-->
-                <div class="form-group">
-                    <label>PAIS</label>
+                <!--<div class="custom-control custom-checkbox">-->
+                    <!--&lt;!&ndash;<label >ID BATTLE.NET</label>&ndash;&gt;-->
+                    <!--<input type="checkbox" class="custom-control-input" ng-model="vm.userExtsByFilters.idBattlenet" style="width: 50px; height: 50px;">-->
+                    <!--<span class="custom-control-indicator"></span>-->
+                    <!--<span class="custom-control-description">ID BATTLE.NET</span>-->
+                <!--</div>-->
+                <!--<div class="custom-control custom-checkbox">-->
+                    <!--&lt;!&ndash;<label>ID STEAM</label>&ndash;&gt;-->
+                    <!--<input type="checkbox" class="custom-control-input" ng-model="vm.userExtsByFilters.idSteam" style="width: 50px; height: 50px;">-->
+                    <!--<span class="custom-control-indicator"></span>-->
+                    <!--<span class="custom-control-description">ID STEAM</span>-->
+                <!--</div>-->
+                <!--<div class="custom-control custom-checkbox">-->
+                    <!--&lt;!&ndash;<label>ID ORIGIN</label>&ndash;&gt;-->
+                    <!--<input type="checkbox" class="custom-control-input" ng-model="vm.userExtsByFilters.idOrigin" style="width: 50px; height: 50px;">-->
+                    <!--<span class="custom-control-indicator"></span>-->
+                    <!--<span class="custom-control-description">ID ORIGIN</span>-->
+                <!--</div>-->
+                <!--<div class="custom-control custom-checkbox">-->
+                    <!--&lt;!&ndash;<label>ID LOL</label>&ndash;&gt;-->
+                    <!--<input type="checkbox" class="custom-control-input" ng-model="vm.userExtsByFilters.idLol" style="width: 50px; height: 50px;">-->
+                    <!--<span class="custom-control-indicator"></span>-->
+                    <!--<span class="custom-control-description">ID LOL</span>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                <!--&lt;!&ndash;<label>ID LOL&ndash;&gt;-->
+                <!--&lt;!&ndash;<input type="checkbox" class="form-control" ng-model="vm.userExtsByFilters.idLol"></label>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--<div class="form-group">-->
+                    <!--<label>PAIS</label>-->
 
-                    <select class="form-control" id="field_pais" name="pais" ng-model="vm.userExtsByFilters.pais" ng-options="pais as pais.nombre for pais in vm.pais track by pais.id">
-                        <option value=""></option>
-                    </select>
-
-                    <!--<select class="form-control" ng-model="vm.userExtByFilters.pais" ng-options="pais as pais.nombre for pais in vm.pais track by pais.id">-->
-                        <!--<option selected value>-Selecciona un pais-</option>-->
+                    <!--<select class="form-control" id="field_pais" name="pais" ng-model="vm.userExtsByFilters.pais" ng-options="pais as pais.nombre for pais in vm.pais track by pais.id">-->
                         <!--<option value=""></option>-->
                     <!--</select>-->
-                    <!--<input type="text" class="form-control" ng-model="vm.userExtsByFilters.pais">-->
 
-                </div>
+                    <!--&lt;!&ndash;<select class="form-control" ng-model="vm.userExtByFilters.pais" ng-options="pais as pais.nombre for pais in vm.pais track by pais.id">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option selected value>-Selecciona un pais-</option>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option value=""></option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="text" class="form-control" ng-model="vm.userExtsByFilters.pais">&ndash;&gt;-->
 
-                <input type="submit" name="submit" value="buscar" class="btn btn-success btn-block" ng-click="vm.UserExtByFilters()">
-                <!--{{ 'ProyectoGlobalGamingApp.juego.simpleSearch' | translate }}-->
-            </form>
-        </div>
-    </div>
+                <!--</div>-->
 
-    <div>
-        <label>RESULTADOS: </label>
-        <ul ng-repeat="userExt in vm.listUserExt">
-            <li><a ng-href="/#/user-ext/{{userExt.id}}"><img ng-src="data:image/jpeg;base64,{{userExt.avatar}}" width="50px">{{userExt.nick}}</a></li>
-        </ul>
-    </div>
+                <!--<input type="submit" name="submit" value="buscar" class="btn btn-success btn-block" ng-click="vm.UserExtByFilters()">-->
+                <!--&lt;!&ndash;{{ 'ProyectoGlobalGamingApp.juego.simpleSearch' | translate }}&ndash;&gt;-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div>-->
+        <!--<label>RESULTADOS: </label>-->
+        <!--<ul ng-repeat="userExt in vm.listUserExt">-->
+            <!--<li><a ng-href="/#/user-ext/{{userExt.id}}"><img ng-src="data:image/jpeg;base64,{{userExt.avatar}}" width="50px">{{userExt.nick}}</a></li>-->
+        <!--</ul>-->
+    <!--</div>-->
 </div>

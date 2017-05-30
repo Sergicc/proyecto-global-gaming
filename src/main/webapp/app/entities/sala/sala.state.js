@@ -31,6 +31,28 @@
                 }]
             }
         })
+            .state('buscadorSala', {
+                parent: 'entity',
+                url: '/buscadorSala',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'proyectoGlobalGamingApp.sala.home.title'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'app/entities/sala/buscadorSala.html',
+                        controller: 'SalaController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('sala');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
+            })
         .state('sala-detail', {
             parent: 'entity',
             url: '/sala/{id}',

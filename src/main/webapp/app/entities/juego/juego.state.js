@@ -31,6 +31,28 @@
                 }]
             }
         })
+            .state('buscadorJuego', {
+                parent: 'entity',
+                url: '/buscadorJuego',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'proyectoGlobalGamingApp.juego.home.title'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'app/entities/juego/buscadorJuego.html',
+                        controller: 'JuegoController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('juego');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
+            })
         .state('juego-detail', {
             parent: 'entity',
             url: '/juego/{id}',

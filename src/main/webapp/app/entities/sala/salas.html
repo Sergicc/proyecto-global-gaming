@@ -210,54 +210,54 @@
             </tbody>
         </table>
     </div>
-    <div>
-        <div class="widget widget-white">
-            <div class="widget-header">
-                <h3>SEARCH</h3>
-            </div>
-            <form role="form">
-                <div class="form-group">
-                    <label>NOMBRE</label>
-                    <input type="text" class="form-control" ng-model="vm.salasByFilters.nombre">
-                </div>
-                <div class="form-group">
-                    <label>DESCRIPCIÓN</label>
-                    <input type="text" class="form-control" ng-model="vm.salasByFilters.descripcion">
-                </div>
-                <div class="form-group">
-                    <label>MÍNIMO - LÍMITE DE USUARIOS</label>
-                    <input type="number" class="form-control" ng-model="vm.salasByFilters.minLimiteUsuarios">
-                </div>
-                <div class="form-group">
-                    <label>MÁXIMO - LÍMITE DE USUARIOS</label>
-                    <input type="number" class="form-control" ng-model="vm.salasByFilters.maxLimiteUsuarios">
-                </div>
+    <!--<div>-->
+        <!--<div class="widget widget-white">-->
+            <!--<div class="widget-header">-->
+                <!--<h3>SEARCH</h3>-->
+            <!--</div>-->
+            <!--<form role="form">-->
+                <!--<div class="form-group">-->
+                    <!--<label>NOMBRE</label>-->
+                    <!--<input type="text" class="form-control" ng-model="vm.salasByFilters.nombre">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label>DESCRIPCIÓN</label>-->
+                    <!--<input type="text" class="form-control" ng-model="vm.salasByFilters.descripcion">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label>MÍNIMO - LÍMITE DE USUARIOS</label>-->
+                    <!--<input type="number" class="form-control" ng-model="vm.salasByFilters.minLimiteUsuarios">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label>MÁXIMO - LÍMITE DE USUARIOS</label>-->
+                    <!--<input type="number" class="form-control" ng-model="vm.salasByFilters.maxLimiteUsuarios">-->
+                <!--</div>-->
 
-                <div class="form-group">
-                    <label>JUEGO</label>
+                <!--<div class="form-group">-->
+                    <!--<label>JUEGO</label>-->
 
-                    <!--<input type="text" class="form-control" ng-model="vm.salasByFilters.juego">-->
-                    <!--<select class="form-control" ng-model="vm.salasByFilters.juego" ng-repeat="sala in vm.listsala">-->
-                        <!--&lt;!&ndash;<option selected value>-Selecciona un juego-</option>&ndash;&gt;-->
-                        <!--<option value="{{sala.juego}}">{{sala.juego}}</option>-->
+                    <!--&lt;!&ndash;<input type="text" class="form-control" ng-model="vm.salasByFilters.juego">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<select class="form-control" ng-model="vm.salasByFilters.juego" ng-repeat="sala in vm.listsala">&ndash;&gt;-->
+                        <!--&lt;!&ndash;&lt;!&ndash;<option selected value>-Selecciona un juego-</option>&ndash;&gt;&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option value="{{sala.juego}}">{{sala.juego}}</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</select>&ndash;&gt;-->
+
+                    <!--<select class="form-control" id="field_juego" name="juego" ng-model="vm.salasByFilters.juego" ng-options="juego as juego.titulo for juego in vm.juego track by juego.id">-->
+                        <!--<option value=""></option>-->
                     <!--</select>-->
 
-                    <select class="form-control" id="field_juego" name="juego" ng-model="vm.salasByFilters.juego" ng-options="juego as juego.titulo for juego in vm.juego track by juego.id">
-                        <option value=""></option>
-                    </select>
+                <!--</div>-->
 
-                </div>
+                <!--<input type="submit" name="submit" value="buscar" class="btn btn-success btn-block" ng-click="vm.salaByFilters()">-->
+                <!--&lt;!&ndash;{{ 'ProyectoGlobalGamingApp.juego.simpleSearch' | translate }}&ndash;&gt;-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
 
-                <input type="submit" name="submit" value="buscar" class="btn btn-success btn-block" ng-click="vm.salaByFilters()">
-                <!--{{ 'ProyectoGlobalGamingApp.juego.simpleSearch' | translate }}-->
-            </form>
-        </div>
-    </div>
-
-    <div>
-        <label>RESULTADOS: </label>
-        <ul ng-repeat="sala in vm.listSala">
-            <li><a ng-href="/#/sala/{{sala.id}}"><img ng-src="data:image/jpeg;base64,{{sala.imagen}}" width="50px"> {{sala.nombre}}</a></li>
-        </ul>
-    </div>
+    <!--<div>-->
+        <!--<label>RESULTADOS: </label>-->
+        <!--<ul ng-repeat="sala in vm.listSala">-->
+            <!--<li><a ng-href="/#/sala/{{sala.id}}"><img ng-src="data:image/jpeg;base64,{{sala.imagen}}" width="50px"> {{sala.nombre}}</a></li>-->
+        <!--</ul>-->
+    <!--</div>-->
 </div>

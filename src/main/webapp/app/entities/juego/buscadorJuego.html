@@ -1,0 +1,89 @@
+<style>
+body{
+    margin-top: 115px !important;
+}
+</style>
+<div>
+    <div>
+        <div class="widget widget-white">
+            <div class="widget-header">
+                <h3>BUSCAR JUEGOS</h3>
+            </div>
+            <form role="form">
+                <div class="form-group">
+                    <label>TÍTULO</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.titulo">
+                </div>
+                <div class="form-group">
+                    <label>DESCRIPCIÓN</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.descripcion">
+                </div>
+                <div class="form-group">
+                    <label>DESARROLLADOR</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.desarrollador">
+                </div>
+                <div class="form-group">
+                    <label>GÉNERO</label>
+                    <input type="text" class="form-control" ng-model="vm.juegosByFilters.genero">
+                </div>
+                <div class="form-group">
+                    <label>EDAD RECOMENDADA</label>
+                    <input type="number" class="form-control" ng-model="vm.juegosByFilters.edadRecomendada">
+                </div>
+                <div class="form-group">
+                    <label>MÍNIMO - CAPACIDAD DE JUGADORES</label>
+                    <input type="number" class="form-control" ng-model="vm.juegosByFilters.minCapacidadJugadores">
+                </div>
+                <div class="form-group">
+                    <label>MÁXIMO - CAPACIDAD DE JUGADORES</label>
+                    <input type="number" class="form-control" ng-model="vm.juegosByFilters.maxCapacidadJugadores">
+                </div>
+                <div class="form-group">
+                    <label>MÍNIMO - VALORACIÓN DE LA WEB</label>
+                    <input type="number" class="form-control" ng-model="vm.juegosByFilters.minValoracionWeb">
+                </div>
+                <div class="form-group">
+                    <label>MÁXIMO - VALORACIÓN DE LA WEB</label>
+                    <input type="number" class="form-control" ng-model="vm.juegosByFilters.maxValoracionWeb">
+                </div>
+                <div class="form-group">
+                    <label>MÍNIMO - VALORACIÓN DE LOS USUARIOS</label>
+                    <input type="number" class="form-control" ng-model="vm.juegosByFilters.minValoracionUsers">
+                </div>
+                <div class="form-group">
+                    <label>MÁXIMO - VALORACIÓN DE LOS USUARIOS</label>
+                    <input type="number" class="form-control" ng-model="vm.juegosByFilters.maxValoracionUsers">
+                </div>
+                <div class="form-group">
+                    <label>IDIOMA</label>
+                    <!--<input type="text" class="form-control" ng-model="vm.juegosByFilters.idioma">-->
+                    <!--<select class="form-control" ng-model="vm.juegosByFilters.idioma" ng-repeat="idioma in vm.listJuego">-->
+                    <!--&lt;!&ndash;<option selected value>-Selecciona un pais-</option>&ndash;&gt;-->
+                    <!--<option value="{{idioma.id}}">{{idioma.nombre}}</option>-->
+                    <!--</select>-->
+                    <select class="form-control" id="field_idioma" name="idioma" ng-model="vm.juegosByFilters.idioma" ng-options="idioma as idioma for idioma in vm.idioma"> <!-- | unique: 'idioma.nombre'-->
+                        <option value=""></option>
+                    </select>
+
+
+                    <!--<input type="text" class="form-control" ng-model="vm.userExtsByFilters.pais">-->
+                    <!--<select class="form-control" ng-model="vm.juegosByFilters.idioma">-->
+                    <!--<option selected value>-Selecciona un idioma-</option>-->
+                    <!--<option value="Español">Español</option>-->
+                    <!--<option value="Inglés">Inglés</option>-->
+                    <!--</select>-->
+                </div>
+
+                <input type="submit" name="submit" value="buscar" class="btn btn-success btn-block" ng-click="vm.juegoByFilters()">
+                <!--{{ 'ProyectoGlobalGamingApp.juego.simpleSearch' | translate }}-->
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <label>RESULTADOS: </label>
+        <ul ng-repeat="juego in vm.listJuego">
+            <li><a ng-href="/#/juego/{{juego.id}}"><img ng-src="data:image/jpeg;base64,{{juego.portada}}" width="50px"> {{juego.titulo}}</a></li>
+        </ul>
+    </div>
+</div>

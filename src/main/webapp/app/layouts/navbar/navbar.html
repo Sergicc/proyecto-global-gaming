@@ -99,11 +99,11 @@
         outline: none;
     }
     #search .btn {
-        position: absolute;
+        <!--position: absolute;-->
         top: 50%;
         left: 50%;
         margin-top: 61px;
-        margin-left: -45px;
+        <!--margin-left: -45px;-->
     }
     #search .close {
         position: fixed;
@@ -127,18 +127,11 @@
             $('#search > form > input[type="search"]').focus();
         });
 
-        $('#search, #search button.close').on('click keyup', function(event) {
-            if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
-                $(this).removeClass('open');
+        $('#search, #search button.close, .cerrar').on('click keyup', function(event) {
+            if (event.target == this || event.target.className == 'close' || event.target.className == 'cerrar' || event.keyCode == 27) {
+                $('#search').removeClass('open');
             }
         });
-
-
-        //Do not include! This prevents the form from submitting for DEMO purposes only!
-        $('form').submit(function(event) {
-            event.preventDefault();
-            return false;
-        })
     });
 </script>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -317,7 +310,7 @@
                 <li ng-class="{active: vm.$state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown class="dropdown pointer">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="admin-menu">
                         <span>
-                            <span class="glyphicon glyphicon-tower"></span>
+                            <span class="glyphicon glyphicon-wrench"></span>
                             <span class="hidden-sm" data-translate="global.menu.admin.main">Administration</span>
                             <b class="caret"></b>
                         </span>
@@ -375,36 +368,34 @@
 
             <div id="search">
                 <button type="button" class="close">×</button>
-                <script>
-                        $('input[name=tipo]').change(function () {
-                            $("#introducir").empty();
-                            if (this.id == "usuarios") {
-                                var contenidoUsuarios = $("<input type='search' value='' placeholder='usuarios' /><button type='submit' class='btn btn-primary'>Buscar</button>");
-                                $("#introducir").append(contenidoUsuarios);
-                            }
-                            if (this.id == "salas") {
-                                var contenidoSalas = $("<input type='search' value='' placeholder='salas' /><button type='submit' class='btn btn-primary'>Buscar</button>");
-                                $("#introducir").append(contenidoSalas);
-                            }
-                            if (this.id == "juegos") {
-                                var contenidoJuegos = $("<input type='search' value='' placeholder='juegos' /><button type='submit' class='btn btn-primary'>Buscar</button>");
-                                $("#introducir").append(contenidoJuegos);
-                            }
-                        });
-                </script>
-                <form>
+                <!--<script>-->
+                    <!--$('input[name=tipo]').change(function () {-->
+                        <!--$("#introducir").empty();-->
+                        <!--if (this.id == "usuarios") {-->
+                            <!--var contenidoUsuarios = $("<input type='search' value='' placeholder='usuarios' /><button type='submit' class='btn btn-primary'>Buscar</button>");-->
+                            <!--$("#introducir").append(contenidoUsuarios);-->
+                        <!--}-->
+                        <!--if (this.id == "salas") {-->
+                            <!--var contenidoSalas = $("<input type='search' value='' placeholder='salas' /><button type='submit' class='btn btn-primary'>Buscar</button>");-->
+                            <!--$("#introducir").append(contenidoSalas);-->
+                        <!--}-->
+                        <!--if (this.id == "juegos") {-->
+                            <!--var contenidoJuegos = $("<input type='search' value='' placeholder='juegos' /><button type='submit' class='btn btn-primary'>Buscar</button>");-->
+                            <!--$("#introducir").append(contenidoJuegos);-->
+                        <!--}-->
+                    <!--});-->
+                <!--</script>-->
+
                     <div class="searchRadio">
-                        <input  id="usuarios" name="tipo" type="radio" checked>USUARIOS
-
-                        <input id="salas" name="tipo" type="radio" >SALAS
-
-                        <input id="juegos" name="tipo" type="radio">JUEGOS
+                        <button ui-sref="buscadorJuego" class='btn btn-primary cerrar'>Juegos</button>
+                        <button ui-sref="buscadorSala" class='btn btn-primary cerrar'>Salas</button>
+                        <button ui-sref="buscadorUsuario" class='btn btn-primary cerrar'>Usuarios</button>
                     </div>
 
                     <div id="introducir">
-                        <input type='search' value='' placeholder='usuarios' /><button type='submit' class='btn btn-primary'>Buscar</button>
+
                     </div>
-                </form>
+
             </div>
             <!--<ul class="nav navbar-nav navbar-middle">-->
             <!--TODO BÚSQUEDA AVANZADA-->

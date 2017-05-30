@@ -16,7 +16,6 @@ public interface ValoracionJuegoRepository extends JpaRepository<ValoracionJuego
     @Query("select valoracionJuego from ValoracionJuego valoracionJuego where valoracionJuego.user.login = ?#{principal.username}")
     List<ValoracionJuego> findByUserIsCurrentUser();
 
-
     List<ValoracionJuego> findByJuego(Juego juego);
 
 }
