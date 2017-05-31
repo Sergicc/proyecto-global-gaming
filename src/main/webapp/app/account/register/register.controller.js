@@ -18,7 +18,7 @@
         vm.register = register;
         vm.registerAccount = {};
         vm.success = null;
-        vm.pais = Register;
+        vm.pais = Pais.query();
 
         $timeout(function (){angular.element('#login').focus();});
 

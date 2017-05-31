@@ -84,7 +84,7 @@ public class UserService {
     }
 
     public User createUser(String login, String password, String firstName, String lastName, String email,
-        String langKey,String battle,String steam , String origin, String lol) {
+        String langKey,String battle,String steam , String origin, String lol,String nick) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
@@ -105,6 +105,7 @@ public class UserService {
         newUserExt.setIdSteam(steam);
         newUserExt.setIdOrigin(origin);
         newUserExt.setIdLol(lol);
+        newUserExt.setNick(nick);
         userExtraRepository.save(newUserExt);
         log.debug("Created Information for UserExt: {}", newUserExt);
 

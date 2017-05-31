@@ -34,6 +34,7 @@ public class ManagedUserVM extends UserDTO {
 
     private String lol;
 
+    private String nick;
 
 
     @Size(min = PASSWORD_MIN_LENGTH, max = PASSWORD_MAX_LENGTH)
@@ -76,7 +77,9 @@ public class ManagedUserVM extends UserDTO {
         return steam;
     }
 
-
+    public String getNick() {
+        return nick;
+    }
 
     public String getLol() {
         return lol;
