@@ -4,6 +4,16 @@
     }
 </style>
 <div>
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button has-any-authority="ROLE ADMIN" type="button" ui-sref="articulo-detail.edit({id:vm.articulo.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
     <!--<h2><span data-translate="proyectoGlobalGamingApp.articulo.detail.title">Articulo</span> {{vm.articulo.id}}</h2>-->
     <center>
         <h1><span>{{vm.articulo.titulo}}</span></h1>
@@ -72,14 +82,5 @@
         </dd>
     </dl>-->
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
 
-    <button type="button" ui-sref="articulo-detail.edit({id:vm.articulo.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
-    </button>
 </div>
