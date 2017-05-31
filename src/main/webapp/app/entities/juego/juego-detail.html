@@ -50,7 +50,7 @@
                 <label class="control-label"
                        data-translate="proyectoGlobalGamingApp.juego.valoracion"
                        for="field_valoracion">Valoracion</label>
-                <input type="text" class="form-control" name="valoracion" id="field_valoracion"
+                <input type="number" class="form-control" name="valoracion" min="0" max="5" id="field_valoracion"
                        ng-model="vm.juego.valoracion"/>
 
                 <button  class="btn btn-primary btn-lg" onclick="comprobarCheck();" ng-click="vm.addValoracion()">
