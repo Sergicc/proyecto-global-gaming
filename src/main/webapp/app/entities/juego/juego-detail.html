@@ -31,6 +31,7 @@
                     {{vm.juego.portadaContent}}
                 </div>
                 <style>
+
                     #field_valoracion{
                         width:18.5%;
                     }
@@ -59,9 +60,11 @@
                 <script>
                     function comprobarCheck(){
                         var inputValoracion = $('#field_valoracion').val();
+
                         var divValorar = document.getElementById("diValoracion");
                         if(inputValoracion != '') {
                             alertify.success('Valoración insertada correctamente');
+
                             divValorar.style.display = "none";
                         }
                     };
