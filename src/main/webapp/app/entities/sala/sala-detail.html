@@ -84,65 +84,62 @@
 
 </head>
 <div>
-    <div class="row">
-        <div class="col-md-8">.col-md-8</div>
-
-        <div class="col-md-4">.col-md-4
-        <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
-        <figure class="snip1578">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample6.jpg" alt="profile-sample6" />
-            <figcaption>
-                <h3>Bailey Wonger</h3>
-                <div class="icons"><a href="#"><i class="ion-social-twitter"></i></a>
-                    <a href="#"> <i class="ion-social-instagram-outline"></i></a>
-                    <a href="#"> <i class="ion-social-github"></i></a>
-                </div>
-            </figcaption>
-        </figure>
-        </tbody>
-        </div>
-    </div>
-    <h2><span data-translate="proyectoGlobalGamingApp.sala.detail.title">Sala</span> {{vm.sala.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="proyectoGlobalGamingApp.sala.nombre">Nombre</span></dt>
-        <dd>
-            <span>{{vm.sala.nombre}}</span>
-        </dd>
-        <dt><span data-translate="proyectoGlobalGamingApp.sala.imagen">Imagen</span></dt>
-        <dd>
-            <div ng-if="vm.sala.imagen">
-                <a ng-click="vm.openFile(vm.sala.imagenContentType, vm.sala.imagen)">
-                    <img data-ng-src="{{'data:' + vm.sala.imagenContentType + ';base64,' + vm.sala.imagen}}" style="max-width: 100%;" alt="sala image"/>
-                </a>
-                {{vm.sala.imagenContent}}<!--, {{vm.byteSize(vm.sala.imagen)}}-->
-            </div>
-        </dd>
-        <dt><span data-translate="proyectoGlobalGamingApp.sala.limiteUsuarios">Limite Usuarios</span></dt>
-        <dd>
-            <span>{{vm.sala.limiteUsuarios}}</span>
-        </dd>
-        <dt><span data-translate="proyectoGlobalGamingApp.sala.descripcion">Descripcion</span></dt>
-        <dd>
-            <span>{{vm.sala.descripcion}}</span>
-        </dd>
-        <dt><span data-translate="proyectoGlobalGamingApp.sala.juego">Juego</span></dt>
-        <dd>
-            <a ui-sref="juego-detail({id:vm.sala.juego.id})">{{vm.sala.juego.titulo}}</a>
-        </dd>
-    </dl>
-
     <button type="submit"
             ui-sref="{{ vm.previousState }}"
             class="btn btn-info">
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
     </button>
 
-    <button type="button" ui-sref="sala-detail.edit({id:vm.sala.id})" class="btn btn-primary">
+    <button has-any-authority="ROLE ADMIN" type="button" ui-sref="sala-detail.edit({id:vm.sala.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
     </button>
+    <!--    <div class="row">
+            <div class="col-md-8">
+                {{vm.sala.imagenContent}}
+            </div>
+
+    &lt;!&ndash;        <div class="col-md-4">
+    &lt;!&ndash;        <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+            <figure class="snip1578">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample6.jpg" alt="profile-sample6" />
+                <figcaption>
+                    <h3>Bailey Wonger</h3>
+                    <div class="icons"><a href="#"><i class="ion-social-twitter"></i></a>
+                        <a href="#"> <i class="ion-social-instagram-outline"></i></a>
+                        <a href="#"> <i class="ion-social-github"></i></a>
+                    </div>
+                </figcaption>
+            </figure>
+            </tbody>&ndash;&gt;
+            </div>&ndash;&gt;
+        </div>-->
+    <h2 style="text-align:center">{{vm.sala.nombre}} ( {{vm.sala.juego.titulo}} )</h2>
+    <jhi-alert-error></jhi-alert-error>
+    <div class="row">
+        <div class="col-xs-6">
+            <div ng-if="vm.sala.imagen">
+                <a ng-click="vm.openFile(vm.sala.imagenContentType, vm.sala.imagen)">
+                    <img data-ng-src="{{'data:' + vm.sala.imagenContentType + ';base64,' + vm.sala.imagen}}" style="max-width: 100%;" alt="sala image"/>
+                </a>
+                {{vm.sala.imagenContent}}<!--, {{vm.byteSize(vm.sala.imagen)}}-->
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <br>
+            <div class="row"><label>Creador de la sala:</label> {{vm.sala.user.login}}</div>
+            <div class="row"><label>Descripción:</label> {{vm.sala.descripcion}}</div>
+            <div class="row"><label>Límite Usuarios:</label>{{vm.sala.limiteUsuarios}}</div>
+
+        </div>
+    </div>
+    <!--    <dl class="dl-horizontal jh-entity-details">
+            <dt><span data-translate="proyectoGlobalGamingApp.sala.juego">Juego</span></dt>
+            <dd>
+                <a ui-sref="juego-detail({id:vm.sala.juego.id})"></a>
+            </dd>
+        </dl>-->
+
     <div class="row pad-top pad-bottom">
 
 
@@ -150,19 +147,6 @@
             <div class="chat-box-div">
                 <div class="chat-box-head">
                     CHAT
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <span class="fa fa-cogs"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#"><span class="fa fa-map-marker"></span>&nbsp;Invisible</a></li>
-                            <li><a href="#"><span class="fa fa-comments-o"></span>&nbsp;Online</a></li>
-                            <li><a href="#"><span class="fa fa-lock"></span>&nbsp;Busy</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><span class="fa fa-circle-o-notch"></span>&nbsp;Logout</a></li>
-                        </ul>
-                    </div>
                 </div>
                 <div class="panel-body chat-box-main">
                     <hr class="hr-clas" />
@@ -190,10 +174,10 @@
         <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="chat-box-online-div">
                 <div class="chat-box-online-head">
-                    ONLINE USERS (1)
+                    USUARIOS ONLINE (0 / {{vm.sala.limiteUsuarios}})
                 </div>
                 <div class="panel-body chat-box-online">
-                {{vm.sala.user.login}}
+
                     <hr class="hr-clas-low" />
                 </div>
 
