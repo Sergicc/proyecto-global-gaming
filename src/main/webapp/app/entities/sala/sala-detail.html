@@ -127,8 +127,9 @@
         </div>
         <div class="col-xs-6">
             <br>
-            <div class="row">Descripción: {{vm.sala.descripcion}}</div>
-            <div class="row">Límite Usuarios:{{vm.sala.limiteUsuarios}}</div>
+            <div class="row"><label>Creador de la sala:</label> {{vm.sala.user.login}}</div>
+            <div class="row"><label>Descripción:</label> {{vm.sala.descripcion}}</div>
+            <div class="row"><label>Límite Usuarios:</label>{{vm.sala.limiteUsuarios}}</div>
 
         </div>
     </div>
@@ -146,19 +147,6 @@
             <div class="chat-box-div">
                 <div class="chat-box-head">
                     CHAT
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <span class="fa fa-cogs"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#"><span class="fa fa-map-marker"></span>&nbsp;Invisible</a></li>
-                            <li><a href="#"><span class="fa fa-comments-o"></span>&nbsp;Online</a></li>
-                            <li><a href="#"><span class="fa fa-lock"></span>&nbsp;Busy</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><span class="fa fa-circle-o-notch"></span>&nbsp;Logout</a></li>
-                        </ul>
-                    </div>
                 </div>
                 <div class="panel-body chat-box-main">
                     <hr class="hr-clas" />
@@ -186,10 +174,10 @@
         <div class="col-lg-3 col-md-3 col-sm-3">
             <div class="chat-box-online-div">
                 <div class="chat-box-online-head">
-                    USUARIOS ONLINE (1 / {{vm.sala.limiteUsuarios}})
+                    USUARIOS ONLINE (0 / {{vm.sala.limiteUsuarios}})
                 </div>
                 <div class="panel-body chat-box-online">
-                    {{vm.sala.user.login}}
+
                     <hr class="hr-clas-low" />
                 </div>
 
