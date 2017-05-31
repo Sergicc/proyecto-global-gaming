@@ -31,7 +31,8 @@
                     {{vm.juego.portadaContent}}
                 </div>
                 <style>
-                    #inputValoracion{
+
+                    #field_valoracion{
                         width:18.5%;
                     }
                 </style>
@@ -49,7 +50,7 @@
                 <label class="control-label"
                        data-translate="proyectoGlobalGamingApp.juego.valoracion"
                        for="field_valoracion">Valoracion</label>
-                <input id="inputValoracion" type="text" class="form-control" name="valoracion" id="field_valoracion"
+                <input type="number" class="form-control" name="valoracion" min="0" max="5" id="field_valoracion"
                        ng-model="vm.juego.valoracion"/>
 
                 <button  class="btn btn-primary btn-lg" onclick="comprobarCheck();" ng-click="vm.addValoracion()">
@@ -58,10 +59,13 @@
                 </div>
                 <script>
                     function comprobarCheck(){
-                        var inputValoracion = $('#inputValoracion').val();
+                        var inputValoracion = $('#field_valoracion').val();
+
+                        var divValorar = document.getElementById("diValoracion");
                         if(inputValoracion != '') {
                             alertify.success('Valoración insertada correctamente');
-                            $("#diValoracion").empty();
+
+                            divValorar.style.display = "none";
                         }
                     };
 
